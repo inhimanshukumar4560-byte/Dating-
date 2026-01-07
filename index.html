@@ -240,6 +240,32 @@
         </div>
     </div>
 
+    <!-- START: NEW ATTRIBUTION SCREEN -->
+    <div id="attribution-screen" class="hidden fixed inset-0 z-[101] flex flex-col items-center justify-center bg-navy-deep transition-opacity duration-500 p-6 text-center text-white overflow-y-auto">
+        <div class="w-full max-w-md">
+            <p class="font-body text-slate-300 text-sm md:text-base mb-4">This app idea was thoughtfully suggested by Sameer Attar. His creative insight laid the foundation for this project.</p>
+            
+            <img src="https://i.ibb.co/1JwTYwcK/IMG-20260107-WA0029.jpg" alt="Sameer Attar" class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto object-cover border-2 border-primary/50 shadow-lg">
+            <p class="font-display font-semibold text-lg mt-2 mb-6">Sameer attar</p>
+
+            <p class="font-body text-slate-300 text-sm md:text-base mb-4">Designed and developed by Himanshu Kumar, with dedication and technical excellence</p>
+
+            <img src="https://i.ibb.co/0yQBY0bf/Screenshot-20260107-234217.jpg" alt="Himanshu Kumar" class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto object-cover border-2 border-primary/50 shadow-lg">
+            <p class="font-display font-semibold text-lg mt-2 mb-8">himanshu kumar</p>
+
+            <h2 class="font-display font-bold text-xl md:text-2xl text-primary mb-10">This app has been developed under the guidance and insights of experienced professionals from the field of Homoeopathic Materia Medica (kle HMC)</h2>
+
+            <button id="attribution-enter-btn" class="group/btn relative w-64 h-14 rounded-full flex items-center justify-center overflow-hidden transition-all duration-200 ease-in-out shadow-lg hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 active:shadow-lg active:scale-95 no-underline mx-auto">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary to-[#064e6b] group-hover/btn:brightness-110 transition-all"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
+                <div class="relative flex items-center gap-2">
+                    <span class="text-white font-display font-bold text-lg tracking-wide">Enter</span>
+                </div>
+            </button>
+        </div>
+    </div>
+    <!-- END: NEW ATTRIBUTION SCREEN -->
+
     <div id="secondary-enter-screen" class="hidden fixed inset-0 z-[101] flex flex-col items-center justify-center bg-navy-deep transition-opacity duration-500">
         <div class="text-center">
              <h1 class="font-display font-bold text-4xl md:text-5xl tracking-widest text-white mb-8">REMEDICON</h1>
@@ -872,9 +898,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- START: NEW INTRO LOGIC ---
     const initialEnterScreen = document.getElementById('initial-enter-screen');
     const codingAnimationScreen = document.getElementById('coding-animation-screen');
-    const secondaryEnterScreen = document.getElementById('secondary-enter-screen');
+    const attributionScreen = document.getElementById('attribution-screen'); // New screen
+    const attributionEnterBtn = document.getElementById('attribution-enter-btn'); // New button
     const enterBtn = document.getElementById('enter-btn');
-    const secondaryEnterBtn = document.getElementById('secondary-enter-btn');
     const welcomeScreen = document.getElementById('welcome-screen-wrapper');
     const appWrapper = document.getElementById('app-wrapper');
     
@@ -890,16 +916,18 @@ document.addEventListener('DOMContentLoaded', function () {
             codingAnimationScreen.style.opacity = '0';
             setTimeout(() => {
                 codingAnimationScreen.style.display = 'none';
-                secondaryEnterScreen.classList.remove('hidden');
-                secondaryEnterScreen.style.opacity = '1';
+                // Show attribution screen instead of secondary enter screen
+                attributionScreen.classList.remove('hidden');
+                attributionScreen.style.opacity = '1';
             }, 1000);
         }, 15000); // 15 seconds for the animation
     });
 
-    secondaryEnterBtn.addEventListener('click', () => {
-        secondaryEnterScreen.style.opacity = '0';
+    // New event listener for the attribution screen's enter button
+    attributionEnterBtn.addEventListener('click', () => {
+        attributionScreen.style.opacity = '0';
          setTimeout(() => {
-            secondaryEnterScreen.style.display = 'none';
+            attributionScreen.style.display = 'none';
             welcomeScreen.classList.remove('hidden');
             welcomeScreen.style.opacity = '1';
             // Trigger preloader logic for the original welcome screen
