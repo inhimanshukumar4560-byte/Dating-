@@ -1,0 +1,1600 @@
+
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>REMEDICON Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25aff4",
+                        "primary-dark": "#1a8dc7",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101c22",
+                        "card-dark": "#16262e",
+                        "card-border": "#283b45",
+                    },
+                    fontFamily: { "display": ["Inter", "sans-serif"] },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-nav {
+            background: rgba(16, 28, 34, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        body { min-height: max(884px, 100dvh); }
+        .page { display: none; }
+        .page.active { display: block; }
+
+        .save-btn.saved .material-symbols-outlined,
+        .save-btn.saved .text-sm {
+            color: #25aff4;
+            transition: color 0.2s ease-in-out;
+        }
+        .save-btn.saved .material-symbols-outlined {
+            text-shadow: 0 0 8px rgba(37, 175, 244, 0.6);
+        }
+        
+        .highlight {
+            background-color: yellow;
+            color: black;
+        }
+
+        #page-menu-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            z-index: 50;
+            display: none;
+        }
+        
+        /* Active Nav Button Style */
+        .nav-btn.active .material-symbols-outlined {
+            color: #25aff4; /* primary color */
+        }
+        .nav-btn.active .nav-text {
+            color: #ffffff; /* white text */
+        }
+        .nav-btn.active .active-indicator {
+            opacity: 1;
+        }
+        
+        /* New styles for zoomable image */
+        #modal-image {
+            touch-action: none; /* Disables default touch actions like scrolling */
+            transform-origin: center center;
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Styles for new daily content carousels */
+        .daily-content-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem; /* Space between items */
+            padding-bottom: 1rem; /* For scrollbar visibility if not hidden */
+        }
+        .daily-content-slider .slide {
+            flex: 0 0 90%; /* Each item takes 90% of the container width */
+            scroll-snap-align: center;
+        }
+        .aspect-16-9 {
+            aspect-ratio: 16 / 9;
+        }
+        .new-badge {
+            background: linear-gradient(to right, #ef4444, #f87171);
+            color: white;
+            padding: 2px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- Main App Container -->
+    <div id="app-container" class="pb-24">
+
+        <!-- Page: Home -->
+        <div id="page-home" class="page active">
+            <!-- Header Section -->
+            <header class="sticky top-0 z-40 w-full transition-all duration-300 bg-background-dark/95 backdrop-blur-md border-b border-card-border">
+                <div class="flex items-center justify-between px-4 py-3">
+                    <div class="flex items-center gap-2">
+                        <div class="size-8 rounded-lg bg-gradient-to-br from-primary to-teal-600 flex items-center justify-center text-white shadow-lg shadow-primary/20">
+                            <span class="material-symbols-outlined text-[20px]">local_pharmacy</span>
+                        </div>
+                        <h1 class="text-xl font-bold tracking-tight text-white">REMEDICON</h1>
+                    </div>
+                    <button id="settings-btn" class="flex items-center justify-center size-10 rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-colors">
+                        <span class="material-symbols-outlined">settings</span>
+                    </button>
+                </div>
+            </header>
+            <div class="relative w-full h-[220px] overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiYG-YsHaK6neuhqwY0FxvmkIQjW8AFwJUtlDwnlBZYkANzrtT7XBF6GnNUj2BD0A3QBCSQ0MQRSVtP2mDL81U-bhomQRpBtmodQvmGlkB4w7TjEzyF2XeY8wfvngWwFcL1cmRtv-qnguslkzyqgtDTXIy-eoQcXtr78_5VMNLhOilZJyr9UC4iMK0-fxwIPCNrqjlUZGDvRLNCggH2YuXooA-c6QPKjCd4_vbi8GfxQCVs3kKa4pEyZH11OAAC842KGJSDLmjIzo');"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-background-dark/40 via-background-dark/60 to-background-dark"></div>
+                <div class="relative z-10 px-4 h-full flex flex-col justify-end pb-8">
+                    <h2 class="text-white/90 text-2xl font-semibold mb-1">Materia Medica</h2>
+                    <p class="text-slate-400 text-sm font-light">by W. Boericke, M.D.</p>
+                    <p class="text-slate-300 text-sm font-light mt-1">Explore over 3,000 remedies & symptoms.</p>
+                </div>
+            </div>
+            <div class="px-4 -mt-6 relative z-20">
+                <label class="group flex flex-col w-full h-14 shadow-xl shadow-black/20 rounded-xl transition-all">
+                    <div class="flex w-full flex-1 items-stretch rounded-xl bg-card-dark border border-card-border group-focus-within:border-primary/50 group-focus-within:ring-1 group-focus-within:ring-primary/50 transition-all">
+                        <div class="text-slate-400 flex items-center justify-center pl-4"><span class="material-symbols-outlined">search</span></div>
+                        <input id="home-search-input" class="flex w-full min-w-0 flex-1 bg-transparent text-white placeholder:text-slate-500 px-3 focus:outline-none focus:ring-0 border-none h-full text-base font-medium" placeholder="Search remedy, symptom, organ..."/>
+                        <div class="text-slate-400 flex items-center justify-center pr-2">
+                            <button id="home-search-btn" class="flex items-center justify-center size-10 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[24px]">search</span>
+                            </button>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <section class="mt-8 px-4">
+                <div class="flex items-center justify-between mb-4"><h3 class="text-white text-lg font-semibold tracking-tight">Modules</h3></div>
+                <div class="grid grid-cols-2 gap-3">
+                    <button data-target="page-remedies" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/Ndnyw6Vk/b3u-Gi6h3-S02aplk-Jb-Iwa-Yw.webp');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="relative z-10 p-4">
+                            <h2 class="text-white text-base font-semibold">Remedies</h2>
+                            <p class="text-xs text-slate-300 mt-0.5">A-Z Listings</p>
+                        </div>
+                    </button>
+                    <button data-target="page-symptoms" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/d0VjJ90F/sq-Fh-Mq48-RX228v-UIhv3-Lyg.webp');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="relative z-10 p-4">
+                            <h2 class="text-white text-base font-semibold">Symptoms</h2>
+                            <p class="text-xs text-slate-300 mt-0.5">Body Systems</p>
+                        </div>
+                    </button>
+                    <button data-target="page-materia-medica" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/DHPKBHpr/NOff-Rb-P7-Rom09-Vr2-Dl-VXs-A.webp');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="relative z-10 p-4">
+                            <h2 class="text-white text-base font-semibold">Materia Medica</h2>
+                            <p class="text-xs text-slate-300 mt-0.5">Detailed Study</p>
+                        </div>
+                    </button>
+                    <button data-target="page-repertory" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/Jj457f6m/eejgv-g-DQ7yc-GI9ly-JPT0g.webp');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="relative z-10 p-4">
+                            <h2 class="text-white text-base font-semibold">Repertory</h2>
+                            <p class="text-xs text-slate-300 mt-0.5">Rubrics</p>
+                        </div>
+                    </button>
+                    <button data-target="page-compare" class="module-btn flex flex-col gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-start hover:bg-white/5 active:scale-[0.98] transition-all group">
+                        <div class="p-2 rounded-lg bg-pink-500/10 text-pink-400 group-hover:bg-pink-500/20 transition-colors"><span class="material-symbols-outlined">compare_arrows</span></div>
+                        <div class="text-left"><h2 class="text-white text-base font-semibold">Compare</h2><p class="text-xs text-slate-400 mt-0.5">Remedy Diff</p></div>
+                    </button>
+                    <button data-target="page-saved" class="module-btn flex flex-col gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-start hover:bg-white/5 active:scale-[0.98] transition-all group">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors"><span class="material-symbols-outlined">bookmark</span></div>
+                        <div class="text-left"><h2 class="text-white text-base font-semibold">Saved</h2><p class="text-xs text-slate-400 mt-0.5">Your Notes</p></div>
+                    </button>
+                </div>
+            </section>
+            <section class="mt-8">
+                <div class="flex items-center justify-between px-4 mb-3"><h3 class="text-white text-lg font-semibold tracking-tight">Recent</h3><button data-target="page-remedies" class="module-btn text-primary text-sm font-medium hover:text-primary-dark">View All</button></div>
+                <div id="recent-remedies-container" class="flex overflow-x-auto gap-3 px-4 pb-4 no-scrollbar snap-x">
+                </div>
+            </section>
+
+            <!-- START: MODIFIED/NEW SECTIONS -->
+            <section id="daily-insight-section" class="mt-4 px-4 mb-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <h3 class="text-white text-lg font-semibold tracking-tight">Daily Insight</h3>
+                    <span id="daily-insight-date" class="text-sm text-slate-400"></span>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <div id="daily-remedy-slider" class="daily-content-slider no-scrollbar">
+                    <!-- Daily remedies will be injected here by JavaScript -->
+                </div>
+            </section>
+
+            <section id="daily-infographic-section" class="mt-4 px-4 mb-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <h3 class="text-white text-lg font-semibold tracking-tight">Today's Remedygrphy</h3>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <div id="daily-infographic-slider" class="daily-content-slider no-scrollbar">
+                    <!-- Daily infographics will be injected here by JavaScript -->
+                </div>
+            </section>
+
+            <section id="daily-video-section" class="mt-4 px-4 mb-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <h3 class="text-white text-lg font-semibold tracking-tight">Today's Videos</h3>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <div id="daily-video-slider" class="daily-content-slider no-scrollbar">
+                    <!-- Daily videos will be injected here by JavaScript -->
+                </div>
+            </section>
+            <!-- END: MODIFIED/NEW SECTIONS -->
+
+        </div>
+
+        <!-- Generic Header for other pages -->
+        <header id="placeholder-header" class="hidden sticky top-0 z-30 w-full bg-background-dark/95 backdrop-blur-md border-b border-card-border">
+            <div class="flex items-center justify-between px-4 py-3">
+                <button class="back-btn flex items-center gap-2 text-slate-300 hover:text-white -ml-2 p-2">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <h1 id="placeholder-title" class="text-xl font-bold tracking-tight text-white text-center flex-grow mr-8"></h1>
+                <div id="page-menu-container" class="relative">
+                    <button id="page-menu-btn" class="hidden flex items-center justify-center size-10 rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-colors -mr-2">
+                        <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                    <div id="page-menu-dropdown" class="mt-2 w-56 origin-top-right rounded-md bg-card-dark shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-card-border">
+                        <div class="py-1" role="none">
+                          <button data-target="page-manage-remedies" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Manage Remedies</button>
+                          <button data-target="page-upload-infographic" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Remedygrphy</button>
+                          <button data-target="page-upload-content" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Content</button>
+                          <button data-target="page-upload-biopath" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Biopath</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div id="page-remedies" class="page px-4 py-2">
+            <div id="remedies-list" class="space-y-2"></div>
+        </div>
+        
+        <div id="page-remedy-detail" class="page px-4 py-6 text-slate-300 leading-relaxed"></div>
+        
+        <div id="page-symptoms" class="page px-4 py-2">
+            <div id="symptoms-list" class="space-y-2"></div>
+        </div>
+        
+        <div id="page-symptom-remedies" class="page px-4 py-2">
+            <div id="symptom-remedies-list" class="space-y-2"></div>
+        </div>
+
+        <div id="page-saved" class="page px-4 py-2">
+            <div id="saved-remedies-list" class="space-y-2"></div>
+        </div>
+        
+        <div id="page-compare" class="page px-4 py-6">
+            <p class="text-slate-300 mb-4 text-center">Compare remedies based on a specific symptom or body part.</p>
+            <div class="space-y-4">
+                <input id="compare-symptom" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter Body Part (e.g., Stomach)"/>
+                <input id="compare-remedy1" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter first remedy name..."/>
+                <input id="compare-remedy2" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter second remedy name..."/>
+                <button id="compare-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Compare</button>
+            </div>
+            <div id="comparison-results" class="mt-6"></div>
+        </div>
+
+        <div id="page-add-remedy" class="page px-4 py-6">
+            <form id="add-remedy-form" class="space-y-4">
+                <div>
+                    <label for="remedy-book" class="block text-sm font-medium text-slate-300 mb-1">Book Name</label>
+                    <input type="text" id="remedy-book" value="W. Boericke, M.D." class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
+                </div>
+                <div>
+                    <label for="raw-remedy-text" class="block text-sm font-medium text-slate-300 mb-1">Paste Remedy Text Block Here</label>
+                    <textarea id="raw-remedy-text" rows="10" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Paste the full text for a single remedy..."></textarea>
+                </div>
+                <button type="button" id="parse-remedy-btn" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-lg transition-colors">Parse and Populate Form</button>
+                
+                <div class="border-t border-card-border pt-4 mt-6">
+                    <h3 class="text-lg font-semibold text-white mb-3 text-center">Form Preview</h3>
+                    <div>
+                        <label for="remedy-name" class="block text-sm font-medium text-slate-300 mb-1">Remedy Name</label>
+                        <input type="text" id="remedy-name" required class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., ACONITUM NAPELLUS"/>
+                    </div>
+                    <div>
+                        <label for="remedy-common-name" class="block text-sm font-medium text-slate-300 mb-1">Common Name</label>
+                        <input type="text" id="remedy-common-name" class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., Monkshood"/>
+                    </div>
+                    <div>
+                        <label for="remedy-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
+                        <input type="date" id="remedy-upload-date" required class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
+                    </div>
+                    <div>
+                        <label for="remedy-description" class="block text-sm font-medium text-slate-300 mb-1">Description</label>
+                        <textarea id="remedy-description" rows="4" class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
+                    </div>
+
+                    <div class="border-t border-card-border pt-4 mt-4">
+                        <h3 class="text-lg font-semibold text-white mb-2">Sections</h3>
+                        <div id="dynamic-sections-container" class="space-y-3">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" id="save-remedy-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors !mt-6">Save Remedy to Database</button>
+            </form>
+        </div>
+        
+        <div id="page-manage-remedies" class="page px-4 py-2">
+            <div id="manage-remedies-list" class="space-y-2">
+            </div>
+        </div>
+
+        <div id="page-search-results" class="page px-4 py-2">
+            <div id="search-results-list" class="space-y-2"></div>
+        </div>
+
+        <div id="page-upload-infographic" class="page px-4 py-6">
+            <form id="infographic-form" class="space-y-4">
+                <input type="hidden" id="infographic-id" value="">
+                <div>
+                    <label for="infographic-name" class="block text-sm font-medium text-slate-300 mb-1">Remedygrphy Name</label>
+                    <input type="text" id="infographic-name" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., ABIES CANADENSIS"/>
+                </div>
+                <div>
+                    <label for="infographic-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
+                    <input type="date" id="infographic-upload-date" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
+                </div>
+                <div>
+                    <label for="infographic-embed-code" class="block text-sm font-medium text-slate-300 mb-1">Image URL or Embed Code</label>
+                    <textarea id="infographic-embed-code" rows="4" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Paste direct image link (e.g., https://.../image.png) or full embed code"></textarea>
+                    <p class="text-xs text-slate-500 mt-1">Editing? The actual image URL is saved. Paste a new link or code to update.</p>
+                </div>
+                <button type="submit" id="save-infographic-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Save Remedygrphy</button>
+            </form>
+             <div class="border-t border-card-border mt-8 pt-4">
+                <h3 class="text-lg font-semibold text-white mb-3">Uploaded Remedygrphies</h3>
+                <div id="manage-infographics-list" class="space-y-2"></div>
+            </div>
+        </div>
+        
+        <!-- NEW PAGE: Upload Content -->
+        <div id="page-upload-content" class="page px-4 py-6">
+            <form id="content-form" class="space-y-4">
+                <input type="hidden" id="content-id" value="">
+                <div>
+                    <label for="content-name" class="block text-sm font-medium text-slate-300 mb-1">Video Name</label>
+                    <input type="text" id="content-name" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., Materia Medica Explained"/>
+                </div>
+                <div>
+                    <label for="content-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
+                    <input type="date" id="content-upload-date" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
+                </div>
+                <div>
+                    <label for="content-youtube-link" class="block text-sm font-medium text-slate-300 mb-1">YouTube Video Link</label>
+                    <input type="url" id="content-youtube-link" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="..."/>
+                </div>
+                <button type="submit" id="save-content-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Save Content</button>
+            </form>
+             <div class="border-t border-card-border mt-8 pt-4">
+                <h3 class="text-lg font-semibold text-white mb-3">Uploaded Content</h3>
+                <div id="manage-content-list" class="space-y-2"></div>
+            </div>
+        </div>
+
+        <!-- START: NEW BIOPATH PAGES -->
+        <div id="page-upload-biopath" class="page px-4 py-6">
+            <div class="space-y-3">
+                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Plant">
+                    <span class="font-medium text-white">Plant</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                </button>
+                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Animal">
+                    <span class="font-medium text-white">Animal</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                </button>
+                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Mineral">
+                    <span class="font-medium text-white">Mineral</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                </button>
+                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Nosode">
+                    <span class="font-medium text-white">Nosode</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                </button>
+                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Other">
+                    <span class="font-medium text-white">Other</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="page-biopath-form" class="page px-4 py-6">
+            <form id="add-biopath-form" class="space-y-4">
+                <input type="hidden" id="biopath-kingdom" value="">
+                <div id="biopath-form-inputs" class="space-y-4">
+                    <!-- Inputs will be dynamically generated here -->
+                </div>
+                <button type="submit" id="save-biopath-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors !mt-6">Save Biopath Data</button>
+            </form>
+        </div>
+
+        <div id="page-biopath-groups" class="page px-4 py-2">
+            <div id="biopath-groups-list" class="space-y-2"></div>
+        </div>
+        
+        <div id="page-biopath-subgroups" class="page px-4 py-2">
+            <div id="biopath-subgroups-list" class="space-y-2"></div>
+        </div>
+
+        <div id="page-biopath-detail" class="page px-4 py-6 text-slate-300 leading-relaxed">
+            <!-- Biopath final content will be rendered here -->
+        </div>
+        <!-- END: NEW BIOPATH PAGES -->
+
+        <div id="page-materia-medica" class="page px-4 py-6"><p class="text-slate-300">This is the Materia Medica page.</p></div>
+        <div id="page-repertory" class="page px-4 py-6"><p class="text-slate-300">This is the Repertory page.</p></div>
+        <div id="page-profile" class="page px-4 py-6"><p class="text-slate-300">This is the Profile page.</p></div>
+        
+        <div id="page-biopath" class="page">
+            <main class="flex-1 overflow-y-auto">
+                <div class="px-4 py-6">
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+                        </div>
+                        <input class="block w-full rounded-xl border-none bg-white dark:bg-card-dark py-3.5 pl-10 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/50 shadow-sm transition-all duration-300" placeholder="Search remedy, symptom, or keyword" type="text"/>
+                        <div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+                            <button class="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg text-slate-400 dark:text-primary transition-colors">
+                                <span class="material-symbols-outlined">tune</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mt-4 overflow-x-auto no-scrollbar pb-1">
+                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium shadow-lg shadow-primary/20 whitespace-nowrap transition-transform active:scale-95">All</button>
+                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">A-Z Index</button>
+                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Polychrests</button>
+                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Acute</button>
+                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Chronic</button>
+                    </div>
+                </div>
+                <section class="px-4 mb-8">
+                    <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Browse by Kingdom</h2><button class="text-primary text-sm font-medium hover:text-primary/80">View All</button></div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div data-kingdom="Plant" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98]"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-green-500">eco</span></div><div class="flex flex-col h-full justify-between z-10 relative"><div class="bg-green-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-green-500"><span class="material-symbols-outlined">eco</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Plant</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Botanic remedies</p></div></div></div>
+                        <div data-kingdom="Mineral" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98]"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-amber-500">hexagon</span></div><div class="flex flex-col h-full justify-between z-10 relative"><div class="bg-amber-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-amber-500"><span class="material-symbols-outlined">hexagon</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Mineral</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elements &amp; Salts</p></div></div></div>
+                        <div data-kingdom="Animal" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98]"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-red-400">pets</span></div><div class="flex flex-col h-full justify-between z-10 relative"><div class="bg-red-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-red-400"><span class="material-symbols-outlined">pets</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Animal</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fauna based</p></div></div></div>
+                        <div data-kingdom="Nosode" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98]"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-purple-400">coronavirus</span></div><div class="flex flex-col h-full justify-between z-10 relative"><div class="bg-purple-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-purple-400"><span class="material-symbols-outlined">coronavirus</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Nosode</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Disease products</p></div></div></div>
+                    </div>
+                </section>
+                <section class="mb-8">
+                    <div class="px-4 mb-3"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Clinical Systems</h2></div>
+                    <div class="flex gap-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-primary text-2xl">psychology</span></div><span class="text-xs font-medium text-slate-400">Mind</span></div>
+                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">pulmonology</span></div><span class="text-xs font-medium text-slate-400">Resp.</span></div>
+                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">gastroenterology</span></div><span class="text-xs font-medium text-slate-400">GIT</span></div>
+                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">dermatology</span></div><span class="text-xs font-medium text-slate-400">Skin</span></div>
+                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">female</span></div><span class="text-xs font-medium text-slate-400">Female</span></div>
+                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">skeleton</span></div><span class="text-xs font-medium text-slate-400">Bones</span></div>
+                    </div>
+                </section>
+                <section class="px-4">
+                    <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Popular Remedies</h2>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4 text-green-400"><span class="material-symbols-outlined">eco</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Arnica Montana</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Trauma, Bruising, Shock, Soreness</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
+                        <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-yellow-900/30 flex items-center justify-center mr-4 text-amber-400"><span class="material-symbols-outlined">hexagon</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Arsenicum Album</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Anxiety, Restlessness, Burning pains</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
+                        <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4 text-blue-400"><span class="material-symbols-outlined">water_drop</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Natrum Muriaticum</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Grief, Introversion, Headaches</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
+                        <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4 text-red-400"><span class="material-symbols-outlined">pets</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Lachesis Mutus</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Jealousy, Loquacity, Left-sided</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        
+        <!-- IMPROVED PAGE: Remedygrphy -->
+        <div id="page-infographic" class="page px-4 py-6">
+            <div id="infographic-list-container" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            </div>
+        </div>
+        
+        <!-- NEW PAGE: Content (Videos) -->
+        <div id="page-content" class="page px-4 py-6">
+            <div id="content-list-container" class="space-y-6">
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full glass-nav pb-safe z-50">
+        <div class="flex justify-around items-center h-[70px] px-2 max-w-md mx-auto">
+            <button data-target="page-home" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                <div class="relative p-1">
+                    <span class="material-symbols-outlined text-slate-400 text-[26px]">home</span>
+                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                </div>
+                <span class="nav-text text-[10px] font-medium text-slate-500">Home</span>
+            </button>
+            <button data-target="page-biopath" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                 <div class="relative p-1">
+                    <span class="material-symbols-outlined text-slate-400 text-[26px]">science</span>
+                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                </div>
+                <span class="nav-text text-[10px] font-medium text-slate-500">Biopath</span>
+            </button>
+            <button data-target="page-infographic" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                 <div class="relative p-1">
+                    <span class="material-symbols-outlined text-slate-400 text-[26px]">insights</span>
+                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                </div>
+                <span class="nav-text text-[10px] font-medium text-slate-500">Remedygrphy</span>
+            </button>
+            <button data-target="page-content" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                 <div class="relative p-1">
+                    <span class="material-symbols-outlined text-slate-400 text-[26px]">play_circle</span>
+                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                </div>
+                <span class="nav-text text-[10px] font-medium text-slate-500">Content</span>
+            </button>
+            <button data-target="page-profile" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                 <div class="relative p-1">
+                    <span class="material-symbols-outlined text-slate-400 text-[26px]">person</span>
+                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                </div>
+                <span class="nav-text text-[10px] font-medium text-slate-500">Profile</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Modals -->
+    <div id="image-viewer-modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm overflow-hidden">
+        <button id="close-image-modal-btn" class="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 z-10"><span class="material-symbols-outlined">close</span></button>
+        <div class="w-full h-full flex items-center justify-center">
+            <img id="modal-image" src="" alt="Remedygrphy" class="max-w-full max-h-full object-contain">
+        </div>
+    </div>
+    
+    <div id="video-viewer-modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <button id="close-video-modal-btn" class="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 z-10"><span class="material-symbols-outlined">close</span></button>
+        <div id="video-embed-container" class="w-full max-w-4xl aspect-video">
+            <!-- YouTube iframe will be inserted here -->
+        </div>
+    </div>
+
+
+<script type="module">
+// Import Firebase functions
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics.js";
+import { getDatabase, ref, get, set, push, remove } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDuvWTMJL5edNG6cheez5pmwI2KlLCwtjw",
+  authDomain: "shubhzone-4a6b0.firebaseapp.com",
+  databaseURL: "https://shubhzone-4a6b0-default-rtdb.firebaseio.com",
+  projectId: "shubhzone-4a6b0",
+  storageBucket: "shubhzone-4a6b0.appspot.com",
+  messagingSenderId: "439309269785",
+  appId: "1:439309269785:web:08a1256812648daafea388",
+  measurementId: "G-5S0VFF21SB"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const database = getDatabase(app);
+
+// Global state variables
+let remedyData = []; 
+let infographicData = []; 
+let contentData = [];
+let biopathData = {};
+let currentSearchTerm = '';
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Element references
+    const pages = document.querySelectorAll('.page');
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const moduleButtons = document.querySelectorAll('.module-btn');
+    const placeholderHeader = document.getElementById('placeholder-header');
+    const placeholderTitle = document.getElementById('placeholder-title');
+    const appContainer = document.getElementById('app-container');
+    const settingsButton = document.getElementById('settings-btn');
+    const addRemedyForm = document.getElementById('add-remedy-form');
+    const parseRemedyBtn = document.getElementById('parse-remedy-btn');
+    const homeSearchInput = document.getElementById('home-search-input');
+    const homeSearchBtn = document.getElementById('home-search-btn');
+    const infographicForm = document.getElementById('infographic-form');
+    const contentForm = document.getElementById('content-form');
+    const addBiopathForm = document.getElementById('add-biopath-form');
+    const pageMenuBtn = document.getElementById('page-menu-btn');
+    const pageMenuDropdown = document.getElementById('page-menu-dropdown');
+    
+    // Image Zoom Modal Elements
+    const imageModal = document.getElementById('image-viewer-modal');
+    const modalImage = document.getElementById('modal-image');
+    let transform = { scale: 1, translateX: 0, translateY: 0 };
+    let initialPinchDistance = null;
+    let lastTouch = null;
+
+
+    const pageTitles = {
+        'page-remedies': 'Remedies', 'page-remedy-detail': 'Remedy Details', 'page-symptoms': 'Symptoms',
+        'page-symptom-remedies': 'Remedies for Symptom', 'page-saved': 'Saved Remedies', 'page-compare': 'Compare',
+        'page-search-results': 'Search Results', 'page-profile': 'Profile', 'page-add-remedy': 'Add New Remedy',
+        'page-manage-remedies': 'Manage Remedies', 'page-biopath': 'Biopath', 'page-infographic': 'Remedygrphy',
+        'page-upload-infographic': 'Upload Remedygrphy', 'page-content': 'Content', 'page-upload-content': 'Upload Content',
+        'page-upload-biopath': 'Upload Biopath', 'page-biopath-form': 'Add Biopath Entry', 'page-biopath-groups': 'Biopath Groups',
+        'page-biopath-subgroups': 'Biopath Sub-Groups', 'page-biopath-detail': 'Biopath Details'
+    };
+    
+    // Set today's date in add forms automatically
+    const getTodayDateString = () => {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+    }
+    
+    document.getElementById('remedy-upload-date').value = getTodayDateString();
+    document.getElementById('infographic-upload-date').value = getTodayDateString();
+    document.getElementById('content-upload-date').value = getTodayDateString();
+
+
+    // --- Firebase Data Handling ---
+    async function initializeAndFetchData() {
+        const remediesRef = ref(database, 'remedies');
+        const infographicsRef = ref(database, 'infographics');
+        const contentRef = ref(database, 'content');
+        const biopathRef = ref(database, 'biopath');
+
+        // Fetch remedies
+        const remediesSnapshot = await get(remediesRef);
+        remedyData = remediesSnapshot.exists() ? Object.keys(remediesSnapshot.val()).map(key => ({ ...remediesSnapshot.val()[key], id: key })) : [];
+
+        // Fetch remedygrphies
+        const infographicsSnapshot = await get(infographicsRef);
+        infographicData = infographicsSnapshot.exists() ? Object.keys(infographicsSnapshot.val()).map(key => ({ ...infographicsSnapshot.val()[key], id: key })) : [];
+        
+        // Fetch content
+        const contentSnapshot = await get(contentRef);
+        contentData = contentSnapshot.exists() ? Object.keys(contentSnapshot.val()).map(key => ({ ...contentSnapshot.val()[key], id: key })) : [];
+        
+        // Fetch biopath data
+        const biopathSnapshot = await get(biopathRef);
+        biopathData = biopathSnapshot.exists() ? biopathSnapshot.val() : {};
+
+        renderInitialApp();
+    }
+
+    function renderInitialApp() {
+        renderRemedyList(remedyData.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list');
+        renderRecentList();
+        renderSymptomsList();
+        renderInfographics();
+        renderManageInfographicsList();
+        renderContentList();
+        renderManageContentList();
+        renderDailyContent(); // New function for home page carousels
+        showPage('page-home'); // Set initial active state correctly
+    }
+    
+    // --- LocalStorage Helper Functions ---
+    const getSavedRemedies = () => JSON.parse(localStorage.getItem('savedRemedies')) || [];
+    const isRemedySaved = (remedyName) => getSavedRemedies().includes(remedyName);
+    const toggleSaveRemedy = (remedyName) => {
+        let saved = getSavedRemedies();
+        if (isRemedySaved(remedyName)) {
+            saved = saved.filter(name => name !== remedyName);
+        } else {
+            saved.push(remedyName);
+        }
+        localStorage.setItem('savedRemedies', JSON.stringify(saved));
+    };
+    const getRecentRemedies = () => JSON.parse(localStorage.getItem('recentRemedies')) || [];
+    const addRemedyToRecents = (remedyName) => {
+        let recents = getRecentRemedies().filter(name => name !== remedyName);
+        recents.unshift(remedyName);
+        if (recents.length > 5) recents.pop();
+        localStorage.setItem('recentRemedies', JSON.stringify(recents));
+        renderRecentList();
+    };
+    
+    // --- Utility Functions ---
+    function getYoutubeVideoId(url) {
+        let videoId = null;
+        const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = url.match(regex);
+        if (match) {
+            videoId = match[1];
+        }
+        return videoId;
+    }
+
+    // --- Page Navigation ---
+    function showPage(pageId, pageTitleOverride = null) {
+        pages.forEach(page => page.classList.remove('active'));
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            window.scrollTo(0, 0);
+
+            // Update active nav button
+            navButtons.forEach(btn => {
+                if (btn.dataset.target === pageId) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Handle header visibility
+            const pagesWithoutHeader = ['page-home', 'page-infographic', 'page-content'];
+            if (pagesWithoutHeader.includes(pageId)) {
+                if (placeholderHeader.parentElement !== appContainer) appContainer.prepend(placeholderHeader);
+                placeholderHeader.classList.add('hidden');
+            } else {
+                const title = pageTitleOverride || pageTitles[pageId] || 'Page';
+                placeholderTitle.textContent = title;
+                targetPage.prepend(placeholderHeader);
+                placeholderHeader.classList.remove('hidden');
+
+                if (pageId === 'page-add-remedy') {
+                    pageMenuBtn.classList.remove('hidden');
+                } else {
+                    pageMenuBtn.classList.add('hidden');
+                    pageMenuDropdown.style.display = 'none';
+                }
+            }
+        }
+    }
+
+    // --- Rendering Functions ---
+    function renderRemedyList(remedies, containerId) {
+        const listContainer = document.getElementById(containerId);
+        if (!listContainer) return;
+        listContainer.innerHTML = remedies && remedies.length > 0 ? remedies.map(remedy => {
+            const isSaved = isRemedySaved(remedy.name);
+            return `<div class="flex items-center w-full p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors group">
+                        <button class="flex-grow text-left remedy-link-btn" data-remedy-name="${remedy.name}">
+                            <h3 class="font-semibold text-white">${remedy.name}</h3>
+                            <p class="text-sm text-slate-400">${remedy.commonName}</p>
+                        </button>
+                        <button class="p-2 -mr-2 text-slate-500 hover:text-primary transition-colors save-btn ${isSaved ? 'saved' : ''}" data-remedy-name="${remedy.name}">
+                            <span class="material-symbols-outlined">${isSaved ? 'bookmark' : 'bookmark_add'}</span>
+                        </button>
+                    </div>`;
+        }).join('') : `<p class="text-slate-400 text-center py-4">No remedies found.</p>`;
+    }
+
+    // START: NEW RENDERING FUNCTIONS FOR HOME PAGE
+    function renderDailyContent() {
+        const todayStr = getTodayDateString();
+        const dateSpan = document.getElementById('daily-insight-date');
+        
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateSpan.textContent = today.toLocaleDateString(undefined, options);
+
+        // Filter data for today's content
+        // IMPORTANT: This assumes your data in Firebase has an 'uploadDate' field in "YYYY-MM-DD" format.
+        const todaysRemedies = remedyData.filter(item => item.uploadDate === todayStr);
+        const todaysInfographics = infographicData.filter(item => item.uploadDate === todayStr);
+        const todaysVideos = contentData.filter(item => item.uploadDate === todayStr);
+
+        const remedySlider = document.getElementById('daily-remedy-slider');
+        const remedySection = document.getElementById('daily-insight-section');
+        if(todaysRemedies.length > 0) {
+            remedySection.style.display = 'block';
+            remedySlider.innerHTML = todaysRemedies.map(remedy => {
+                const firstSectionKey = remedy.sections ? Object.keys(remedy.sections)[0] : '';
+                const firstSectionValue = firstSectionKey ? remedy.sections[firstSectionKey] : remedy.description;
+                // Truncate the description for the card
+                const shortDescription = firstSectionValue.length > 120 ? firstSectionValue.substring(0, 120) + '...' : firstSectionValue;
+
+                return `
+                <div class="slide">
+                    <div class="relative w-full rounded-2xl overflow-hidden border border-card-border bg-gradient-to-br from-[#1c2e36] to-card-dark p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-primary text-xs font-bold uppercase tracking-widest mb-1 block">Keynote</span>
+                                <h4 class="text-xl font-bold text-white mb-2">${remedy.name}</h4>
+                            </div>
+                            <div class="bg-white/5 rounded-lg p-2 backdrop-blur-sm"><span class="material-symbols-outlined text-white">lightbulb</span></div>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4 h-16">${shortDescription}</p>
+                        <div class="flex items-center gap-3">
+                            <button class="bg-primary hover:bg-primary-dark text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors remedy-link-btn" data-remedy-name="${remedy.name}">Read Full Profile</button>
+                            <button class="save-btn text-slate-400 hover:text-white text-xs font-medium px-2 py-2 transition-colors flex items-center gap-1 ${isRemedySaved(remedy.name) ? 'saved' : ''}" data-remedy-name="${remedy.name}">
+                                <span class="material-symbols-outlined text-[16px]">${isRemedySaved(remedy.name) ? 'bookmark' : 'bookmark_add'}</span>
+                                ${isRemedySaved(remedy.name) ? 'Saved' : 'Save'}
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        } else {
+            remedySection.style.display = 'none'; // Hide section if no new remedies
+        }
+
+        const infographicSlider = document.getElementById('daily-infographic-slider');
+        const infographicSection = document.getElementById('daily-infographic-section');
+        if(todaysInfographics.length > 0) {
+            infographicSection.style.display = 'block';
+            infographicSlider.innerHTML = todaysInfographics.map(info => `
+                <div class="slide group">
+                     <div class="bg-card-dark border border-card-border rounded-xl overflow-hidden flex flex-col shadow-lg h-full">
+                        <div class="w-full bg-background-dark flex items-center justify-center overflow-hidden aspect-16-9">
+                            <img src="${info.imageUrl}" alt="${info.name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-4 flex-grow flex flex-col">
+                            <h3 class="font-semibold text-white text-base flex-grow mb-3">${info.name}</h3>
+                            <button class="open-infographic-btn w-full bg-primary/20 hover:bg-primary/30 text-primary text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors" data-url="${info.imageUrl}">View Fullscreen</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            infographicSection.style.display = 'none';
+        }
+
+        const videoSlider = document.getElementById('daily-video-slider');
+        const videoSection = document.getElementById('daily-video-section');
+        if(todaysVideos.length > 0) {
+            videoSection.style.display = 'block';
+            videoSlider.innerHTML = todaysVideos.map(content => `
+                <div class="slide open-video-btn group cursor-pointer" data-video-id="${content.videoId}">
+                    <div class="aspect-16-9 w-full bg-black rounded-xl overflow-hidden relative border border-card-border shadow-lg">
+                        <img src="https://img.youtube.com/vi/${content.videoId}/hqdefault.jpg" alt="${content.name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 flex items-center justify-center transition-opacity opacity-0 group-hover:opacity-100 bg-black/40">
+                           <span class="material-symbols-outlined text-white text-7xl" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">play_circle</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 px-1">
+                        <h3 class="font-semibold text-white text-base">${content.name}</h3>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            videoSection.style.display = 'none';
+        }
+    }
+    // END: NEW RENDERING FUNCTIONS
+
+    function renderSavedList() {
+        const savedNames = getSavedRemedies();
+        const savedRemedies = remedyData.filter(r => savedNames.includes(r.name));
+        renderRemedyList(savedRemedies, 'saved-remedies-list');
+    }
+    function renderRecentList() {
+        const container = document.getElementById('recent-remedies-container');
+        if (!container) return;
+        const recentNames = getRecentRemedies();
+        if (recentNames.length === 0) {
+            container.innerHTML = `<p class="text-slate-500 text-sm w-full text-center">No recent remedies viewed.</p>`;
+            return;
+        }
+        const recentRemedies = recentNames.map(name => remedyData.find(r => r.name === name)).filter(Boolean);
+        container.innerHTML = recentRemedies.map(remedy => `
+            <div class="remedy-link-btn snap-start shrink-0 w-[200px] bg-card-dark rounded-xl border border-card-border p-4 relative group hover:border-slate-600 transition-colors cursor-pointer" data-remedy-name="${remedy.name}">
+                <div class="absolute top-3 right-3 text-slate-500"><span class="material-symbols-outlined text-[18px]">history</span></div>
+                <div>
+                    <h4 class="text-white font-bold text-lg truncate">${remedy.name}</h4>
+                    <p class="text-slate-400 text-xs mt-1 truncate">${remedy.commonName}</p>
+                </div>
+            </div>`).join('');
+    }
+    function renderSymptomsList() {
+        const container = document.getElementById('symptoms-list');
+        if (!container) return;
+        const allSymptoms = new Set();
+        remedyData.forEach(remedy => {
+            if (remedy.sections) {
+                 Object.keys(remedy.sections).forEach(symptom => {
+                    if (!['Dose', 'Relationship', 'Modalities', 'Uses', 'Compare'].includes(symptom)) {
+                        allSymptoms.add(symptom);
+                    }
+                });
+            }
+        });
+        const sortedSymptoms = Array.from(allSymptoms).sort();
+        container.innerHTML = sortedSymptoms.map(symptom => `
+            <button class="symptom-link-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-symptom-name="${symptom}">
+                <span class="font-medium text-white">${symptom}</span>
+                <span class="material-symbols-outlined text-slate-500">chevron_right</span>
+            </button>`).join('');
+    }
+    function renderManageRemediesList() {
+        const listContainer = document.getElementById('manage-remedies-list');
+        if (!listContainer) return;
+        const sortedRemedies = [...remedyData].sort((a, b) => a.name.localeCompare(b.name));
+        listContainer.innerHTML = sortedRemedies.length > 0 ? sortedRemedies.map(remedy => `
+            <div class="flex items-center justify-between w-full p-4 bg-card-dark border border-card-border rounded-lg group">
+                <div>
+                    <h3 class="font-semibold text-white">${remedy.name}</h3>
+                    <p class="text-sm text-slate-400">${remedy.commonName}</p>
+                </div>
+                <button class="p-2 -mr-2 text-slate-500 hover:text-red-400 transition-colors delete-remedy-btn" data-id="${remedy.id}" data-name="${remedy.name}">
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4">No remedies in the database.</p>`;
+    }
+    function renderInfographics() {
+        const container = document.getElementById('infographic-list-container');
+        if (!container) return;
+        container.innerHTML = infographicData.length > 0 ? infographicData.map(info => `
+            <div class="bg-card-dark border border-card-border rounded-xl overflow-hidden flex flex-col shadow-lg group">
+                <div class="aspect-video w-full bg-background-dark flex items-center justify-center overflow-hidden">
+                    <img src="${info.imageUrl}" alt="${info.name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="p-4 flex-grow flex flex-col">
+                    <h3 class="font-semibold text-white text-base flex-grow mb-3">${info.name}</h3>
+                    <button class="open-infographic-btn w-full bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors" data-url="${info.imageUrl}">Open</button>
+                </div>
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4 col-span-full">No remedygrphies uploaded yet.</p>`;
+    }
+    function renderManageInfographicsList() {
+        const listContainer = document.getElementById('manage-infographics-list');
+        if (!listContainer) return;
+        listContainer.innerHTML = infographicData.length > 0 ? infographicData.map(info => `
+            <div class="flex items-center justify-between w-full p-3 bg-card-dark/50 border border-card-border rounded-lg group">
+                <p class="font-medium text-white text-sm truncate pr-2">${info.name}</p>
+                <div class="flex items-center gap-2">
+                    <button class="edit-infographic-btn p-2 text-slate-400 hover:text-white" data-id="${info.id}"><span class="material-symbols-outlined text-lg">edit</span></button>
+                    <button class="delete-infographic-btn p-2 text-slate-400 hover:text-red-400" data-id="${info.id}" data-name="${info.name}"><span class="material-symbols-outlined text-lg">delete</span></button>
+                </div>
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4">No remedygrphies to manage.</p>`;
+    }
+    function renderContentList() {
+        const container = document.getElementById('content-list-container');
+        if (!container) return;
+        container.className = 'space-y-6';
+        container.innerHTML = contentData.length > 0 ? contentData.map(content => `
+            <div class="open-video-btn group cursor-pointer" data-video-id="${content.videoId}">
+                <div class="aspect-video w-full bg-black rounded-xl overflow-hidden relative border border-card-border shadow-lg">
+                    <img src="https://img.youtube.com/vi/${content.videoId}/hqdefault.jpg" alt="${content.name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 flex items-center justify-center transition-opacity opacity-0 group-hover:opacity-100 bg-black/40">
+                       <span class="material-symbols-outlined text-white text-7xl" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">play_circle</span>
+                    </div>
+                </div>
+                <div class="mt-3 px-1">
+                    <h3 class="font-semibold text-white text-lg">${content.name}</h3>
+                </div>
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4">No content uploaded yet.</p>`;
+    }
+    function renderManageContentList() {
+        const listContainer = document.getElementById('manage-content-list');
+        if (!listContainer) return;
+        listContainer.innerHTML = contentData.length > 0 ? contentData.map(content => `
+            <div class="flex items-center justify-between w-full p-3 bg-card-dark/50 border border-card-border rounded-lg group">
+                <p class="font-medium text-white text-sm truncate pr-2">${content.name}</p>
+                 <div class="flex items-center gap-2">
+                     <button class="edit-content-btn p-2 text-slate-400 hover:text-white" data-id="${content.id}"><span class="material-symbols-outlined text-lg">edit</span></button>
+                    <button class="delete-content-btn p-2 text-slate-400 hover:text-red-400" data-id="${content.id}" data-name="${content.name}"><span class="material-symbols-outlined text-lg">delete</span></button>
+                </div>
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4">No content to manage.</p>`;
+    }
+    
+    // --- Logic Functions ---
+    function showRemedyDetail(remedyName) {
+        const remedy = remedyData.find(r => r.name === remedyName);
+        if (!remedy) return;
+        addRemedyToRecents(remedyName);
+        const isSaved = isRemedySaved(remedy.name);
+        const detailContainer = document.getElementById('page-remedy-detail');
+        const highlight = (text) => {
+            if (!currentSearchTerm || typeof text !== 'string' || !text) return text;
+            const escapedTerm = currentSearchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escapedTerm})`, 'gi');
+            return text.replace(regex, `<span class="highlight">$1</span>`);
+        };
+        let contentHTML = `
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-1">${highlight(remedy.name)}</h2>
+                    <p class="text-md text-slate-400 font-light">${highlight(remedy.commonName)}</p>
+                </div>
+                <button class="save-btn text-slate-300 hover:text-primary transition-colors flex items-center gap-2 bg-card-dark border border-card-border rounded-lg px-3 py-2 ${isSaved ? 'saved' : ''}" data-remedy-name="${remedy.name}">
+                    <span class="material-symbols-outlined text-lg">${isSaved ? 'bookmark' : 'bookmark_add'}</span>
+                    <span class="text-sm">${isSaved ? 'Saved' : 'Save'}</span>
+                </button>
+            </div>
+            <p class="mb-6">${highlight(remedy.description)}</p>
+            <div class="space-y-4">
+        `;
+        if (remedy.sections) {
+            for (const section in remedy.sections) {
+                contentHTML += `<div><h4 class="font-bold text-primary text-md">${highlight(section)}</h4><p>${highlight(remedy.sections[section])}</p></div>`;
+            }
+        }
+        contentHTML += `</div>`;
+        detailContainer.innerHTML = contentHTML;
+        showPage('page-remedy-detail', remedy.name);
+    }
+    function performSearch() {
+        const query = homeSearchInput.value.trim();
+        if (!query) return;
+        currentSearchTerm = query;
+        const results = remedyData.filter(remedy => {
+            let searchableText = `${remedy.name} ${remedy.commonName} ${remedy.description} ${Object.values(remedy.sections || {}).join(' ')} ${Object.keys(remedy.sections || {}).join(' ')}`;
+            return searchableText.toLowerCase().includes(query.toLowerCase());
+        });
+        renderRemedyList(results, 'search-results-list');
+        showPage('page-search-results');
+    }
+    function handleCompare() {
+        const symptom = document.getElementById('compare-symptom').value.trim();
+        const remedy1Name = document.getElementById('compare-remedy1').value.trim().toUpperCase();
+        const remedy2Name = document.getElementById('compare-remedy2').value.trim().toUpperCase();
+        const resultsContainer = document.getElementById('comparison-results');
+        if (!symptom || !remedy1Name || !remedy2Name) {
+            resultsContainer.innerHTML = `<p class="text-red-400 text-center">Please fill all three fields.</p>`; return;
+        }
+        const remedy1 = remedyData.find(r => r.name.toUpperCase() === remedy1Name);
+        const remedy2 = remedyData.find(r => r.name.toUpperCase() === remedy2Name);
+        if (!remedy1 || !remedy2) {
+            resultsContainer.innerHTML = `<p class="text-red-400 text-center">One or both remedies not found.</p>`; return;
+        }
+        const capitalizedSymptom = symptom.charAt(0).toUpperCase() + symptom.slice(1);
+        const text1 = (remedy1.sections && remedy1.sections[capitalizedSymptom]) || 'Not specified.';
+        const text2 = (remedy2.sections && remedy2.sections[capitalizedSymptom]) || 'Not specified.';
+        resultsContainer.innerHTML = `
+            <div class="border-t border-card-border pt-4">
+                <h3 class="text-lg font-semibold text-white text-center mb-4">Comparison for: <span class="text-primary">${capitalizedSymptom}</span></h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><h4 class="font-bold text-white border-b border-card-border pb-2 mb-2">${remedy1.name}</h4><p class="text-slate-300 text-sm">${text1}</p></div>
+                    <div><h4 class="font-bold text-white border-b border-card-border pb-2 mb-2">${remedy2.name}</h4><p class="text-slate-300 text-sm">${text2}</p></div>
+                </div>
+            </div>`;
+    }
+    function parseAndPopulateRemedy() {
+        let rawText = document.getElementById('raw-remedy-text').value.trim();
+        const sectionsContainer = document.getElementById('dynamic-sections-container');
+        addRemedyForm.reset();
+        document.getElementById('remedy-book').value = "W. Boericke, M.D.";
+        sectionsContainer.innerHTML = '';
+        if (!rawText) return alert('Please paste the remedy text first.');
+
+        const remedyNameMatch = rawText.match(/^([A-Z][A-Z\s\.]+)/);
+        if (!remedyNameMatch) return alert('Could not identify the Remedy Name.');
+
+        const remedyName = remedyNameMatch[0].trim();
+        document.getElementById('remedy-name').value = remedyName;
+        rawText = rawText.substring(remedyName.length).trim();
+        const sectionRegex = /([A-Za-z\s]+)\.––/g;
+        const sectionMatches = [...rawText.matchAll(sectionRegex)];
+        let headerBlock = sectionMatches.length > 0 ? rawText.substring(0, sectionMatches[0].index).trim() : rawText;
+        const descriptionStartMatch = headerBlock.match(/[A-Z][a-z]{2,}/);
+        if (descriptionStartMatch) {
+            document.getElementById('remedy-common-name').value = headerBlock.substring(0, descriptionStartMatch.index).trim().replace(/\s+/g, ' ');
+            document.getElementById('remedy-description').value = headerBlock.substring(descriptionStartMatch.index).trim();
+        } else {
+            document.getElementById('remedy-description').value = headerBlock;
+        }
+        sectionMatches.forEach((match, index) => {
+            const title = match[1].trim();
+            const contentStart = match.index + match[0].length;
+            const nextMatch = sectionMatches[index + 1];
+            const contentEnd = nextMatch ? nextMatch.index : rawText.length;
+            const content = rawText.substring(contentStart, contentEnd).trim();
+            if (title && content) {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'p-3 border border-card-border rounded-lg space-y-2 dynamic-section';
+                sectionDiv.innerHTML = `
+                    <input type="text" class="section-title w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-3 py-2" value="${title}"/>
+                    <textarea rows="3" class="section-content w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-3 py-2">${content}</textarea>`;
+                sectionsContainer.appendChild(sectionDiv);
+            }
+        });
+        document.getElementById('remedy-upload-date').value = getTodayDateString();
+    }
+    
+    // START: BIOPATH LOGIC
+    function showBiopathForm(kingdom) {
+        document.getElementById('biopath-kingdom').value = kingdom;
+        const formInputsContainer = document.getElementById('biopath-form-inputs');
+        
+        let inputsHTML = '';
+        if (kingdom === 'Other') {
+            inputsHTML = `
+                <div>
+                    <label for="biopath-cat1" class="block text-sm font-medium text-slate-300 mb-1">Category 1</label>
+                    <input type="text" id="biopath-cat1" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter first category...">
+                </div>
+                <div>
+                    <label for="biopath-cat2" class="block text-sm font-medium text-slate-300 mb-1">Category 2</label>
+                    <input type="text" id="biopath-cat2" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter second category...">
+                </div>
+                <div>
+                    <label for="biopath-cat3" class="block text-sm font-medium text-slate-300 mb-1">Category 3</label>
+                    <input type="text" id="biopath-cat3" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter third category...">
+                </div>
+            `;
+        } else {
+             inputsHTML = `
+                <div>
+                    <label for="biopath-group" class="block text-sm font-medium text-slate-300 mb-1">Group (Small Box 1)</label>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="biopath-group" required class="flex-grow bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Type new or select existing...">
+                        <button type="button" id="select-group-btn" class="shrink-0 flex items-center justify-center size-12 bg-card-dark border border-card-border rounded-lg text-slate-400 hover:text-primary hover:border-primary/50 transition-colors">
+                            <span class="material-symbols-outlined">arrow_drop_down</span>
+                        </button>
+                    </div>
+                    <div id="group-suggestions" class="hidden z-10 relative mt-2 max-h-40 overflow-y-auto bg-card-dark border border-card-border rounded-lg p-2 space-y-1"></div>
+                </div>
+                <div>
+                    <label for="biopath-subgroup" class="block text-sm font-medium text-slate-300 mb-1">Sub-Group (Small Box 2)</label>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="biopath-subgroup" required class="flex-grow bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Type new or select existing...">
+                        <button type="button" id="select-subgroup-btn" class="shrink-0 flex items-center justify-center size-12 bg-card-dark border border-card-border rounded-lg text-slate-400 hover:text-primary hover:border-primary/50 transition-colors">
+                            <span class="material-symbols-outlined">arrow_drop_down</span>
+                        </button>
+                    </div>
+                    <div id="subgroup-suggestions" class="hidden z-10 relative mt-2 max-h-40 overflow-y-auto bg-card-dark border border-card-border rounded-lg p-2 space-y-1"></div>
+                </div>
+                <div>
+                    <label for="biopath-content" class="block text-sm font-medium text-slate-300 mb-1">Content (Large Box)</label>
+                    <textarea id="biopath-content" rows="6" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter related content..."></textarea>
+                </div>
+            `;
+        }
+        formInputsContainer.innerHTML = inputsHTML;
+        showPage('page-biopath-form', `Add to ${kingdom}`);
+    }
+
+    function renderBiopathGroups(kingdom) {
+        const listContainer = document.getElementById('biopath-groups-list');
+        const groups = biopathData[kingdom] ? Object.keys(biopathData[kingdom]).sort() : [];
+        if (groups.length > 0) {
+            listContainer.innerHTML = groups.map(group => `
+                <button class="biopath-group-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="${kingdom}" data-group="${group}">
+                    <span class="font-medium text-white">${group}</span>
+                    <span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                </button>
+            `).join('');
+        } else {
+            listContainer.innerHTML = `<p class="text-slate-400 text-center py-4">No data found for ${kingdom}.</p>`;
+        }
+        showPage('page-biopath-groups', `${kingdom} Kingdom`);
+    }
+
+    function renderBiopathSubGroups(kingdom, group) {
+        const listContainer = document.getElementById('biopath-subgroups-list');
+        const subGroups = (biopathData[kingdom] && biopathData[kingdom][group]) ? Object.keys(biopathData[kingdom][group]).sort() : [];
+
+        if (subGroups.length > 0) {
+            listContainer.innerHTML = subGroups.map(subgroup => `
+                 <button class="biopath-subgroup-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="${kingdom}" data-group="${group}" data-subgroup="${subgroup}">
+                    <span class="font-medium text-white">${subgroup}</span>
+                    <span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                </button>
+            `).join('');
+        } else {
+            listContainer.innerHTML = `<p class="text-slate-400 text-center py-4">No sub-groups found.</p>`;
+        }
+        showPage('page-biopath-subgroups', group);
+    }
+    
+    function renderBiopathDetail(kingdom, group, subgroup) {
+        const detailContainer = document.getElementById('page-biopath-detail');
+        const item = biopathData?.[kingdom]?.[group]?.[subgroup];
+        
+        if (item && item.content) {
+             detailContainer.innerHTML = `
+                <h2 class="text-2xl font-bold text-white mb-2">${subgroup}</h2>
+                <h3 class="text-lg font-semibold text-primary mb-4">${group}</h3>
+                <div class="prose prose-invert text-slate-300">${item.content.replace(/\n/g, '<br>')}</div>
+             `;
+        } else {
+             detailContainer.innerHTML = `<p class="text-slate-400 text-center py-4">Content not found.</p>`;
+        }
+        showPage('page-biopath-detail', subgroup);
+    }
+    // END: BIOPATH LOGIC
+
+    // --- Event Listeners ---
+    appContainer.addEventListener('click', async function(e) {
+        const target = e.target;
+        const backBtn = target.closest('.back-btn');
+        if (backBtn) {
+            const currentPageId = backBtn.closest('.page').id;
+            // Enhanced back button logic for biopath drill-down
+            if (currentPageId === 'page-biopath-groups') showPage('page-biopath');
+            else if (currentPageId === 'page-biopath-subgroups') {
+                const kingdom = document.querySelector('#biopath-subgroups-list .biopath-subgroup-btn')?.dataset.kingdom;
+                if(kingdom) renderBiopathGroups(kingdom);
+                else showPage('page-biopath');
+            }
+            else if (currentPageId === 'page-biopath-detail') {
+                 const groupBtn = document.querySelector('#biopath-subgroups-list .biopath-subgroup-btn');
+                 if(groupBtn) renderBiopathSubGroups(groupBtn.dataset.kingdom, groupBtn.dataset.group);
+                 else showPage('page-biopath');
+            }
+            else showPage('page-home'); // Default back action
+        }
+        if (target.closest('.delete-remedy-btn')) {
+            const btn = target.closest('.delete-remedy-btn');
+            if (confirm(`Delete "${btn.dataset.name}"?`)) {
+                await remove(ref(database, 'remedies/' + btn.dataset.id));
+                alert("Deleted.");
+                await initializeAndFetchData();
+            }
+        }
+        if (target.closest('.delete-infographic-btn')) {
+            const btn = target.closest('.delete-infographic-btn');
+            if (confirm(`Delete remedygrphy "${btn.dataset.name}"?`)) {
+                await remove(ref(database, 'infographics/' + btn.dataset.id));
+                alert("Deleted.");
+                await initializeAndFetchData();
+            }
+        }
+        if (target.closest('.delete-content-btn')) {
+            const btn = target.closest('.delete-content-btn');
+            if (confirm(`Delete content "${btn.dataset.name}"?`)) {
+                await remove(ref(database, 'content/' + btn.dataset.id));
+                alert("Deleted.");
+                await initializeAndFetchData();
+            }
+        }
+        if (target.closest('.edit-infographic-btn')) {
+            const infoId = target.closest('.edit-infographic-btn').dataset.id;
+            const infoToEdit = infographicData.find(info => info.id === infoId);
+            if(infoToEdit) {
+                document.getElementById('infographic-id').value = infoToEdit.id;
+                document.getElementById('infographic-name').value = infoToEdit.name;
+                document.getElementById('infographic-embed-code').value = infoToEdit.imageUrl;
+                document.getElementById('infographic-upload-date').value = infoToEdit.uploadDate || getTodayDateString();
+                showPage('page-upload-infographic');
+                window.scrollTo(0, 0);
+            }
+        }
+         if (target.closest('.edit-content-btn')) {
+            const contentId = target.closest('.edit-content-btn').dataset.id;
+            const contentToEdit = contentData.find(c => c.id === contentId);
+            if(contentToEdit) {
+                document.getElementById('content-id').value = contentToEdit.id;
+                document.getElementById('content-name').value = contentToEdit.name;
+                document.getElementById('content-youtube-link').value = `https://www.youtube.com/watch?v=${contentToEdit.videoId}`;
+                document.getElementById('content-upload-date').value = contentToEdit.uploadDate || getTodayDateString();
+                showPage('page-upload-content');
+                window.scrollTo(0, 0);
+            }
+        }
+        if (target.closest('.open-infographic-btn')) {
+            const imageUrl = target.closest('.open-infographic-btn').dataset.url;
+            openZoomableImage(imageUrl);
+        }
+        if (target.closest('.open-video-btn')) {
+            const videoId = target.closest('.open-video-btn').dataset.videoId;
+            const embedContainer = document.getElementById('video-embed-container');
+            embedContainer.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            document.getElementById('video-viewer-modal').classList.remove('hidden');
+        }
+        if (target.closest('.remedy-link-btn')) { showRemedyDetail(target.closest('.remedy-link-btn').dataset.remedyName); }
+        if (target.closest('.save-btn')) {
+            const btn = target.closest('.save-btn');
+            toggleSaveRemedy(btn.dataset.remedyName);
+            const activePageId = document.querySelector('.page.active').id;
+            if (activePageId === 'page-remedy-detail') showRemedyDetail(btn.dataset.remedyName);
+            else if (activePageId === 'page-saved') renderSavedList();
+            else if (['page-remedies', 'page-symptom-remedies', 'page-search-results'].includes(activePageId)) {
+                btn.classList.toggle('saved');
+                const icon = btn.querySelector('.material-symbols-outlined');
+                icon.textContent = btn.classList.contains('saved') ? 'bookmark' : 'bookmark_add';
+            } else if (activePageId === 'page-home') {
+                renderDailyContent();
+            }
+        }
+        if (target.closest('.symptom-link-btn')) { showRemediesForSymptom(target.closest('.symptom-link-btn').dataset.symptomName); }
+
+        // Biopath navigation clicks
+        if (target.closest('.biopath-kingdom-btn')) {
+            renderBiopathGroups(target.closest('.biopath-kingdom-btn').dataset.kingdom);
+        }
+        if (target.closest('.biopath-upload-category-btn')) {
+            showBiopathForm(target.closest('.biopath-upload-category-btn').dataset.kingdom);
+        }
+        if (target.closest('.biopath-group-btn')) {
+            const btn = target.closest('.biopath-group-btn');
+            renderBiopathSubGroups(btn.dataset.kingdom, btn.dataset.group);
+        }
+        if (target.closest('.biopath-subgroup-btn')) {
+            const btn = target.closest('.biopath-subgroup-btn');
+            renderBiopathDetail(btn.dataset.kingdom, btn.dataset.group, btn.dataset.subgroup);
+        }
+        
+        // Biopath Form Dropdown buttons
+        if (target.closest('#select-group-btn')) {
+            const kingdom = document.getElementById('biopath-kingdom').value;
+            const suggestionsContainer = document.getElementById('group-suggestions');
+            const groups = Object.keys(biopathData[kingdom] || {}).sort();
+
+            if (suggestionsContainer.classList.contains('hidden')) {
+                if (groups.length > 0) {
+                    suggestionsContainer.innerHTML = groups.map(g => `<button type="button" class="group-suggestion-item w-full text-left p-2 rounded-md hover:bg-white/10">${g}</button>`).join('');
+                } else {
+                    suggestionsContainer.innerHTML = `<p class="text-slate-500 text-sm p-2">No existing groups.</p>`;
+                }
+                suggestionsContainer.classList.remove('hidden');
+            } else {
+                suggestionsContainer.classList.add('hidden');
+            }
+            document.getElementById('subgroup-suggestions')?.classList.add('hidden');
+        }
+
+        if (target.closest('#select-subgroup-btn')) {
+            const kingdom = document.getElementById('biopath-kingdom').value;
+            const group = document.getElementById('biopath-group').value.trim();
+            const suggestionsContainer = document.getElementById('subgroup-suggestions');
+
+            if (!group) {
+                alert('Please enter or select a group first.');
+                return;
+            }
+            const subGroups = Object.keys(biopathData[kingdom]?.[group] || {}).sort();
+             if (suggestionsContainer.classList.contains('hidden')) {
+                if (subGroups.length > 0) {
+                    suggestionsContainer.innerHTML = subGroups.map(sg => `<button type="button" class="subgroup-suggestion-item w-full text-left p-2 rounded-md hover:bg-white/10">${sg}</button>`).join('');
+                } else {
+                    suggestionsContainer.innerHTML = `<p class="text-slate-500 text-sm p-2">No existing sub-groups in this group.</p>`;
+                }
+                suggestionsContainer.classList.remove('hidden');
+            } else {
+                suggestionsContainer.classList.add('hidden');
+            }
+            document.getElementById('group-suggestions')?.classList.add('hidden');
+        }
+
+        if (target.closest('.group-suggestion-item')) {
+            const groupInput = document.getElementById('biopath-group');
+            const subGroupInput = document.getElementById('biopath-subgroup');
+            groupInput.value = target.closest('.group-suggestion-item').textContent;
+            if(subGroupInput) subGroupInput.value = ''; // Clear sub-group as group has changed
+            document.getElementById('group-suggestions').classList.add('hidden');
+            document.getElementById('subgroup-suggestions')?.classList.add('hidden');
+        }
+
+        if (target.closest('.subgroup-suggestion-item')) {
+            const subGroupInput = document.getElementById('biopath-subgroup');
+            subGroupInput.value = target.closest('.subgroup-suggestion-item').textContent;
+            document.getElementById('subgroup-suggestions').classList.add('hidden');
+        }
+    });
+    
+    moduleButtons.forEach(button => button.addEventListener('click', () => {
+        currentSearchTerm = '';
+        const targetPage = button.dataset.target;
+        if (targetPage === 'page-saved') renderSavedList();
+        if (targetPage === 'page-remedies') renderRemedyList(remedyData.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list');
+        showPage(targetPage);
+    }));
+    navButtons.forEach(button => button.addEventListener('click', () => {
+        const targetPage = button.dataset.target;
+        if (targetPage === 'page-home') { currentSearchTerm = ''; homeSearchInput.value = ''; }
+        if (targetPage === 'page-infographic') { renderInfographics(); }
+        if (targetPage === 'page-content') { renderContentList(); }
+        showPage(targetPage);
+    }));
+
+    homeSearchBtn.addEventListener('click', performSearch);
+    homeSearchInput.addEventListener('keypress', (e) => e.key === 'Enter' && performSearch());
+    settingsButton.addEventListener('click', () => showPage('page-add-remedy'));
+    pageMenuBtn.addEventListener('click', () => pageMenuDropdown.style.display = (pageMenuDropdown.style.display === 'block') ? 'none' : 'block');
+    document.querySelectorAll('.menu-item-btn').forEach(button => button.addEventListener('click', (e) => {
+        const targetPage = e.target.dataset.target;
+        if (targetPage === 'page-manage-remedies') renderManageRemediesList();
+        if (targetPage === 'page-upload-infographic') { infographicForm.reset(); document.getElementById('infographic-id').value = ''; document.getElementById('infographic-upload-date').value = getTodayDateString(); }
+        if (targetPage === 'page-upload-content') { contentForm.reset(); document.getElementById('content-id').value = ''; document.getElementById('content-upload-date').value = getTodayDateString(); }
+        if (targetPage === 'page-upload-biopath') { /* No specific action needed, just show the page */ }
+        showPage(targetPage);
+        pageMenuDropdown.style.display = 'none';
+    }));
+
+    parseRemedyBtn.addEventListener('click', parseAndPopulateRemedy);
+
+    addRemedyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const saveButton = document.getElementById('save-remedy-btn');
+        saveButton.disabled = true; saveButton.textContent = 'Saving...';
+        const newRemedy = {
+            book: document.getElementById('remedy-book').value, name: document.getElementById('remedy-name').value.toUpperCase(),
+            commonName: document.getElementById('remedy-common-name').value, description: document.getElementById('remedy-description').value,
+            uploadDate: document.getElementById('remedy-upload-date').value, sections: {}
+        };
+        document.querySelectorAll('.dynamic-section').forEach(sec => {
+            const title = sec.querySelector('.section-title').value.trim();
+            const content = sec.querySelector('.section-content').value.trim();
+            if (title && content) newRemedy.sections[title] = content;
+        });
+        if (!newRemedy.name || !newRemedy.uploadDate) {
+            alert('Remedy Name and Upload Date are required.'); saveButton.disabled = false; saveButton.textContent = 'Save Remedy'; return;
+        }
+        push(ref(database, 'remedies'), newRemedy).then(() => {
+            alert('Remedy saved!'); addRemedyForm.reset(); document.getElementById('dynamic-sections-container').innerHTML = ''; document.getElementById('remedy-upload-date').value = getTodayDateString();
+            initializeAndFetchData().then(() => showPage('page-remedies'));
+        }).catch(err => alert('An error occurred.')).finally(() => { saveButton.disabled = false; saveButton.textContent = 'Save Remedy'; });
+    });
+    
+    infographicForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const saveButton = document.getElementById('save-infographic-btn');
+        const name = document.getElementById('infographic-name').value.trim();
+        const infoId = document.getElementById('infographic-id').value;
+        const uploadDate = document.getElementById('infographic-upload-date').value;
+        
+        const userInput = document.getElementById('infographic-embed-code').value.trim();
+        let imageUrl = '';
+
+        if (userInput.match(/\.(jpeg|jpg|gif|png|webp)$/) != null) {
+            imageUrl = userInput;
+        } else {
+            const srcRegex = /<img[^>]+src="([^">]+)"/;
+            const match = userInput.match(srcRegex);
+            if (match && match[1]) {
+                imageUrl = match[1];
+            }
+        }
+
+        if (!imageUrl) {
+            return alert("Invalid image URL or embed code. Please provide a direct link (ending in .png, .jpg, etc.) or a valid embed code.");
+        }
+        if (!uploadDate) return alert("Please select an upload date.");
+
+        saveButton.disabled = true; saveButton.textContent = 'Saving...';
+        const newInfo = { name, imageUrl, uploadDate };
+        
+        try {
+            if (infoId) { await set(ref(database, `infographics/${infoId}`), newInfo); alert('Updated!'); } 
+            else { await push(ref(database, 'infographics'), newInfo); alert('Saved!'); }
+            infographicForm.reset(); document.getElementById('infographic-id').value = ''; document.getElementById('infographic-upload-date').value = getTodayDateString();
+            await initializeAndFetchData(); showPage('page-infographic');
+        } catch (error) { alert('An error occurred.'); } 
+        finally { saveButton.disabled = false; saveButton.textContent = 'Save Remedygrphy'; }
+    });
+
+    contentForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const saveButton = document.getElementById('save-content-btn');
+        const name = document.getElementById('content-name').value.trim();
+        const youtubeLink = document.getElementById('content-youtube-link').value.trim();
+        const uploadDate = document.getElementById('content-upload-date').value;
+        const videoId = getYoutubeVideoId(youtubeLink);
+        const contentId = document.getElementById('content-id').value;
+
+        if (!name || !youtubeLink || !uploadDate) return alert("Please fill all fields.");
+        if (!videoId) return alert("Invalid YouTube link. Please use a valid video URL.");
+
+        saveButton.disabled = true; saveButton.textContent = 'Saving...';
+        const newContent = { name, videoId, uploadDate };
+
+        try {
+            if(contentId) { await set(ref(database, `content/${contentId}`), newContent); alert('Updated!'); }
+            else { await push(ref(database, 'content'), newContent); alert('Content saved successfully!'); }
+            contentForm.reset(); document.getElementById('content-id').value = ''; document.getElementById('content-upload-date').value = getTodayDateString();
+            await initializeAndFetchData();
+            showPage('page-content');
+        } catch (error) { alert('An error occurred.'); }
+        finally { saveButton.disabled = false; saveButton.textContent = 'Save Content'; }
+    });
+    
+    addBiopathForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const saveButton = document.getElementById('save-biopath-btn');
+        const kingdom = document.getElementById('biopath-kingdom').value;
+        if (!kingdom) return alert('Error: Kingdom not specified.');
+
+        let group, subGroup, content, dbPath;
+        
+        if (kingdom === 'Other') {
+            const cat1 = document.getElementById('biopath-cat1').value.trim();
+            const cat2 = document.getElementById('biopath-cat2').value.trim();
+            const cat3 = document.getElementById('biopath-cat3').value.trim();
+            if (!cat1 || !cat2 || !cat3) return alert('Please fill all three categories.');
+            group = cat1;
+            subGroup = cat2;
+            content = cat3; // In this special case, the third box is the content.
+        } else {
+            group = document.getElementById('biopath-group').value.trim();
+            subGroup = document.getElementById('biopath-subgroup').value.trim();
+            content = document.getElementById('biopath-content').value.trim();
+            if (!group || !subGroup || !content) return alert('Please fill all fields.');
+        }
+
+        dbPath = `biopath/${kingdom}/${group}/${subGroup}`;
+        const dataToSave = { content: content };
+        
+        saveButton.disabled = true; saveButton.textContent = 'Saving...';
+        try {
+            await set(ref(database, dbPath), dataToSave);
+            alert('Biopath data saved successfully!');
+            addBiopathForm.reset();
+            await initializeAndFetchData();
+            showPage('page-biopath');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while saving.');
+        } finally {
+            saveButton.disabled = false; saveButton.textContent = 'Save Biopath Data';
+        }
+    });
+
+    // --- Image Zoom Logic ---
+    function applyTransform() {
+        modalImage.style.transform = `scale(${transform.scale}) translate(${transform.translateX}px, ${transform.translateY}px)`;
+    }
+
+    function getDistance(touches) {
+        return Math.sqrt(Math.pow(touches[0].pageX - touches[1].pageX, 2) + Math.pow(touches[0].pageY - touches[1].pageY, 2));
+    }
+
+    function onTouchStart(event) {
+        if (event.touches.length === 2) {
+            initialPinchDistance = getDistance(event.touches);
+        } else if (event.touches.length === 1 && transform.scale > 1) {
+            lastTouch = { x: event.touches[0].pageX, y: event.touches[0].pageY };
+        }
+    }
+
+    function onTouchMove(event) {
+        event.preventDefault();
+        if (event.touches.length === 2 && initialPinchDistance) {
+            const newDistance = getDistance(event.touches);
+            const scaleChange = newDistance / initialPinchDistance;
+            const newScale = transform.scale * scaleChange;
+            transform.scale = Math.max(0.5, Math.min(newScale, 10)); 
+            applyTransform();
+            initialPinchDistance = newDistance; 
+        } else if (event.touches.length === 1 && lastTouch && transform.scale > 1) {
+            const dx = (event.touches[0].pageX - lastTouch.x) / transform.scale;
+            const dy = (event.touches[0].pageY - lastTouch.y) / transform.scale;
+            transform.translateX += dx;
+            transform.translateY += dy;
+            lastTouch = { x: event.touches[0].pageX, y: event.touches[0].pageY };
+            applyTransform();
+        }
+    }
+
+    function onTouchEnd(event) {
+        if (event.touches.length < 2) initialPinchDistance = null;
+        if (event.touches.length < 1) lastTouch = null;
+        
+        if (transform.scale <= 1) {
+            transform.scale = 1;
+            transform.translateX = 0;
+            transform.translateY = 0;
+            applyTransform();
+        }
+    }
+
+    function openZoomableImage(url) {
+        modalImage.src = url;
+        imageModal.classList.remove('hidden');
+        imageModal.addEventListener('touchstart', onTouchStart);
+        imageModal.addEventListener('touchmove', onTouchMove);
+        imageModal.addEventListener('touchend', onTouchEnd);
+    }
+    
+    function closeZoomableImage() {
+        imageModal.classList.add('hidden');
+        modalImage.src = '';
+        transform = { scale: 1, translateX: 0, translateY: 0 };
+        applyTransform();
+        imageModal.removeEventListener('touchstart', onTouchStart);
+        imageModal.removeEventListener('touchmove', onTouchMove);
+        imageModal.removeEventListener('touchend', onTouchEnd);
+    }
+
+    document.getElementById('close-image-modal-btn').addEventListener('click', closeZoomableImage);
+    
+    document.getElementById('close-video-modal-btn').addEventListener('click', () => {
+         document.getElementById('video-viewer-modal').classList.add('hidden');
+         document.getElementById('video-embed-container').innerHTML = '';
+    });
+
+    document.getElementById('compare-btn').addEventListener('click', handleCompare);
+
+    initializeAndFetchData();
+});
+</script>
+
+</body>
+</html>
