@@ -5,9 +5,29 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     <title>REMEDICON Home</title>
+
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="REMEDICON - Your digital homeopathy guide. Find remedies at your fingertips with our intuitive platform." />
+    <meta name="keywords" content="Homeopathy, Remedy, Health, Wellness, Digital Guide, REMEDICON" />
+    <meta name="author" content="Himanshu Kumar" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Combined Tailwind Config -->
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -20,13 +40,80 @@
                         "background-dark": "#101c22",
                         "card-dark": "#16262e",
                         "card-border": "#283b45",
+                        "navy-deep": "#03080c", 
                     },
-                    fontFamily: { "display": ["Inter", "sans-serif"] },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    fontFamily: { 
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                        "mono": ["Roboto Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem", 
+                        "full": "9999px"
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out infinite 2s',
+                        'float-slow': 'float 10s ease-in-out infinite 1s',
+                        'pulse-glow': 'pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'drift': 'drift 20s linear infinite',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'text-shimmer': 'textShimmer 4s ease-in-out infinite',
+                        'subtle-bob': 'subtleBob 5s ease-in-out infinite',
+                        'remedy-scroll': 'remedyScroll 40s linear infinite',
+                        'magnify-search': 'magnifySearch 10s ease-in-out infinite',
+                        'blink-caret': 'blinkCaret 1s step-end infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)', boxShadow: '0 0 20px rgba(10, 116, 155, 0.4)' },
+                            '50%': { opacity: '.9', transform: 'scale(1.02)', boxShadow: '0 0 30px rgba(10, 116, 155, 0.7)' },
+                        },
+                        drift: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '100% 50%' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        textShimmer: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        },
+                        subtleBob: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(-2deg)' },
+                            '50%': { transform: 'translateY(-8px) rotate(2deg)' },
+                        },
+                        remedyScroll: {
+                            '0%': { transform: 'translateY(0%)' },
+                            '100%': { transform: 'translateY(-50%)' },
+                        },
+                        magnifySearch: {
+                            '0%': { transform: 'translate(20%, 10%) scale(1)' },
+                            '25%': { transform: 'translate(60%, 40%) scale(1.1)' },
+                            '50%': { transform: 'translate(30%, 70%) scale(1)' },
+                            '75%': { transform: 'translate(70%, 20%) scale(1.1)' },
+                            '100%': { transform: 'translate(20%, 10%) scale(1)' },
+                        },
+                        blinkCaret: {
+                           'from, to': { 'border-color': 'transparent' },
+                           '50%': { 'border-color': '#25aff4' },
+                        },
+                    }
                 },
             },
         }
     </script>
+    
+    <!-- Combined Styles -->
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -105,456 +192,643 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
+
+        /* Welcome Screen Styles */
+        .glass-panel {
+            background: rgba(10, 20, 26, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .remedy-container {
+            mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+        }
+
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-white overflow-x-hidden">
 
-    <!-- Main App Container -->
-    <div id="app-container" class="pb-24">
+    <!-- START: NEW INTRO SCREENS -->
+    <div id="initial-enter-screen" class="fixed inset-0 z-[102] flex flex-col items-center justify-center bg-navy-deep transition-opacity duration-500">
+        <div class="text-center">
+            <h1 class="font-display font-bold text-4xl md:text-5xl tracking-widest text-white mb-8">REMEDICON</h1>
+            <button id="enter-btn" class="group/btn relative w-64 h-14 rounded-full flex items-center justify-center overflow-hidden transition-all duration-200 ease-in-out shadow-lg hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 active:shadow-lg active:scale-95 no-underline">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary to-[#064e6b] group-hover/btn:brightness-110 transition-all"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
+                <div class="relative flex items-center gap-2">
+                    <span class="text-white font-display font-bold text-lg tracking-wide">Enter</span>
+                </div>
+            </button>
+        </div>
+    </div>
 
-        <!-- Page: Home -->
-        <div id="page-home" class="page active">
-            <!-- Header Section -->
-            <header class="sticky top-0 z-40 w-full transition-all duration-300 bg-background-dark/95 backdrop-blur-md border-b border-card-border">
-                <div class="flex items-center justify-between px-4 py-3">
-                    <div class="flex items-center gap-2">
-                        <div class="size-8 rounded-lg bg-gradient-to-br from-primary to-teal-600 flex items-center justify-center text-white shadow-lg shadow-primary/20">
-                            <span class="material-symbols-outlined text-[20px]">local_pharmacy</span>
+    <div id="coding-animation-screen" class="hidden fixed inset-0 z-[101] flex flex-col items-center justify-center bg-navy-deep transition-opacity duration-500 p-4">
+        <h2 class="font-mono font-bold text-5xl md:text-7xl text-primary mb-8 text-center">prototype coding</h2>
+        <div class="w-full max-w-4xl h-80 bg-black/50 rounded-lg border border-primary/20 p-4 font-mono text-green-400 text-sm overflow-y-auto no-scrollbar">
+            <pre id="code-output"></pre><span class="inline-block h-4 w-2 border-r-2 border-primary animate-blink-caret"></span>
+        </div>
+    </div>
+
+    <div id="secondary-enter-screen" class="hidden fixed inset-0 z-[101] flex flex-col items-center justify-center bg-navy-deep transition-opacity duration-500">
+        <div class="text-center">
+             <h1 class="font-display font-bold text-4xl md:text-5xl tracking-widest text-white mb-8">REMEDICON</h1>
+            <button id="secondary-enter-btn" class="group/btn relative w-64 h-14 rounded-full flex items-center justify-center overflow-hidden transition-all duration-200 ease-in-out shadow-lg hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 active:shadow-lg active:scale-95 no-underline">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary to-[#064e6b] group-hover/btn:brightness-110 transition-all"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
+                <div class="relative flex items-center gap-2">
+                    <span class="text-white font-display font-bold text-lg tracking-wide">Enter</span>
+                </div>
+            </button>
+        </div>
+    </div>
+    <!-- END: NEW INTRO SCREENS -->
+
+
+    <!-- Welcome Screen Container -->
+    <div id="welcome-screen-wrapper" class="hidden fixed inset-0 z-[100] transition-opacity duration-1000 ease-in-out">
+        <!-- Preloader Element -->
+        <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-navy-deep transition-opacity duration-1000 ease-out">
+            <div class="relative w-24 h-24">
+                <div class="absolute inset-0 rounded-full border-4 border-primary/30"></div>
+                <div class="absolute inset-0 rounded-full border-t-4 border-primary animate-spin"></div>
+            </div>
+        </div>
+
+        <!-- Main Container -->
+        <div class="relative flex h-screen w-full flex-col justify-between items-center overflow-hidden bg-background-dark">
+            <!-- Background Effects Layer -->
+            <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-b from-[#03080c] via-[#0a141a] to-[#064e6b] opacity-90"></div>
+                <div class="absolute -top-[20%] -left-[20%] w-[140%] h-[60%] bg-primary/10 blur-[100px] rounded-full animate-float-slow"></div>
+                <div class="absolute bottom-[10%] -right-[20%] w-[100%] h-[50%] bg-[#0a749b]/10 blur-[80px] rounded-full animate-float-delayed"></div>
+                <div class="absolute inset-0 bg-[url('https://placeholder.pics/svg/20')] opacity-[0.03]" style="background-size: 40px 40px;"></div>
+            </div>
+
+            <!-- Safe Area Top Spacer -->
+            <div class="h-6 w-full shrink-0 z-10"></div>
+
+            <!-- Top Content: Brand & Identity -->
+            <div class="relative z-10 flex flex-col items-center justify-center w-full px-6 pt-8 md:pt-12 shrink-0 animate-fade-in">
+                <!-- 3D Logo Representation -->
+                <div class="relative w-32 h-32 mb-8 group">
+                    <div class="absolute inset-0 rounded-3xl bg-primary/20 blur-xl animate-pulse"></div>
+                    <div class="relative w-full h-full bg-gradient-to-br from-white/10 to-transparent rounded-3xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-md flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-white/5 opacity-50"></div>
+                        <div class="w-20 h-20 bg-center bg-contain bg-no-repeat z-10 drop-shadow-[0_0_15px_rgba(10,116,155,0.8)]" data-alt="Glossy 3D letter R logo in cyan blue with neon glow" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoDbsEzQkoddE_ylxoDyK1N8dgXRwgMK8g05-v5rhZSXvSH09mqJuVR7T-Q1ohCQuHYd_uYpuY-nL92rtROskInMZKupztwe4ec1zzYn95ia6BsDFY7gTVPDYSkt_Skz59sThYew2wlq219GvM-rAsxXpGBBb6_9U3Qk0ONI5O1LQeO5NkRCtF2ufdKL39V6SMYvRE6whXXvqZlt2mpaXXX75aV5rA2WOJds0QIRyArLhbLtq15OD26j-6QjM6N8cvMN2MOhdpTrw");'>
                         </div>
-                        <h1 class="text-xl font-bold tracking-tight text-white">REMEDICON</h1>
                     </div>
-                    <button id="settings-btn" class="flex items-center justify-center size-10 rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-colors">
-                        <span class="material-symbols-outlined">settings</span>
+                </div>
+                <!-- Typography -->
+                <h1 class="font-display font-bold text-4xl md:text-5xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-white bg-[200%_auto] animate-text-shimmer drop-shadow-[0_0_10px_rgba(10,116,155,0.3)] mb-2 text-center">
+                    REMEDICON
+                </h1>
+                <p class="font-body text-gray-400 text-sm md:text-base font-light tracking-widest uppercase opacity-90 text-center">
+                    Remedy at Your Fingertips
+                </p>
+            </div>
+
+            <!-- Middle Content: Animated Illustration -->
+            <div class="relative z-10 w-full max-w-lg px-4 flex-1 flex items-center justify-center py-6">
+                <div class="w-full aspect-video rounded-xl glass-panel shadow-2xl overflow-hidden relative p-2">
+                    <img src="https://i.ibb.co/1JvZJ23T/5cd680922400003100740b7e.jpg" alt="Homeopathy background" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+                    <div class="absolute inset-0 w-full h-full remedy-container overflow-hidden">
+                        <div class="absolute w-full h-[200%] animate-remedy-scroll text-primary/50 text-xs md:text-sm font-body">
+                            <!-- Duplicate the content for seamless scrolling -->
+                            <div class="space-y-2">
+                                <p>Aconitum Napellus</p>
+                                <p class="ml-4">Arnica Montana</p>
+                                <p class="ml-8">Belladonna</p>
+                                <p>Nux Vomica</p>
+                                <p class="ml-12">Pulsatilla Nigricans</p>
+                                <p>Gelsemium</p>
+                                <p class="ml-6">Ignatia Amara</p>
+                                <p>Chamomilla</p>
+                                <p class="ml-10">Lycopodium Clavatum</p>
+                                <p>Sulphur</p>
+                                <p class="ml-2">Rhus Toxicodendron</p>
+                                <p>Bryonia Alba</p>
+                            </div>
+                            <div class="space-y-2 mt-2">
+                                 <p>Aconitum Napellus</p>
+                                <p class="ml-4">Arnica Montana</p>
+                                <p class="ml-8">Belladonna</p>
+                                <p>Nux Vomica</p>
+                                <p class="ml-12">Pulsatilla Nigricans</p>
+                                <p>Gelsemium</p>
+                                <p class="ml-6">Ignatia Amara</p>
+                                <p>Chamomilla</p>
+                                <p class="ml-10">Lycopodium Clavatum</p>
+                                <p>Sulphur</p>
+                                <p class="ml-2">Rhus Toxicodendron</p>
+                                <p>Bryonia Alba</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Magnifying Glass -->
+                    <div class="absolute inset-0 animate-magnify-search">
+                        <span class="material-symbols-outlined text-white/80 text-6xl md:text-8xl drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" style="font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 48">
+                            search
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Content: Action & Footer -->
+            <div class="relative z-10 w-full flex flex-col items-center pb-8 px-6 space-y-6">
+                <!-- Get Started Button -->
+                <button id="get-started-btn" class="group/btn relative w-full max-w-[320px] h-14 rounded-full flex items-center justify-center overflow-hidden transition-all duration-200 ease-in-out shadow-lg hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 active:shadow-lg active:scale-95 no-underline">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-[#064e6b] group-hover/btn:brightness-110 transition-all"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
+                    <div class="relative flex items-center gap-2">
+                        <span class="text-white font-display font-bold text-lg tracking-wide">Get Started</span>
+                        <span class="material-symbols-outlined text-white text-xl transition-transform duration-300 group-hover/btn:translate-x-1">arrow_forward</span>
+                    </div>
+                </button>
+
+                <!-- Improved Footer Attribution -->
+                <footer class="text-center">
+                    <p class="text-xs text-gray-500 font-body font-light">
+                        Developed by: <a href="#" class="text-primary/80 hover:text-primary transition-colors duration-300 no-underline hover:underline">Himanshu Kumar</a>
+                    </p>
+                     <p class="text-xs text-gray-600 font-body mt-1">
+                        &copy; 2026 REMEDICON. All Rights Reserved.
+                    </p>
+                </footer>
+
+                <!-- Safe Area Bottom Spacer -->
+                <div class="h-4 w-full shrink-0"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main App Container -->
+    <div id="app-wrapper" class="opacity-0 transition-opacity duration-1000 ease-in-out">
+        <div id="app-container" class="pb-24">
+
+            <!-- Page: Home -->
+            <div id="page-home" class="page active">
+                <!-- Header Section -->
+                <header class="sticky top-0 z-40 w-full transition-all duration-300 bg-background-dark/95 backdrop-blur-md border-b border-card-border">
+                    <div class="flex items-center justify-between px-4 py-3">
+                        <div class="flex items-center gap-2">
+                            <div class="size-8 rounded-lg bg-gradient-to-br from-primary to-teal-600 flex items-center justify-center text-white shadow-lg shadow-primary/20">
+                                <span class="material-symbols-outlined text-[20px]">local_pharmacy</span>
+                            </div>
+                            <h1 class="text-xl font-bold tracking-tight text-white">REMEDICON</h1>
+                        </div>
+                        <button id="settings-btn" class="flex items-center justify-center size-10 rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-colors">
+                            <span class="material-symbols-outlined">settings</span>
+                        </button>
+                    </div>
+                </header>
+                <div id="home-materia-medica-btn" class="relative w-full h-[220px] overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiYG-YsHaK6neuhqwY0FxvmkIQjW8AFwJUtlDwnlBZYkANzrtT7XBF6GnNUj2BD0A3QBCSQ0MQRSVtP2mDL81U-bhomQRpBtmodQvmGlkB4w7TjEzyF2XeY8wfvngWwFcL1cmRtv-qnguslkzyqgtDTXIy-eoQcXtr78_5VMNLhOilZJyr9UC4iMK0-fxwIPCNrqjlUZGDvRLNCggH2YuXooA-c6QPKjCd4_vbi8GfxQCVs3kKa4pEyZH11OAAC842KGJSDLmjIzo');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-background-dark/40 via-background-dark/60 to-background-dark"></div>
+                    <div class="relative z-10 px-4 h-full flex flex-col justify-end pb-8">
+                        <h2 class="text-white/90 text-2xl font-semibold mb-1">Materia Medica</h2>
+                        <p class="text-slate-400 text-sm font-light">by W. Boericke, M.D.</p>
+                        <p class="text-slate-300 text-sm font-light mt-1">Explore over 3,000 remedies & symptoms.</p>
+                    </div>
+                </div>
+                <div class="px-4 -mt-6 relative z-20">
+                    <label class="group flex flex-col w-full h-14 shadow-xl shadow-black/20 rounded-xl transition-all">
+                        <div class="flex w-full flex-1 items-stretch rounded-xl bg-card-dark border border-card-border group-focus-within:border-primary/50 group-focus-within:ring-1 group-focus-within:ring-primary/50 transition-all">
+                            <div class="text-slate-400 flex items-center justify-center pl-4"><span class="material-symbols-outlined">search</span></div>
+                            <input id="home-search-input" class="flex w-full min-w-0 flex-1 bg-transparent text-white placeholder:text-slate-500 px-3 focus:outline-none focus:ring-0 border-none h-full text-base font-medium" placeholder="Search remedy, symptom, organ..."/>
+                            <div class="text-slate-400 flex items-center justify-center pr-2">
+                                <button id="home-search-btn" class="flex items-center justify-center size-10 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-[24px]">search</span>
+                                </button>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <section class="mt-8 px-4">
+                    <div class="flex items-center justify-between mb-4"><h3 class="text-white text-lg font-semibold tracking-tight">Modules</h3></div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button data-target="page-remedies" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/Ndnyw6Vk/b3u-Gi6h3-S02aplk-Jb-Iwa-Yw.webp');"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <div class="relative z-10 p-4">
+                                <h2 class="text-white text-base font-semibold">Remedies</h2>
+                                <p class="text-xs text-slate-300 mt-0.5">A-Z Listings</p>
+                            </div>
+                        </button>
+                        <button data-target="page-symptoms" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/d0VjJ90F/sq-Fh-Mq48-RX228v-UIhv3-Lyg.webp');"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <div class="relative z-10 p-4">
+                                <h2 class="text-white text-base font-semibold">Symptoms</h2>
+                                <p class="text-xs text-slate-300 mt-0.5">Body Systems</p>
+                            </div>
+                        </button>
+                        <button data-target="page-materia-medica" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/DHPKBHpr/NOff-Rb-P7-Rom09-Vr2-Dl-VXs-A.webp');"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <div class="relative z-10 p-4">
+                                <h2 class="text-white text-base font-semibold">Materia Medica</h2>
+                                <p class="text-xs text-slate-300 mt-0.5">Detailed Study</p>
+                            </div>
+                        </button>
+                        <button data-target="page-repertory" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/Jj457f6m/eejgv-g-DQ7yc-GI9ly-JPT0g.webp');"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <div class="relative z-10 p-4">
+                                <h2 class="text-white text-base font-semibold">Repertory</h2>
+                                <p class="text-xs text-slate-300 mt-0.5">Rubrics</p>
+                            </div>
+                        </button>
+                        <button data-target="page-compare" class="module-btn flex flex-col gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-start hover:bg-white/5 active:scale-[0.98] transition-all group">
+                            <div class="p-2 rounded-lg bg-pink-500/10 text-pink-400 group-hover:bg-pink-500/20 transition-colors"><span class="material-symbols-outlined">compare_arrows</span></div>
+                            <div class="text-left"><h2 class="text-white text-base font-semibold">Compare</h2><p class="text-xs text-slate-400 mt-0.5">Remedy Diff</p></div>
+                        </button>
+                        <button data-target="page-saved" class="module-btn flex flex-col gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-start hover:bg-white/5 active:scale-[0.98] transition-all group">
+                            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors"><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="text-left"><h2 class="text-white text-base font-semibold">Saved</h2><p class="text-xs text-slate-400 mt-0.5">Your Notes</p></div>
+                        </button>
+                    </div>
+                </section>
+                <section class="mt-8">
+                    <div class="flex items-center justify-between px-4 mb-3"><h3 class="text-white text-lg font-semibold tracking-tight">Recent</h3><button data-target="page-remedies" class="module-btn text-primary text-sm font-medium hover:text-primary-dark">View All</button></div>
+                    <div id="recent-remedies-container" class="flex overflow-x-auto gap-3 px-4 pb-4 no-scrollbar snap-x">
+                    </div>
+                </section>
+
+                <!-- START: MODIFIED/NEW SECTIONS -->
+                <section id="daily-insight-section" class="mt-4 px-4 mb-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <h3 class="text-white text-lg font-semibold tracking-tight">Daily Insight</h3>
+                        <span id="daily-insight-date" class="text-sm text-slate-400"></span>
+                        <span class="new-badge">NEW</span>
+                    </div>
+                    <div id="daily-remedy-slider" class="daily-content-slider no-scrollbar">
+                        <!-- Daily remedies will be injected here by JavaScript -->
+                    </div>
+                </section>
+
+                <section id="daily-infographic-section" class="mt-4 px-4 mb-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <h3 class="text-white text-lg font-semibold tracking-tight">Today's Remedygrphy</h3>
+                        <span class="new-badge">NEW</span>
+                    </div>
+                    <div id="daily-infographic-slider" class="daily-content-slider no-scrollbar">
+                        <!-- Daily infographics will be injected here by JavaScript -->
+                    </div>
+                </section>
+
+                <section id="daily-video-section" class="mt-4 px-4 mb-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <h3 class="text-white text-lg font-semibold tracking-tight">Today's Videos</h3>
+                        <span class="new-badge">NEW</span>
+                    </div>
+                    <div id="daily-video-slider" class="daily-content-slider no-scrollbar">
+                        <!-- Daily videos will be injected here by JavaScript -->
+                    </div>
+                </section>
+                <!-- END: MODIFIED/NEW SECTIONS -->
+
+            </div>
+
+            <!-- Generic Header for other pages -->
+            <header id="placeholder-header" class="hidden sticky top-0 z-30 w-full bg-background-dark/95 backdrop-blur-md border-b border-card-border">
+                <div class="flex items-center justify-between px-4 py-3">
+                    <button class="back-btn flex items-center gap-2 text-slate-300 hover:text-white -ml-2 p-2">
+                        <span class="material-symbols-outlined">arrow_back</span>
                     </button>
+                    <h1 id="placeholder-title" class="text-xl font-bold tracking-tight text-white text-center flex-grow mr-8"></h1>
+                    <div id="page-menu-container" class="relative">
+                        <button id="page-menu-btn" class="hidden flex items-center justify-center size-10 rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-colors -mr-2">
+                            <span class="material-symbols-outlined">more_vert</span>
+                        </button>
+                        <div id="page-menu-dropdown" class="mt-2 w-56 origin-top-right rounded-md bg-card-dark shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-card-border">
+                            <div class="py-1" role="none">
+                              <button data-target="page-manage-remedies" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Manage Remedies</button>
+                              <button data-target="page-upload-infographic" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Remedygrphy</button>
+                              <button data-target="page-upload-content" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Content</button>
+                              <button data-target="page-upload-biopath" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Biopath</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </header>
-            <div class="relative w-full h-[220px] overflow-hidden">
-                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiYG-YsHaK6neuhqwY0FxvmkIQjW8AFwJUtlDwnlBZYkANzrtT7XBF6GnNUj2BD0A3QBCSQ0MQRSVtP2mDL81U-bhomQRpBtmodQvmGlkB4w7TjEzyF2XeY8wfvngWwFcL1cmRtv-qnguslkzyqgtDTXIy-eoQcXtr78_5VMNLhOilZJyr9UC4iMK0-fxwIPCNrqjlUZGDvRLNCggH2YuXooA-c6QPKjCd4_vbi8GfxQCVs3kKa4pEyZH11OAAC842KGJSDLmjIzo');"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-background-dark/40 via-background-dark/60 to-background-dark"></div>
-                <div class="relative z-10 px-4 h-full flex flex-col justify-end pb-8">
-                    <h2 class="text-white/90 text-2xl font-semibold mb-1">Materia Medica</h2>
-                    <p class="text-slate-400 text-sm font-light">by W. Boericke, M.D.</p>
-                    <p class="text-slate-300 text-sm font-light mt-1">Explore over 3,000 remedies & symptoms.</p>
-                </div>
+            
+            <div id="page-remedies" class="page px-4 py-2">
+                <div id="remedies-list" class="space-y-2"></div>
             </div>
-            <div class="px-4 -mt-6 relative z-20">
-                <label class="group flex flex-col w-full h-14 shadow-xl shadow-black/20 rounded-xl transition-all">
-                    <div class="flex w-full flex-1 items-stretch rounded-xl bg-card-dark border border-card-border group-focus-within:border-primary/50 group-focus-within:ring-1 group-focus-within:ring-primary/50 transition-all">
-                        <div class="text-slate-400 flex items-center justify-center pl-4"><span class="material-symbols-outlined">search</span></div>
-                        <input id="home-search-input" class="flex w-full min-w-0 flex-1 bg-transparent text-white placeholder:text-slate-500 px-3 focus:outline-none focus:ring-0 border-none h-full text-base font-medium" placeholder="Search remedy, symptom, organ..."/>
-                        <div class="text-slate-400 flex items-center justify-center pr-2">
-                            <button id="home-search-btn" class="flex items-center justify-center size-10 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-[24px]">search</span>
-                            </button>
-                        </div>
-                    </div>
-                </label>
+            
+            <div id="page-remedy-detail" class="page px-4 py-6 text-slate-300 leading-relaxed"></div>
+            
+            <div id="page-symptoms" class="page px-4 py-2">
+                <div id="symptoms-list" class="space-y-2"></div>
             </div>
-            <section class="mt-8 px-4">
-                <div class="flex items-center justify-between mb-4"><h3 class="text-white text-lg font-semibold tracking-tight">Modules</h3></div>
-                <div class="grid grid-cols-2 gap-3">
-                    <button data-target="page-remedies" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/Ndnyw6Vk/b3u-Gi6h3-S02aplk-Jb-Iwa-Yw.webp');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                        <div class="relative z-10 p-4">
-                            <h2 class="text-white text-base font-semibold">Remedies</h2>
-                            <p class="text-xs text-slate-300 mt-0.5">A-Z Listings</p>
-                        </div>
-                    </button>
-                    <button data-target="page-symptoms" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/d0VjJ90F/sq-Fh-Mq48-RX228v-UIhv3-Lyg.webp');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                        <div class="relative z-10 p-4">
-                            <h2 class="text-white text-base font-semibold">Symptoms</h2>
-                            <p class="text-xs text-slate-300 mt-0.5">Body Systems</p>
-                        </div>
-                    </button>
-                    <button data-target="page-materia-medica" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/DHPKBHpr/NOff-Rb-P7-Rom09-Vr2-Dl-VXs-A.webp');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                        <div class="relative z-10 p-4">
-                            <h2 class="text-white text-base font-semibold">Materia Medica</h2>
-                            <p class="text-xs text-slate-300 mt-0.5">Detailed Study</p>
-                        </div>
-                    </button>
-                    <button data-target="page-repertory" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/Jj457f6m/eejgv-g-DQ7yc-GI9ly-JPT0g.webp');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                        <div class="relative z-10 p-4">
-                            <h2 class="text-white text-base font-semibold">Repertory</h2>
-                            <p class="text-xs text-slate-300 mt-0.5">Rubrics</p>
-                        </div>
-                    </button>
-                    <button data-target="page-compare" class="module-btn flex flex-col gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-start hover:bg-white/5 active:scale-[0.98] transition-all group">
-                        <div class="p-2 rounded-lg bg-pink-500/10 text-pink-400 group-hover:bg-pink-500/20 transition-colors"><span class="material-symbols-outlined">compare_arrows</span></div>
-                        <div class="text-left"><h2 class="text-white text-base font-semibold">Compare</h2><p class="text-xs text-slate-400 mt-0.5">Remedy Diff</p></div>
-                    </button>
-                    <button data-target="page-saved" class="module-btn flex flex-col gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-start hover:bg-white/5 active:scale-[0.98] transition-all group">
-                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors"><span class="material-symbols-outlined">bookmark</span></div>
-                        <div class="text-left"><h2 class="text-white text-base font-semibold">Saved</h2><p class="text-xs text-slate-400 mt-0.5">Your Notes</p></div>
-                    </button>
-                </div>
-            </section>
-            <section class="mt-8">
-                <div class="flex items-center justify-between px-4 mb-3"><h3 class="text-white text-lg font-semibold tracking-tight">Recent</h3><button data-target="page-remedies" class="module-btn text-primary text-sm font-medium hover:text-primary-dark">View All</button></div>
-                <div id="recent-remedies-container" class="flex overflow-x-auto gap-3 px-4 pb-4 no-scrollbar snap-x">
-                </div>
-            </section>
-
-            <!-- START: MODIFIED/NEW SECTIONS -->
-            <section id="daily-insight-section" class="mt-4 px-4 mb-6">
-                <div class="flex items-center gap-3 mb-3">
-                    <h3 class="text-white text-lg font-semibold tracking-tight">Daily Insight</h3>
-                    <span id="daily-insight-date" class="text-sm text-slate-400"></span>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <div id="daily-remedy-slider" class="daily-content-slider no-scrollbar">
-                    <!-- Daily remedies will be injected here by JavaScript -->
-                </div>
-            </section>
-
-            <section id="daily-infographic-section" class="mt-4 px-4 mb-6">
-                <div class="flex items-center gap-3 mb-3">
-                    <h3 class="text-white text-lg font-semibold tracking-tight">Today's Remedygrphy</h3>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <div id="daily-infographic-slider" class="daily-content-slider no-scrollbar">
-                    <!-- Daily infographics will be injected here by JavaScript -->
-                </div>
-            </section>
-
-            <section id="daily-video-section" class="mt-4 px-4 mb-6">
-                <div class="flex items-center gap-3 mb-3">
-                    <h3 class="text-white text-lg font-semibold tracking-tight">Today's Videos</h3>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <div id="daily-video-slider" class="daily-content-slider no-scrollbar">
-                    <!-- Daily videos will be injected here by JavaScript -->
-                </div>
-            </section>
-            <!-- END: MODIFIED/NEW SECTIONS -->
-
-        </div>
-
-        <!-- Generic Header for other pages -->
-        <header id="placeholder-header" class="hidden sticky top-0 z-30 w-full bg-background-dark/95 backdrop-blur-md border-b border-card-border">
-            <div class="flex items-center justify-between px-4 py-3">
-                <button class="back-btn flex items-center gap-2 text-slate-300 hover:text-white -ml-2 p-2">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                </button>
-                <h1 id="placeholder-title" class="text-xl font-bold tracking-tight text-white text-center flex-grow mr-8"></h1>
-                <div id="page-menu-container" class="relative">
-                    <button id="page-menu-btn" class="hidden flex items-center justify-center size-10 rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-colors -mr-2">
-                        <span class="material-symbols-outlined">more_vert</span>
-                    </button>
-                    <div id="page-menu-dropdown" class="mt-2 w-56 origin-top-right rounded-md bg-card-dark shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-card-border">
-                        <div class="py-1" role="none">
-                          <button data-target="page-manage-remedies" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Manage Remedies</button>
-                          <button data-target="page-upload-infographic" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Remedygrphy</button>
-                          <button data-target="page-upload-content" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Content</button>
-                          <button data-target="page-upload-biopath" class="menu-item-btn text-slate-200 block w-full text-left px-4 py-2 text-sm hover:bg-white/5">Upload Biopath</button>
-                        </div>
-                    </div>
-                </div>
+            
+            <div id="page-symptom-remedies" class="page px-4 py-2">
+                <div id="symptom-remedies-list" class="space-y-2"></div>
             </div>
-        </header>
-        
-        <div id="page-remedies" class="page px-4 py-2">
-            <div id="remedies-list" class="space-y-2"></div>
-        </div>
-        
-        <div id="page-remedy-detail" class="page px-4 py-6 text-slate-300 leading-relaxed"></div>
-        
-        <div id="page-symptoms" class="page px-4 py-2">
-            <div id="symptoms-list" class="space-y-2"></div>
-        </div>
-        
-        <div id="page-symptom-remedies" class="page px-4 py-2">
-            <div id="symptom-remedies-list" class="space-y-2"></div>
-        </div>
 
-        <div id="page-saved" class="page px-4 py-2">
-            <div id="saved-remedies-list" class="space-y-2"></div>
-        </div>
-        
-        <div id="page-compare" class="page px-4 py-6">
-            <p class="text-slate-300 mb-4 text-center">Compare remedies based on a specific symptom or body part.</p>
-            <div class="space-y-4">
-                <input id="compare-symptom" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter Body Part (e.g., Stomach)"/>
-                <input id="compare-remedy1" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter first remedy name..."/>
-                <input id="compare-remedy2" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter second remedy name..."/>
-                <button id="compare-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Compare</button>
+            <div id="page-saved" class="page px-4 py-2">
+                <div id="saved-remedies-list" class="space-y-2"></div>
             </div>
-            <div id="comparison-results" class="mt-6"></div>
-        </div>
+            
+            <div id="page-compare" class="page px-4 py-6">
+                <p class="text-slate-300 mb-4 text-center">Compare remedies based on a specific symptom or body part.</p>
+                <div class="space-y-4">
+                    <input id="compare-symptom" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter Body Part (e.g., Stomach)"/>
+                    <input id="compare-remedy1" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter first remedy name..."/>
+                    <input id="compare-remedy2" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter second remedy name..."/>
+                    <button id="compare-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Compare</button>
+                </div>
+                <div id="comparison-results" class="mt-6"></div>
+            </div>
 
-        <div id="page-add-remedy" class="page px-4 py-6">
-            <form id="add-remedy-form" class="space-y-4">
-                <div>
-                    <label for="remedy-book" class="block text-sm font-medium text-slate-300 mb-1">Book Name</label>
-                    <input type="text" id="remedy-book" value="W. Boericke, M.D." class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
-                </div>
-                <div>
-                    <label for="raw-remedy-text" class="block text-sm font-medium text-slate-300 mb-1">Paste Remedy Text Block Here</label>
-                    <textarea id="raw-remedy-text" rows="10" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Paste the full text for a single remedy..."></textarea>
-                </div>
-                <button type="button" id="parse-remedy-btn" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-lg transition-colors">Parse and Populate Form</button>
-                
-                <div class="border-t border-card-border pt-4 mt-6">
-                    <h3 class="text-lg font-semibold text-white mb-3 text-center">Form Preview</h3>
+            <div id="page-add-remedy" class="page px-4 py-6">
+                <form id="add-remedy-form" class="space-y-4">
                     <div>
-                        <label for="remedy-name" class="block text-sm font-medium text-slate-300 mb-1">Remedy Name</label>
-                        <input type="text" id="remedy-name" required class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., ACONITUM NAPELLUS"/>
+                        <label for="remedy-book" class="block text-sm font-medium text-slate-300 mb-1">Book Name</label>
+                        <input type="text" id="remedy-book" value="W. Boericke, M.D." class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
                     </div>
                     <div>
-                        <label for="remedy-common-name" class="block text-sm font-medium text-slate-300 mb-1">Common Name</label>
-                        <input type="text" id="remedy-common-name" class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., Monkshood"/>
+                        <label for="raw-remedy-text" class="block text-sm font-medium text-slate-300 mb-1">Paste Remedy Text Block Here</label>
+                        <textarea id="raw-remedy-text" rows="10" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Paste the full text for a single remedy..."></textarea>
+                    </div>
+                    <button type="button" id="parse-remedy-btn" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-lg transition-colors">Parse and Populate Form</button>
+                    
+                    <div class="border-t border-card-border pt-4 mt-6">
+                        <h3 class="text-lg font-semibold text-white mb-3 text-center">Form Preview</h3>
+                        <div>
+                            <label for="remedy-name" class="block text-sm font-medium text-slate-300 mb-1">Remedy Name</label>
+                            <input type="text" id="remedy-name" required class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., ACONITUM NAPELLUS"/>
+                        </div>
+                        <div>
+                            <label for="remedy-common-name" class="block text-sm font-medium text-slate-300 mb-1">Common Name</label>
+                            <input type="text" id="remedy-common-name" class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., Monkshood"/>
+                        </div>
+                        <div>
+                            <label for="remedy-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
+                            <input type="date" id="remedy-upload-date" required class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
+                        </div>
+                        <div>
+                            <label for="remedy-description" class="block text-sm font-medium text-slate-300 mb-1">Description</label>
+                            <textarea id="remedy-description" rows="4" class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
+                        </div>
+
+                        <div class="border-t border-card-border pt-4 mt-4">
+                            <h3 class="text-lg font-semibold text-white mb-2">Sections</h3>
+                            <div id="dynamic-sections-container" class="space-y-3">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="save-remedy-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors !mt-6">Save Remedy to Database</button>
+                </form>
+            </div>
+            
+            <div id="page-manage-remedies" class="page px-4 py-2">
+                <div id="manage-remedies-list" class="space-y-2">
+                </div>
+            </div>
+
+            <div id="page-search-results" class="page px-4 py-2">
+                <div id="search-results-list" class="space-y-2"></div>
+            </div>
+
+            <div id="page-upload-infographic" class="page px-4 py-6">
+                <form id="infographic-form" class="space-y-4">
+                    <input type="hidden" id="infographic-id" value="">
+                    <div>
+                        <label for="infographic-name" class="block text-sm font-medium text-slate-300 mb-1">Remedygrphy Name</label>
+                        <input type="text" id="infographic-name" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., ABIES CANADENSIS"/>
                     </div>
                     <div>
-                        <label for="remedy-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
-                        <input type="date" id="remedy-upload-date" required class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
+                        <label for="infographic-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
+                        <input type="date" id="infographic-upload-date" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
                     </div>
                     <div>
-                        <label for="remedy-description" class="block text-sm font-medium text-slate-300 mb-1">Description</label>
-                        <textarea id="remedy-description" rows="4" class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
+                        <label for="infographic-embed-code" class="block text-sm font-medium text-slate-300 mb-1">Image URL or Embed Code</label>
+                        <textarea id="infographic-embed-code" rows="4" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Paste direct image link (e.g., https://.../image.png) or full embed code"></textarea>
+                        <p class="text-xs text-slate-500 mt-1">Editing? The actual image URL is saved. Paste a new link or code to update.</p>
                     </div>
+                    <button type="submit" id="save-infographic-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Save Remedygrphy</button>
+                </form>
+                 <div class="border-t border-card-border mt-8 pt-4">
+                    <h3 class="text-lg font-semibold text-white mb-3">Uploaded Remedygrphies</h3>
+                    <div id="manage-infographics-list" class="space-y-2"></div>
+                </div>
+            </div>
+            
+            <!-- NEW PAGE: Upload Content -->
+            <div id="page-upload-content" class="page px-4 py-6">
+                <form id="content-form" class="space-y-4">
+                    <input type="hidden" id="content-id" value="">
+                    <div>
+                        <label for="content-name" class="block text-sm font-medium text-slate-300 mb-1">Video Name</label>
+                        <input type="text" id="content-name" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., Materia Medica Explained"/>
+                    </div>
+                    <div>
+                        <label for="content-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
+                        <input type="date" id="content-upload-date" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
+                    </div>
+                    <div>
+                        <label for="content-youtube-link" class="block text-sm font-medium text-slate-300 mb-1">YouTube Video Link</label>
+                        <input type="url" id="content-youtube-link" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="..."/>
+                    </div>
+                    <button type="submit" id="save-content-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Save Content</button>
+                </form>
+                 <div class="border-t border-card-border mt-8 pt-4">
+                    <h3 class="text-lg font-semibold text-white mb-3">Uploaded Content</h3>
+                    <div id="manage-content-list" class="space-y-2"></div>
+                </div>
+            </div>
 
-                    <div class="border-t border-card-border pt-4 mt-4">
-                        <h3 class="text-lg font-semibold text-white mb-2">Sections</h3>
-                        <div id="dynamic-sections-container" class="space-y-3">
+            <!-- START: NEW BIOPATH PAGES -->
+            <div id="page-upload-biopath" class="page px-4 py-6">
+                <div class="space-y-3">
+                    <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Plant">
+                        <span class="font-medium text-white">Plant</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                    </button>
+                    <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Animal">
+                        <span class="font-medium text-white">Animal</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                    </button>
+                    <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Mineral">
+                        <span class="font-medium text-white">Mineral</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                    </button>
+                    <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Nosode">
+                        <span class="font-medium text-white">Nosode</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                    </button>
+                    <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Other">
+                        <span class="font-medium text-white">Other</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="page-biopath-form" class="page px-4 py-6">
+                <form id="add-biopath-form" class="space-y-4">
+                    <input type="hidden" id="biopath-kingdom" value="">
+                    <div id="biopath-form-inputs" class="space-y-4">
+                        <!-- Inputs will be dynamically generated here -->
+                    </div>
+                    <button type="submit" id="save-biopath-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors !mt-6">Save Biopath Data</button>
+                </form>
+            </div>
+
+            <div id="page-biopath-groups" class="page px-4 py-2">
+                <div id="biopath-groups-list" class="space-y-2"></div>
+            </div>
+            
+            <div id="page-biopath-subgroups" class="page px-4 py-2">
+                <div id="biopath-subgroups-list" class="space-y-2"></div>
+            </div>
+
+            <div id="page-biopath-detail" class="page px-4 py-6 text-slate-300 leading-relaxed">
+                <!-- Biopath final content will be rendered here -->
+            </div>
+            <!-- END: NEW BIOPATH PAGES -->
+            
+            <div id="page-materia-medica" class="page px-4 py-6">
+                <div id="materia-medica-grid" class="grid grid-cols-2 gap-4">
+                    <!-- Cards will be injected here by JavaScript -->
+                </div>
+            </div>
+
+            <div id="page-repertory" class="page px-4 py-6"><p class="text-slate-300">This is the Repertory page.</p></div>
+            <div id="page-profile" class="page px-4 py-6"><p class="text-slate-300">This is the Profile page.</p></div>
+            
+            <div id="page-biopath" class="page">
+                <main class="flex-1 overflow-y-auto">
+                    <div class="px-4 py-6">
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+                            </div>
+                            <input class="block w-full rounded-xl border-none bg-white dark:bg-card-dark py-3.5 pl-10 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/50 shadow-sm transition-all duration-300" placeholder="Search remedy, symptom, or keyword" type="text"/>
+                            <div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+                                <button class="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg text-slate-400 dark:text-primary transition-colors">
+                                    <span class="material-symbols-outlined">tune</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 mt-4 overflow-x-auto no-scrollbar pb-1">
+                            <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium shadow-lg shadow-primary/20 whitespace-nowrap transition-transform active:scale-95">All</button>
+                            <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">A-Z Index</button>
+                            <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Polychrests</button>
+                            <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Acute</button>
+                            <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Chronic</button>
                         </div>
                     </div>
-                </div>
-                
-                <button type="submit" id="save-remedy-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors !mt-6">Save Remedy to Database</button>
-            </form>
-        </div>
-        
-        <div id="page-manage-remedies" class="page px-4 py-2">
-            <div id="manage-remedies-list" class="space-y-2">
-            </div>
-        </div>
-
-        <div id="page-search-results" class="page px-4 py-2">
-            <div id="search-results-list" class="space-y-2"></div>
-        </div>
-
-        <div id="page-upload-infographic" class="page px-4 py-6">
-            <form id="infographic-form" class="space-y-4">
-                <input type="hidden" id="infographic-id" value="">
-                <div>
-                    <label for="infographic-name" class="block text-sm font-medium text-slate-300 mb-1">Remedygrphy Name</label>
-                    <input type="text" id="infographic-name" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., ABIES CANADENSIS"/>
-                </div>
-                <div>
-                    <label for="infographic-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
-                    <input type="date" id="infographic-upload-date" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
-                </div>
-                <div>
-                    <label for="infographic-embed-code" class="block text-sm font-medium text-slate-300 mb-1">Image URL or Embed Code</label>
-                    <textarea id="infographic-embed-code" rows="4" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Paste direct image link (e.g., https://.../image.png) or full embed code"></textarea>
-                    <p class="text-xs text-slate-500 mt-1">Editing? The actual image URL is saved. Paste a new link or code to update.</p>
-                </div>
-                <button type="submit" id="save-infographic-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Save Remedygrphy</button>
-            </form>
-             <div class="border-t border-card-border mt-8 pt-4">
-                <h3 class="text-lg font-semibold text-white mb-3">Uploaded Remedygrphies</h3>
-                <div id="manage-infographics-list" class="space-y-2"></div>
-            </div>
-        </div>
-        
-        <!-- NEW PAGE: Upload Content -->
-        <div id="page-upload-content" class="page px-4 py-6">
-            <form id="content-form" class="space-y-4">
-                <input type="hidden" id="content-id" value="">
-                <div>
-                    <label for="content-name" class="block text-sm font-medium text-slate-300 mb-1">Video Name</label>
-                    <input type="text" id="content-name" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., Materia Medica Explained"/>
-                </div>
-                <div>
-                    <label for="content-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
-                    <input type="date" id="content-upload-date" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
-                </div>
-                <div>
-                    <label for="content-youtube-link" class="block text-sm font-medium text-slate-300 mb-1">YouTube Video Link</label>
-                    <input type="url" id="content-youtube-link" required class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="..."/>
-                </div>
-                <button type="submit" id="save-content-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Save Content</button>
-            </form>
-             <div class="border-t border-card-border mt-8 pt-4">
-                <h3 class="text-lg font-semibold text-white mb-3">Uploaded Content</h3>
-                <div id="manage-content-list" class="space-y-2"></div>
-            </div>
-        </div>
-
-        <!-- START: NEW BIOPATH PAGES -->
-        <div id="page-upload-biopath" class="page px-4 py-6">
-            <div class="space-y-3">
-                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Plant">
-                    <span class="font-medium text-white">Plant</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
-                </button>
-                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Animal">
-                    <span class="font-medium text-white">Animal</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
-                </button>
-                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Mineral">
-                    <span class="font-medium text-white">Mineral</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
-                </button>
-                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Nosode">
-                    <span class="font-medium text-white">Nosode</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
-                </button>
-                <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Other">
-                    <span class="font-medium text-white">Other</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
-                </button>
-            </div>
-        </div>
-
-        <div id="page-biopath-form" class="page px-4 py-6">
-            <form id="add-biopath-form" class="space-y-4">
-                <input type="hidden" id="biopath-kingdom" value="">
-                <div id="biopath-form-inputs" class="space-y-4">
-                    <!-- Inputs will be dynamically generated here -->
-                </div>
-                <button type="submit" id="save-biopath-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors !mt-6">Save Biopath Data</button>
-            </form>
-        </div>
-
-        <div id="page-biopath-groups" class="page px-4 py-2">
-            <div id="biopath-groups-list" class="space-y-2"></div>
-        </div>
-        
-        <div id="page-biopath-subgroups" class="page px-4 py-2">
-            <div id="biopath-subgroups-list" class="space-y-2"></div>
-        </div>
-
-        <div id="page-biopath-detail" class="page px-4 py-6 text-slate-300 leading-relaxed">
-            <!-- Biopath final content will be rendered here -->
-        </div>
-        <!-- END: NEW BIOPATH PAGES -->
-
-        <div id="page-materia-medica" class="page px-4 py-6"><p class="text-slate-300">This is the Materia Medica page.</p></div>
-        <div id="page-repertory" class="page px-4 py-6"><p class="text-slate-300">This is the Repertory page.</p></div>
-        <div id="page-profile" class="page px-4 py-6"><p class="text-slate-300">This is the Profile page.</p></div>
-        
-        <div id="page-biopath" class="page">
-            <main class="flex-1 overflow-y-auto">
-                <div class="px-4 py-6">
-                    <div class="relative group">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+                    <section class="px-4 mb-8">
+                        <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Browse by Kingdom</h2></div>
+                        <!-- MODIFICATION START: Changed flex-col to a horizontal scrolling container and aspect-video to aspect-square -->
+                        <div class="flex gap-4 overflow-x-auto no-scrollbar pb-4">
+                            <div data-kingdom="Plant" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-green-500">eco</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-green-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-green-500"><span class="material-symbols-outlined">eco</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Plant</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Botanic remedies</p></div></div></div>
+                            <div data-kingdom="Mineral" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-amber-500">hexagon</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-amber-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-amber-500"><span class="material-symbols-outlined">hexagon</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Mineral</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elements &amp; Salts</p></div></div></div>
+                            <div data-kingdom="Animal" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-red-400">pets</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-red-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-red-400"><span class="material-symbols-outlined">pets</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Animal</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fauna based</p></div></div></div>
+                            <div data-kingdom="Nosode" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-purple-400">coronavirus</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-purple-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-purple-400"><span class="material-symbols-outlined">coronavirus</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Nosode</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Disease products</p></div></div></div>
+                            <div data-kingdom="Sarcode" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-slate-400">healing</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-slate-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-slate-400"><span class="material-symbols-outlined">healing</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Sarcode</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Healthy specimens</p></div></div></div>
                         </div>
-                        <input class="block w-full rounded-xl border-none bg-white dark:bg-card-dark py-3.5 pl-10 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/50 shadow-sm transition-all duration-300" placeholder="Search remedy, symptom, or keyword" type="text"/>
-                        <div class="absolute inset-y-0 right-0 pr-2 flex items-center">
-                            <button class="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg text-slate-400 dark:text-primary transition-colors">
-                                <span class="material-symbols-outlined">tune</span>
-                            </button>
+                        <!-- MODIFICATION END -->
+                    </section>
+                    <section class="mb-8">
+                        <div class="px-4 mb-3"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Clinical Systems</h2></div>
+                        <div class="flex gap-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+                            <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-primary text-2xl">psychology</span></div><span class="text-xs font-medium text-slate-400">Mind</span></div>
+                            <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">pulmonology</span></div><span class="text-xs font-medium text-slate-400">Resp.</span></div>
+                            <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">gastroenterology</span></div><span class="text-xs font-medium text-slate-400">GIT</span></div>
+                            <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">dermatology</span></div><span class="text-xs font-medium text-slate-400">Skin</span></div>
+                            <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">female</span></div><span class="text-xs font-medium text-slate-400">Female</span></div>
+                            <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">skeleton</span></div><span class="text-xs font-medium text-slate-400">Bones</span></div>
                         </div>
-                    </div>
-                    <div class="flex gap-3 mt-4 overflow-x-auto no-scrollbar pb-1">
-                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium shadow-lg shadow-primary/20 whitespace-nowrap transition-transform active:scale-95">All</button>
-                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">A-Z Index</button>
-                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Polychrests</button>
-                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Acute</button>
-                        <button class="flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:border-primary/50 transition-colors">Chronic</button>
-                    </div>
+                    </section>
+                    <section class="px-4">
+                        <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Popular Remedies</h2>
+                        <div class="flex flex-col gap-3">
+                            <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4 text-green-400"><span class="material-symbols-outlined">eco</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Arnica Montana</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Trauma, Bruising, Shock, Soreness</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
+                            <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-yellow-900/30 flex items-center justify-center mr-4 text-amber-400"><span class="material-symbols-outlined">hexagon</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Arsenicum Album</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Anxiety, Restlessness, Burning pains</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
+                            <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4 text-blue-400"><span class="material-symbols-outlined">water_drop</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Natrum Muriaticum</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Grief, Introversion, Headaches</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
+                            <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4 text-red-400"><span class="material-symbols-outlined">pets</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Lachesis Mutus</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Jealousy, Loquacity, Left-sided</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+            
+            <!-- IMPROVED PAGE: Remedygrphy -->
+            <div id="page-infographic" class="page px-4 py-6">
+                <div id="infographic-list-container" class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 </div>
-                <section class="px-4 mb-8">
-                    <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Browse by Kingdom</h2><button class="text-primary text-sm font-medium hover:text-primary/80">View All</button></div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div data-kingdom="Plant" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98]"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-green-500">eco</span></div><div class="flex flex-col h-full justify-between z-10 relative"><div class="bg-green-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-green-500"><span class="material-symbols-outlined">eco</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Plant</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Botanic remedies</p></div></div></div>
-                        <div data-kingdom="Mineral" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98]"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-amber-500">hexagon</span></div><div class="flex flex-col h-full justify-between z-10 relative"><div class="bg-amber-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-amber-500"><span class="material-symbols-outlined">hexagon</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Mineral</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elements &amp; Salts</p></div></div></div>
-                        <div data-kingdom="Animal" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98]"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-red-400">pets</span></div><div class="flex flex-col h-full justify-between z-10 relative"><div class="bg-red-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-red-400"><span class="material-symbols-outlined">pets</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Animal</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fauna based</p></div></div></div>
-                        <div data-kingdom="Nosode" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98]"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-purple-400">coronavirus</span></div><div class="flex flex-col h-full justify-between z-10 relative"><div class="bg-purple-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-purple-400"><span class="material-symbols-outlined">coronavirus</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Nosode</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Disease products</p></div></div></div>
-                    </div>
-                </section>
-                <section class="mb-8">
-                    <div class="px-4 mb-3"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Clinical Systems</h2></div>
-                    <div class="flex gap-4 overflow-x-auto px-4 pb-4 no-scrollbar">
-                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-primary text-2xl">psychology</span></div><span class="text-xs font-medium text-slate-400">Mind</span></div>
-                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">pulmonology</span></div><span class="text-xs font-medium text-slate-400">Resp.</span></div>
-                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">gastroenterology</span></div><span class="text-xs font-medium text-slate-400">GIT</span></div>
-                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">dermatology</span></div><span class="text-xs font-medium text-slate-400">Skin</span></div>
-                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">female</span></div><span class="text-xs font-medium text-slate-400">Female</span></div>
-                        <div class="flex flex-col items-center gap-2 min-w-[72px]"><div class="w-16 h-16 rounded-full bg-card-dark border border-card-border flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-cyan-200 text-2xl">skeleton</span></div><span class="text-xs font-medium text-slate-400">Bones</span></div>
-                    </div>
-                </section>
-                <section class="px-4">
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Popular Remedies</h2>
-                    <div class="flex flex-col gap-3">
-                        <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4 text-green-400"><span class="material-symbols-outlined">eco</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Arnica Montana</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Trauma, Bruising, Shock, Soreness</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
-                        <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-yellow-900/30 flex items-center justify-center mr-4 text-amber-400"><span class="material-symbols-outlined">hexagon</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Arsenicum Album</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Anxiety, Restlessness, Burning pains</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
-                        <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4 text-blue-400"><span class="material-symbols-outlined">water_drop</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Natrum Muriaticum</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Grief, Introversion, Headaches</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
-                        <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4 text-red-400"><span class="material-symbols-outlined">pets</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Lachesis Mutus</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Jealousy, Loquacity, Left-sided</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
-                    </div>
-                </section>
-            </main>
+            </div>
+            
+            <!-- NEW PAGE: Content (Videos) -->
+            <div id="page-content" class="page px-4 py-6">
+                <div id="content-list-container" class="space-y-6">
+                </div>
+            </div>
         </div>
-        
-        <!-- IMPROVED PAGE: Remedygrphy -->
-        <div id="page-infographic" class="page px-4 py-6">
-            <div id="infographic-list-container" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+        <!-- Navigation Bar -->
+        <nav class="fixed bottom-0 left-0 w-full glass-nav pb-safe z-50">
+            <div class="flex justify-around items-center h-[70px] px-2 max-w-md mx-auto">
+                <button data-target="page-home" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                    <div class="relative p-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[26px]">home</span>
+                        <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                    </div>
+                    <span class="nav-text text-[10px] font-medium text-slate-500">Home</span>
+                </button>
+                <button data-target="page-biopath" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                     <div class="relative p-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[26px]">science</span>
+                        <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                    </div>
+                    <span class="nav-text text-[10px] font-medium text-slate-500">Biopath</span>
+                </button>
+                <button data-target="page-infographic" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                     <div class="relative p-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[26px]">insights</span>
+                        <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                    </div>
+                    <span class="nav-text text-[10px] font-medium text-slate-500">Remedygrphy</span>
+                </button>
+                <button data-target="page-content" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                     <div class="relative p-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[26px]">play_circle</span>
+                        <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                    </div>
+                    <span class="nav-text text-[10px] font-medium text-slate-500">Content</span>
+                </button>
+                <button data-target="page-profile" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
+                     <div class="relative p-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[26px]">person</span>
+                        <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
+                    </div>
+                    <span class="nav-text text-[10px] font-medium text-slate-500">Profile</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Modals -->
+        <div id="image-viewer-modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm overflow-hidden">
+            <button id="close-image-modal-btn" class="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 z-10"><span class="material-symbols-outlined">close</span></button>
+            <div class="w-full h-full flex items-center justify-center">
+                <img id="modal-image" src="" alt="Remedygrphy" class="max-w-full max-h-full object-contain">
             </div>
         </div>
         
-        <!-- NEW PAGE: Content (Videos) -->
-        <div id="page-content" class="page px-4 py-6">
-            <div id="content-list-container" class="space-y-6">
+        <div id="video-viewer-modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+            <button id="close-video-modal-btn" class="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 z-10"><span class="material-symbols-outlined">close</span></button>
+            <div id="video-embed-container" class="w-full max-w-4xl aspect-video">
+                <!-- YouTube iframe will be inserted here -->
             </div>
-        </div>
-    </div>
-
-    <!-- Navigation Bar -->
-    <nav class="fixed bottom-0 left-0 w-full glass-nav pb-safe z-50">
-        <div class="flex justify-around items-center h-[70px] px-2 max-w-md mx-auto">
-            <button data-target="page-home" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
-                <div class="relative p-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[26px]">home</span>
-                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
-                </div>
-                <span class="nav-text text-[10px] font-medium text-slate-500">Home</span>
-            </button>
-            <button data-target="page-biopath" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
-                 <div class="relative p-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[26px]">science</span>
-                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
-                </div>
-                <span class="nav-text text-[10px] font-medium text-slate-500">Biopath</span>
-            </button>
-            <button data-target="page-infographic" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
-                 <div class="relative p-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[26px]">insights</span>
-                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
-                </div>
-                <span class="nav-text text-[10px] font-medium text-slate-500">Remedygrphy</span>
-            </button>
-            <button data-target="page-content" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
-                 <div class="relative p-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[26px]">play_circle</span>
-                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
-                </div>
-                <span class="nav-text text-[10px] font-medium text-slate-500">Content</span>
-            </button>
-            <button data-target="page-profile" class="nav-btn flex flex-col items-center justify-center w-full gap-1 group">
-                 <div class="relative p-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[26px]">person</span>
-                    <span class="active-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0"></span>
-                </div>
-                <span class="nav-text text-[10px] font-medium text-slate-500">Profile</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Modals -->
-    <div id="image-viewer-modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm overflow-hidden">
-        <button id="close-image-modal-btn" class="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 z-10"><span class="material-symbols-outlined">close</span></button>
-        <div class="w-full h-full flex items-center justify-center">
-            <img id="modal-image" src="" alt="Remedygrphy" class="max-w-full max-h-full object-contain">
-        </div>
-    </div>
-    
-    <div id="video-viewer-modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-        <button id="close-video-modal-btn" class="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 z-10"><span class="material-symbols-outlined">close</span></button>
-        <div id="video-embed-container" class="w-full max-w-4xl aspect-video">
-            <!-- YouTube iframe will be inserted here -->
         </div>
     </div>
 
@@ -588,8 +862,119 @@ let infographicData = [];
 let contentData = [];
 let biopathData = {};
 let currentSearchTerm = '';
+const predefinedBiopathGroups = {
+    Plant: ['ANACARDIACEAE', 'LOGANIACEAE FAMILY', 'COMPOSITAE FAMILY', 'CUCURBITACEAE FAMILY', 'PAPAVARACEAE FAMILY', 'RANUNCULACEAE', 'SOLANACEAE'],
+    Animal: ['OPHIDIA GROUP', 'SPIDER GROUP', 'INSECT GROUP', 'FISH GROUP'],
+    Mineral: ['ACID GROUP', 'ANTIMONY GROUP', 'ARGENTUM GROUP', 'ARSENIC GROUP', 'AURUM GROUP', 'CALCIUM GROUP', 'CARBON GROUP', 'CUPRUM GROUP', 'FERRUM GROUP', 'HALOGEN GROUP', 'MERCURY GROUP', 'METAL GROUP', 'MURIATICUM GROUP', 'NATRUM GROUP', 'POTASSIUM GROUP']
+};
 
 document.addEventListener('DOMContentLoaded', function () {
+    // --- START: NEW INTRO LOGIC ---
+    const initialEnterScreen = document.getElementById('initial-enter-screen');
+    const codingAnimationScreen = document.getElementById('coding-animation-screen');
+    const secondaryEnterScreen = document.getElementById('secondary-enter-screen');
+    const enterBtn = document.getElementById('enter-btn');
+    const secondaryEnterBtn = document.getElementById('secondary-enter-btn');
+    const welcomeScreen = document.getElementById('welcome-screen-wrapper');
+    const appWrapper = document.getElementById('app-wrapper');
+    
+    enterBtn.addEventListener('click', () => {
+        initialEnterScreen.style.opacity = '0';
+        setTimeout(() => {
+            initialEnterScreen.style.display = 'none';
+            codingAnimationScreen.classList.remove('hidden');
+            startCodingAnimation();
+        }, 500);
+
+        setTimeout(() => {
+            codingAnimationScreen.style.opacity = '0';
+            setTimeout(() => {
+                codingAnimationScreen.style.display = 'none';
+                secondaryEnterScreen.classList.remove('hidden');
+                secondaryEnterScreen.style.opacity = '1';
+            }, 1000);
+        }, 15000); // 15 seconds for the animation
+    });
+
+    secondaryEnterBtn.addEventListener('click', () => {
+        secondaryEnterScreen.style.opacity = '0';
+         setTimeout(() => {
+            secondaryEnterScreen.style.display = 'none';
+            welcomeScreen.classList.remove('hidden');
+            welcomeScreen.style.opacity = '1';
+            // Trigger preloader logic for the original welcome screen
+            const preloader = document.getElementById('preloader');
+             if (preloader) {
+                setTimeout(() => {
+                   preloader.style.opacity = '0';
+                   setTimeout(() => {
+                       preloader.style.display = 'none';
+                   }, 1000); 
+                }, 500); 
+            }
+        }, 500);
+    });
+
+    function startCodingAnimation() {
+        const codeOutput = document.getElementById('code-output');
+        const codeLines = [
+            'Initializing REMEDICON v3.14...',
+            'Connecting to Firebase Realtime Database...',
+            'Connection successful. Latency: 42ms.',
+            'Fetching remedy data from collection `remedies`...',
+            'Found 3,127 entries. Parsing data...',
+            'Parsing complete.',
+            'Loading modules: [MateriaMedica, Repertory, Biopath]...',
+            'Modules loaded.',
+            'Initializing UI components...',
+            'Building virtual DOM...',
+            'Rendering page: [page-home]...',
+            'Applying dark theme styles...',
+            'Attaching event listeners...',
+            'System check complete. All systems nominal.',
+            'Welcome, Doctor.',
+            'Launching application...'
+        ];
+        let lineIndex = 0;
+        let charIndex = 0;
+
+        const typingInterval = setInterval(() => {
+            if (lineIndex < codeLines.length) {
+                const currentLine = codeLines[lineIndex];
+                if (charIndex < currentLine.length) {
+                    codeOutput.textContent += currentLine.charAt(charIndex);
+                    charIndex++;
+                } else {
+                    codeOutput.textContent += '\n';
+                    lineIndex++;
+                    charIndex = 0;
+                }
+                codeOutput.parentElement.scrollTop = codeOutput.parentElement.scrollHeight;
+            } else {
+                clearInterval(typingInterval);
+            }
+        }, 50); // Speed of typing
+    }
+    // --- END: NEW INTRO LOGIC ---
+
+
+    // --- Welcome Screen and App Transition Logic ---
+    const getStartedBtn = document.getElementById('get-started-btn');
+
+    getStartedBtn.addEventListener('click', () => {
+        welcomeScreen.style.opacity = '0';
+        appWrapper.style.opacity = '1';
+
+        setTimeout(() => {
+            welcomeScreen.style.display = 'none';
+        }, 1000); // Match transition duration
+        
+        // FIX: Explicitly set the home page as active to prevent showing the wrong page.
+        showPage('page-home'); 
+    });
+
+
+    // --- Main App Logic ---
     // Element references
     const pages = document.querySelectorAll('.page');
     const navButtons = document.querySelectorAll('.nav-btn');
@@ -607,6 +992,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const addBiopathForm = document.getElementById('add-biopath-form');
     const pageMenuBtn = document.getElementById('page-menu-btn');
     const pageMenuDropdown = document.getElementById('page-menu-dropdown');
+    const homeMateriaMedicaBtn = document.getElementById('home-materia-medica-btn');
     
     // Image Zoom Modal Elements
     const imageModal = document.getElementById('image-viewer-modal');
@@ -623,7 +1009,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'page-manage-remedies': 'Manage Remedies', 'page-biopath': 'Biopath', 'page-infographic': 'Remedygrphy',
         'page-upload-infographic': 'Upload Remedygrphy', 'page-content': 'Content', 'page-upload-content': 'Upload Content',
         'page-upload-biopath': 'Upload Biopath', 'page-biopath-form': 'Add Biopath Entry', 'page-biopath-groups': 'Biopath Groups',
-        'page-biopath-subgroups': 'Biopath Sub-Groups', 'page-biopath-detail': 'Biopath Details'
+        'page-biopath-subgroups': 'Biopath Sub-Groups', 'page-biopath-detail': 'Biopath Details', 'page-materia-medica': 'Materia Medica'
     };
     
     // Set today's date in add forms automatically
@@ -674,8 +1060,9 @@ document.addEventListener('DOMContentLoaded', function () {
         renderManageInfographicsList();
         renderContentList();
         renderManageContentList();
-        renderDailyContent(); // New function for home page carousels
-        showPage('page-home'); // Set initial active state correctly
+        renderDailyContent();
+        renderMateriaMedicaGrid();
+        showPage('page-home'); 
     }
     
     // --- LocalStorage Helper Functions ---
@@ -728,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             // Handle header visibility
-            const pagesWithoutHeader = ['page-home', 'page-infographic', 'page-content'];
+            const pagesWithoutHeader = ['page-home', 'page-infographic', 'page-content', 'page-biopath'];
             if (pagesWithoutHeader.includes(pageId)) {
                 if (placeholderHeader.parentElement !== appContainer) appContainer.prepend(placeholderHeader);
                 placeholderHeader.classList.add('hidden');
@@ -766,7 +1153,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }).join('') : `<p class="text-slate-400 text-center py-4">No remedies found.</p>`;
     }
 
-    // START: NEW RENDERING FUNCTIONS FOR HOME PAGE
+    // FIX: Modified daily content function to include fallbacks, ensuring sections are not empty.
     function renderDailyContent() {
         const todayStr = getTodayDateString();
         const dateSpan = document.getElementById('daily-insight-date');
@@ -775,20 +1162,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         dateSpan.textContent = today.toLocaleDateString(undefined, options);
 
-        // Filter data for today's content
-        // IMPORTANT: This assumes your data in Firebase has an 'uploadDate' field in "YYYY-MM-DD" format.
-        const todaysRemedies = remedyData.filter(item => item.uploadDate === todayStr);
-        const todaysInfographics = infographicData.filter(item => item.uploadDate === todayStr);
-        const todaysVideos = contentData.filter(item => item.uploadDate === todayStr);
-
+        // --- Daily Insight (Remedies) ---
+        let todaysRemedies = remedyData.filter(item => item.uploadDate === todayStr);
         const remedySlider = document.getElementById('daily-remedy-slider');
         const remedySection = document.getElementById('daily-insight-section');
+
+        // Fallback: If no remedies for today, show the most recent 3
+        if (todaysRemedies.length === 0 && remedyData.length > 0) {
+            const sortedByDate = [...remedyData].sort((a, b) => (b.uploadDate || '').localeCompare(a.uploadDate || ''));
+            todaysRemedies = sortedByDate.slice(0, 3);
+        }
+
         if(todaysRemedies.length > 0) {
             remedySection.style.display = 'block';
             remedySlider.innerHTML = todaysRemedies.map(remedy => {
                 const firstSectionKey = remedy.sections ? Object.keys(remedy.sections)[0] : '';
-                const firstSectionValue = firstSectionKey ? remedy.sections[firstSectionKey] : remedy.description;
-                // Truncate the description for the card
+                const firstSectionValue = firstSectionKey ? remedy.sections[firstSectionKey] : (remedy.description || 'No description available.');
                 const shortDescription = firstSectionValue.length > 120 ? firstSectionValue.substring(0, 120) + '...' : firstSectionValue;
 
                 return `
@@ -813,11 +1202,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`;
             }).join('');
         } else {
-            remedySection.style.display = 'none'; // Hide section if no new remedies
+            remedySection.style.display = 'none';
         }
 
+        // --- Today's Remedygrphy (Infographics) ---
+        let todaysInfographics = infographicData.filter(item => item.uploadDate === todayStr);
         const infographicSlider = document.getElementById('daily-infographic-slider');
         const infographicSection = document.getElementById('daily-infographic-section');
+        
+        // Fallback: If no infographics for today, show the most recent 3
+        if (todaysInfographics.length === 0 && infographicData.length > 0) {
+            const sortedByDate = [...infographicData].sort((a, b) => (b.uploadDate || '').localeCompare(a.uploadDate || ''));
+            todaysInfographics = sortedByDate.slice(0, 3);
+        }
+
         if(todaysInfographics.length > 0) {
             infographicSection.style.display = 'block';
             infographicSlider.innerHTML = todaysInfographics.map(info => `
@@ -836,9 +1234,18 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             infographicSection.style.display = 'none';
         }
-
+        
+        // --- Today's Videos (Content) ---
+        let todaysVideos = contentData.filter(item => item.uploadDate === todayStr);
         const videoSlider = document.getElementById('daily-video-slider');
         const videoSection = document.getElementById('daily-video-section');
+
+        // Fallback: If no videos for today, show the most recent 3
+        if (todaysVideos.length === 0 && contentData.length > 0) {
+            const sortedByDate = [...contentData].sort((a, b) => (b.uploadDate || '').localeCompare(a.uploadDate || ''));
+            todaysVideos = sortedByDate.slice(0, 3);
+        }
+
         if(todaysVideos.length > 0) {
             videoSection.style.display = 'block';
             videoSlider.innerHTML = todaysVideos.map(content => `
@@ -858,7 +1265,34 @@ document.addEventListener('DOMContentLoaded', function () {
             videoSection.style.display = 'none';
         }
     }
-    // END: NEW RENDERING FUNCTIONS
+    
+    // Renders the Materia Medica grid with provided images
+    function renderMateriaMedicaGrid() {
+        const gridContainer = document.getElementById('materia-medica-grid');
+        if (!gridContainer) return;
+
+        const images = [
+            "https://i.ibb.co/Wpvq7zSB/Generated-Image-January-07-2026-9-32-PM.png",
+            "https://i.ibb.co/99p3wBnJ/Generated-Image-January-07-2026-9-38-PM.png",
+            "https://i.ibb.co/tw5TTBys/Generated-Image-January-07-2026-9-48-PM.png",
+            "https://i.ibb.co/B596nZCL/Generated-Image-January-07-2026-9-52-PM.png",
+            "https://i.ibb.co/pjprv8kV/Generated-Image-January-07-2026-9-55-PM.png",
+            "https://i.ibb.co/9kvS478Q/Generated-Image-January-07-2026-10-04-PM.png",
+            "https://i.ibb.co/bMxGWnJX/Generated-Image-January-07-2026-10-10-PM.png",
+            "https://i.ibb.co/dJwgy88P/Generated-Image-January-07-2026-10-13-PM.png",
+            "https://i.ibb.co/Jb2Ntk3/Generated-Image-January-07-2026-10-16-PM.png",
+            "https://i.ibb.co/zWP3xCq9/Generated-Image-January-07-2026-10-19-PM.png",
+            "https://i.ibb.co/Df2vH9Zr/Generated-Image-January-07-2026-10-18-PM.png",
+            "https://i.ibb.co/VY1kBTgv/Generated-Image-January-07-2026-10-47-PM.png",
+            "https://i.ibb.co/0pZJw2ZB/Generated-Image-January-07-2026-10-50-PM.png"
+        ];
+
+        gridContainer.innerHTML = images.map(src => `
+            <div class="aspect-[9/16] bg-card-dark rounded-xl overflow-hidden border border-card-border">
+                <img src="${src}" class="w-full h-full object-cover" alt="Materia Medica Image">
+            </div>
+        `).join('');
+    }
 
     function renderSavedList() {
         const savedNames = getSavedRemedies();
@@ -890,9 +1324,7 @@ document.addEventListener('DOMContentLoaded', function () {
         remedyData.forEach(remedy => {
             if (remedy.sections) {
                  Object.keys(remedy.sections).forEach(symptom => {
-                    if (!['Dose', 'Relationship', 'Modalities', 'Uses', 'Compare'].includes(symptom)) {
-                        allSymptoms.add(symptom);
-                    }
+                    allSymptoms.add(symptom);
                 });
             }
         });
@@ -1010,6 +1442,18 @@ document.addEventListener('DOMContentLoaded', function () {
         detailContainer.innerHTML = contentHTML;
         showPage('page-remedy-detail', remedy.name);
     }
+
+    function showRemediesForSymptom(symptomName) {
+        if (!symptomName) return;
+        
+        const filteredRemedies = remedyData.filter(remedy => {
+            return remedy.sections && Object.keys(remedy.sections).some(key => key.toLowerCase() === symptomName.toLowerCase());
+        });
+
+        renderRemedyList(filteredRemedies, 'symptom-remedies-list');
+        showPage('page-symptom-remedies', symptomName);
+    }
+
     function performSearch() {
         const query = homeSearchInput.value.trim();
         if (!query) return;
@@ -1143,7 +1587,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function renderBiopathGroups(kingdom) {
         const listContainer = document.getElementById('biopath-groups-list');
-        const groups = biopathData[kingdom] ? Object.keys(biopathData[kingdom]).sort() : [];
+        const existingGroups = biopathData[kingdom] ? Object.keys(biopathData[kingdom]) : [];
+        const predefined = predefinedBiopathGroups[kingdom] || [];
+        const combinedSet = new Set([...existingGroups, ...predefined]);
+        const groups = Array.from(combinedSet).sort();
+        
         if (groups.length > 0) {
             listContainer.innerHTML = groups.map(group => `
                 <button class="biopath-group-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="${kingdom}" data-group="${group}">
@@ -1197,19 +1645,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const backBtn = target.closest('.back-btn');
         if (backBtn) {
             const currentPageId = backBtn.closest('.page').id;
-            // Enhanced back button logic for biopath drill-down
-            if (currentPageId === 'page-biopath-groups') showPage('page-biopath');
-            else if (currentPageId === 'page-biopath-subgroups') {
+            // Enhanced back button logic
+            if (['page-biopath-groups', 'page-materia-medica', 'page-remedies', 'page-symptoms', 'page-saved', 'page-compare', 'page-search-results', 'page-add-remedy'].includes(currentPageId)) {
+                 showPage('page-home');
+            } else if (currentPageId === 'page-symptom-remedies') {
+                showPage('page-symptoms'); 
+            } else if (currentPageId === 'page-biopath-subgroups') {
                 const kingdom = document.querySelector('#biopath-subgroups-list .biopath-subgroup-btn')?.dataset.kingdom;
                 if(kingdom) renderBiopathGroups(kingdom);
                 else showPage('page-biopath');
-            }
-            else if (currentPageId === 'page-biopath-detail') {
+            } else if (currentPageId === 'page-biopath-detail') {
                  const groupBtn = document.querySelector('#biopath-subgroups-list .biopath-subgroup-btn');
                  if(groupBtn) renderBiopathSubGroups(groupBtn.dataset.kingdom, groupBtn.dataset.group);
                  else showPage('page-biopath');
+            } else {
+                showPage('page-home'); // Default back action
             }
-            else showPage('page-home'); // Default back action
         }
         if (target.closest('.delete-remedy-btn')) {
             const btn = target.closest('.delete-remedy-btn');
@@ -1306,7 +1757,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (target.closest('#select-group-btn')) {
             const kingdom = document.getElementById('biopath-kingdom').value;
             const suggestionsContainer = document.getElementById('group-suggestions');
-            const groups = Object.keys(biopathData[kingdom] || {}).sort();
+            
+            const existingGroups = Object.keys(biopathData[kingdom] || {});
+            const predefined = predefinedBiopathGroups[kingdom] || [];
+            
+            const combinedSet = new Set([...predefined, ...existingGroups]);
+            const groups = Array.from(combinedSet).sort();
 
             if (suggestionsContainer.classList.contains('hidden')) {
                 if (groups.length > 0) {
@@ -1359,6 +1815,10 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('subgroup-suggestions').classList.add('hidden');
         }
     });
+
+    homeMateriaMedicaBtn.addEventListener('click', () => {
+        showPage('page-materia-medica');
+    });
     
     moduleButtons.forEach(button => button.addEventListener('click', () => {
         currentSearchTerm = '';
@@ -1384,7 +1844,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (targetPage === 'page-manage-remedies') renderManageRemediesList();
         if (targetPage === 'page-upload-infographic') { infographicForm.reset(); document.getElementById('infographic-id').value = ''; document.getElementById('infographic-upload-date').value = getTodayDateString(); }
         if (targetPage === 'page-upload-content') { contentForm.reset(); document.getElementById('content-id').value = ''; document.getElementById('content-upload-date').value = getTodayDateString(); }
-        if (targetPage === 'page-upload-biopath') { /* No specific action needed, just show the page */ }
+        if (targetPage === 'page-upload-biopath') { /* No specific action needed */ }
         showPage(targetPage);
         pageMenuDropdown.style.display = 'none';
     }));
@@ -1482,7 +1942,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const kingdom = document.getElementById('biopath-kingdom').value;
         if (!kingdom) return alert('Error: Kingdom not specified.');
 
-        let group, subGroup, content, dbPath;
+        let group, subGroup, content;
         
         if (kingdom === 'Other') {
             const cat1 = document.getElementById('biopath-cat1').value.trim();
@@ -1491,7 +1951,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!cat1 || !cat2 || !cat3) return alert('Please fill all three categories.');
             group = cat1;
             subGroup = cat2;
-            content = cat3; // In this special case, the third box is the content.
+            content = cat3;
         } else {
             group = document.getElementById('biopath-group').value.trim();
             subGroup = document.getElementById('biopath-subgroup').value.trim();
@@ -1499,7 +1959,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!group || !subGroup || !content) return alert('Please fill all fields.');
         }
 
-        dbPath = `biopath/${kingdom}/${group}/${subGroup}`;
+        const dbPath = `biopath/${kingdom}/${group}/${subGroup}`;
         const dataToSave = { content: content };
         
         saveButton.disabled = true; saveButton.textContent = 'Saving...';
@@ -1568,9 +2028,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function openZoomableImage(url) {
         modalImage.src = url;
         imageModal.classList.remove('hidden');
-        imageModal.addEventListener('touchstart', onTouchStart);
-        imageModal.addEventListener('touchmove', onTouchMove);
-        imageModal.addEventListener('touchend', onTouchEnd);
+        imageModal.addEventListener('touchstart', onTouchStart, { passive: false });
+        imageModal.addEventListener('touchmove', onTouchMove, { passive: false });
+        imageModal.addEventListener('touchend', onTouchEnd, { passive: false });
     }
     
     function closeZoomableImage() {
@@ -1592,6 +2052,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('compare-btn').addEventListener('click', handleCompare);
 
+    // Initial data fetch
     initializeAndFetchData();
 });
 </script>
