@@ -1072,7 +1072,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     lastLoadedRemedyKey = newRemedies[newRemedies.length - 1].id;
                     remedyData = [...remedyData, ...newRemedies]; 
                     const uniqueNewRemedies = Array.from(new Map(newRemedies.map(item => [item['name'], item])).values());
-                    appendRemediesToList(uniqueNewRemedies.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list', '.remedy-link-btn'); 
+                    appendRemediesToList(uniqueNewRemedies.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list', 'remedy-link-btn'); 
                 }
 
                 if (newRemedies.length < REMEDIES_PER_PAGE) {
@@ -1481,16 +1481,16 @@ document.addEventListener('DOMContentLoaded', function () {
             boericke: { name: 'William Boericke', img: 'https://i.ibb.co/0RLp1zK8/IMG-20260113-181113.png' },
             allen: { name: 'H.C. Allen', img: 'https://i.ibb.co/ymdbBhDf/Generated-Image-January-13-2026-6-19-PM.png' },
             kent: { name: 'J.T. Kent', img: 'https://i.ibb.co/dsGdBJss/IMG-20260113-222809.png' },
-            farrington: { name: 'E.A. Farrington', img: 'https://via.placeholder.com/300' },
-            vithoulkas: { name: 'George Vithoulkas', img: 'https://via.placeholder.com/300' },
-            choudhuri: { name: 'CHOUDHURI N. M.', img: 'https://via.placeholder.com/300' },
-            coulter: { name: 'CATHERINE R. COULTER', img: 'https://via.placeholder.com/300' },
-            hering: { name: 'CONSTANTINE HERING', img: 'https://via.placeholder.com/300' },
-            lilienthal: { name: 'S. LILIENTHAL, M.D.', img: 'https://via.placeholder.com/300' },
-            lippe: { name: 'AD. LIPPE, M.D.', img: 'https://via.placeholder.com/300' },
-            murphy: { name: 'MURPHY Robin', img: 'https://via.placeholder.com/300' },
-            dubey: { name: 'Dr. S.K. Dubey', img: 'https://via.placeholder.com/300' },
-            dunham: { name: 'CARROLL DUNHAM, M.D.', img: 'https://via.placeholder.com/300' }
+            farrington: { name: 'E.A. Farrington', img: 'https://i.ibb.co/mrYBHNDb/IMG-20260115-172139.png' },
+            vithoulkas: { name: 'George Vithoulkas', img: 'https://i.ibb.co/jZD9nP7P/Generated-Image-January-15-2026-5-03-PM.png' },
+            choudhuri: { name: 'CHOUDHURI N. M.', img: 'https://i.ibb.co/kV3GnhWP/Generated-Image-January-15-2026-4-56-PM.png' },
+            coulter: { name: 'CATHERINE R. COULTER', img: 'https://i.ibb.co/KHmL1hy/IMG-20260115-171802.png' },
+            hering: { name: 'CONSTANTINE HERING', img: 'https://i.ibb.co/0kHmxQ9/IMG-20260115-172927.png' },
+            lilienthal: { name: 'S. LILIENTHAL, M.D.', img: 'https://i.ibb.co/wZnCw3Pj/IMG-20260115-173724.png' },
+            lippe: { name: 'AD. LIPPE, M.D.', img: 'https://i.ibb.co/RqpNBkZ/IMG-20260115-173107.png' },
+            murphy: { name: 'MURPHY Robin', img: 'https://i.ibb.co/RkWBLQr8/IMG-20260115-173524.png' },
+            dubey: { name: 'Dr. S.K. Dubey', img: 'https://i.ibb.co/nspBCJCz/IMG-20260115-173836.png' },
+            dunham: { name: 'CARROLL DUNHAM, M.D.', img: 'https://i.ibb.co/1GXrwphB/Generated-Image-January-15-2026-5-32-PM.png' }
         };
         for(const authorKey in mergedRemedy.authors) {
              const details = authorDetails[authorKey];
