@@ -19,10 +19,6 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -45,7 +41,6 @@
                     fontFamily: { 
                         "display": ["Inter", "sans-serif"],
                         "body": ["Noto Sans", "sans-serif"],
-                        "mono": ["Roboto Mono", "monospace"],
                     },
                     borderRadius: {
                         "DEFAULT": "0.25rem", 
@@ -65,7 +60,6 @@
                         'subtle-bob': 'subtleBob 5s ease-in-out infinite',
                         'remedy-scroll': 'remedyScroll 40s linear infinite',
                         'magnify-search': 'magnifySearch 10s ease-in-out infinite',
-                        'blink-caret': 'blinkCaret 1s step-end infinite',
                     },
                     keyframes: {
                         float: {
@@ -102,11 +96,7 @@
                             '50%': { transform: 'translate(30%, 70%) scale(1)' },
                             '75%': { transform: 'translate(70%, 20%) scale(1.1)' },
                             '100%': { transform: 'translate(20%, 10%) scale(1)' },
-                        },
-                        blinkCaret: {
-                           'from, to': { 'border-color': 'transparent' },
-                           '50%': { 'border-color': '#25aff4' },
-                        },
+                        }
                     }
                 },
             },
@@ -219,44 +209,8 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-white overflow-x-hidden">
 
-    <!-- START: NEW INTRO SCREENS -->
-    <div id="initial-enter-screen" class="fixed inset-0 z-[102] flex flex-col items-center justify-center bg-navy-deep transition-opacity duration-500">
-        <div class="text-center">
-            <h1 class="font-display font-bold text-4xl md:text-5xl tracking-widest text-white mb-8">REMEDICON</h1>
-            <button id="enter-btn" class="group/btn relative w-64 h-14 rounded-full flex items-center justify-center overflow-hidden transition-all duration-200 ease-in-out shadow-lg hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 active:shadow-lg active:scale-95 no-underline">
-                <div class="absolute inset-0 bg-gradient-to-r from-primary to-[#064e6b] group-hover/btn:brightness-110 transition-all"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                <div class="relative flex items-center gap-2">
-                    <span class="text-white font-display font-bold text-lg tracking-wide">Enter</span>
-                </div>
-            </button>
-        </div>
-    </div>
-
-    <div id="coding-animation-screen" class="hidden fixed inset-0 z-[101] flex flex-col items-center justify-center bg-navy-deep transition-opacity duration-500 p-4">
-        <h2 class="font-mono font-bold text-5xl md:text-7xl text-primary mb-8 text-center">prototype coding</h2>
-        <div class="w-full max-w-4xl h-80 bg-black/50 rounded-lg border border-primary/20 p-4 font-mono text-green-400 text-sm overflow-y-auto no-scrollbar">
-            <pre id="code-output"></pre><span class="inline-block h-4 w-2 border-r-2 border-primary animate-blink-caret"></span>
-        </div>
-    </div>
-
-    <div id="secondary-enter-screen" class="hidden fixed inset-0 z-[101] flex flex-col items-center justify-center bg-navy-deep transition-opacity duration-500">
-        <div class="text-center">
-             <h1 class="font-display font-bold text-4xl md:text-5xl tracking-widest text-white mb-8">REMEDICON</h1>
-            <button id="secondary-enter-btn" class="group/btn relative w-64 h-14 rounded-full flex items-center justify-center overflow-hidden transition-all duration-200 ease-in-out shadow-lg hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 active:shadow-lg active:scale-95 no-underline">
-                <div class="absolute inset-0 bg-gradient-to-r from-primary to-[#064e6b] group-hover/btn:brightness-110 transition-all"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                <div class="relative flex items-center gap-2">
-                    <span class="text-white font-display font-bold text-lg tracking-wide">Enter</span>
-                </div>
-            </button>
-        </div>
-    </div>
-    <!-- END: NEW INTRO SCREENS -->
-
-
     <!-- Welcome Screen Container -->
-    <div id="welcome-screen-wrapper" class="hidden fixed inset-0 z-[100] transition-opacity duration-1000 ease-in-out">
+    <div id="welcome-screen-wrapper" class="fixed inset-0 z-[100] transition-opacity duration-1000 ease-in-out">
         <!-- Preloader Element -->
         <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-navy-deep transition-opacity duration-1000 ease-out">
             <div class="relative w-24 h-24">
@@ -393,12 +347,12 @@
                         </button>
                     </div>
                 </header>
-                <div id="home-materia-medica-btn" class="relative w-full h-[220px] overflow-hidden cursor-pointer">
+                <div class="relative w-full h-[220px] overflow-hidden">
                     <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiYG-YsHaK6neuhqwY0FxvmkIQjW8AFwJUtlDwnlBZYkANzrtT7XBF6GnNUj2BD0A3QBCSQ0MQRSVtP2mDL81U-bhomQRpBtmodQvmGlkB4w7TjEzyF2XeY8wfvngWwFcL1cmRtv-qnguslkzyqgtDTXIy-eoQcXtr78_5VMNLhOilZJyr9UC4iMK0-fxwIPCNrqjlUZGDvRLNCggH2YuXooA-c6QPKjCd4_vbi8GfxQCVs3kKa4pEyZH11OAAC842KGJSDLmjIzo');"></div>
                     <div class="absolute inset-0 bg-gradient-to-b from-background-dark/40 via-background-dark/60 to-background-dark"></div>
                     <div class="relative z-10 px-4 h-full flex flex-col justify-end pb-8">
                         <h2 class="text-white/90 text-2xl font-semibold mb-1">Materia Medica</h2>
-                        <p class="text-slate-400 text-sm font-light">by W. Boericke, M.D.</p>
+                        <p class="text-slate-400 text-sm font-light">by W. Boericke, M.D., H.C. Allen & J.T. Kent</p>
                         <p class="text-slate-300 text-sm font-light mt-1">Explore over 3,000 remedies & symptoms.</p>
                     </div>
                 </div>
@@ -526,9 +480,23 @@
             
             <div id="page-remedies" class="page px-4 py-2">
                 <div id="remedies-list" class="space-y-2"></div>
+                <!-- Load More Button Container -->
+                <div id="load-more-container" class="py-6 text-center" style="display: none;">
+                    <button id="load-more-btn" class="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-lg transition-colors">
+                        Load More
+                    </button>
+                </div>
             </div>
-            
-            <div id="page-remedy-detail" class="page px-4 py-6 text-slate-300 leading-relaxed"></div>
+
+            <!-- NEW PAGE: Author Selection -->
+            <div id="page-author-selection" class="page px-4 py-6">
+                <div id="author-selection-container" class="grid grid-cols-2 gap-4">
+                    <!-- Author cards will be injected here -->
+                </div>
+            </div>
+
+            <!-- MODIFIED PAGE: Renamed from page-remedy-detail -->
+            <div id="page-author-remedy-detail" class="page px-4 py-6 text-slate-300 leading-relaxed"></div>
             
             <div id="page-symptoms" class="page px-4 py-2">
                 <div id="symptoms-list" class="space-y-2"></div>
@@ -553,47 +521,73 @@
                 <div id="comparison-results" class="mt-6"></div>
             </div>
 
+            <!-- ########## START: MODIFIED "ADD REMEDY" PAGE ########## -->
             <div id="page-add-remedy" class="page px-4 py-6">
                 <form id="add-remedy-form" class="space-y-4">
-                    <div>
-                        <label for="remedy-book" class="block text-sm font-medium text-slate-300 mb-1">Book Name</label>
-                        <input type="text" id="remedy-book" value="W. Boericke, M.D." class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
-                    </div>
-                    <div>
-                        <label for="raw-remedy-text" class="block text-sm font-medium text-slate-300 mb-1">Paste Remedy Text Block Here</label>
-                        <textarea id="raw-remedy-text" rows="10" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Paste the full text for a single remedy..."></textarea>
-                    </div>
-                    <button type="button" id="parse-remedy-btn" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-lg transition-colors">Parse and Populate Form</button>
-                    
-                    <div class="border-t border-card-border pt-4 mt-6">
-                        <h3 class="text-lg font-semibold text-white mb-3 text-center">Form Preview</h3>
-                        <div>
-                            <label for="remedy-name" class="block text-sm font-medium text-slate-300 mb-1">Remedy Name</label>
-                            <input type="text" id="remedy-name" required class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., ACONITUM NAPELLUS"/>
-                        </div>
-                        <div>
-                            <label for="remedy-common-name" class="block text-sm font-medium text-slate-300 mb-1">Common Name</label>
-                            <input type="text" id="remedy-common-name" class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g., Monkshood"/>
-                        </div>
-                        <div>
-                            <label for="remedy-upload-date" class="block text-sm font-medium text-slate-300 mb-1">Upload Date</label>
-                            <input type="date" id="remedy-upload-date" required class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"/>
-                        </div>
-                        <div>
-                            <label for="remedy-description" class="block text-sm font-medium text-slate-300 mb-1">Description</label>
-                            <textarea id="remedy-description" rows="4" class="w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
-                        </div>
+                    <input type="hidden" id="existing-remedy-id" value="">
 
-                        <div class="border-t border-card-border pt-4 mt-4">
-                            <h3 class="text-lg font-semibold text-white mb-2">Sections</h3>
-                            <div id="dynamic-sections-container" class="space-y-3">
-                            </div>
+                    <!-- Step 1: Select or Add Remedy -->
+                    <div id="remedy-selection-container">
+                        <label for="remedy-name-input" class="block text-sm font-medium text-slate-300 mb-1">1. Select or Add Remedy</label>
+                        <div class="relative">
+                             <input type="text" id="remedy-name-input" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Filter existing or type new name...">
                         </div>
+                        <div id="remedy-common-name-container" class="hidden mt-2">
+                             <label for="remedy-common-name-input" class="block text-sm font-medium text-slate-300 mb-1">Common Name for New Remedy</label>
+                             <input type="text" id="remedy-common-name-input" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary">
+                        </div>
+                        <div id="add-page-remedies-list-container" class="mt-2 space-y-2 max-h-60 overflow-y-auto"></div>
                     </div>
                     
-                    <button type="submit" id="save-remedy-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors !mt-6">Save Remedy to Database</button>
+                    <!-- Step 2: View Existing Remedy Details -->
+                    <div id="existing-remedy-details-container" class="hidden mt-4 space-y-4">
+                        <!-- Content will be injected here by JavaScript -->
+                    </div>
+
+                    <!-- Step 3: Button to add new author data -->
+                    <button type="button" id="show-add-author-form-btn" class="hidden w-full flex items-center justify-center gap-2 bg-teal-600/20 border-2 border-dashed border-teal-600/50 hover:border-teal-600/80 text-teal-300 hover:text-teal-200 transition-colors py-3 rounded-lg">
+                        <span class="material-symbols-outlined">add</span>
+                        <span>Add New Author Data</span>
+                    </button>
+
+                    <!-- Step 4: Form for adding new author data -->
+                    <div id="new-author-form-container" class="hidden border-t-2 border-primary/20 pt-4 mt-4 space-y-4">
+                        <div>
+                            <label for="remedy-author-select" class="block text-sm font-medium text-slate-300 mb-1">Select Author</label>
+                            <select id="remedy-author-select" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 focus:outline-none focus:ring-1 focus:ring-primary">
+                                <option value="" disabled selected>-- Choose an author --</option>
+                                <option value="allen">H.C. Allen</option>
+                                <option value="boericke">W. Boericke, M.D.</option>
+                                <option value="kent">J.T. Kent</option>
+                                <option value="farrington">E.A. Farrington</option>
+                                <option value="vithoulkas">George Vithoulkas</option>
+                                <option value="choudhuri">CHOUDHURI N. M.</option>
+                                <option value="coulter">CATHERINE R. COULTER</option>
+                                <option value="hering">CONSTANTINE HERING</option>
+                                <option value="lilienthal">S. LILIENTHAL, M.D.</option>
+                                <option value="lippe">AD. LIPPE, M.D.</option>
+                                <option value="murphy">MURPHY Robin</option>
+                                <option value="dubey">Dr. S.K. Dubey</option>
+                                <option value="dunham">CARROLL DUNHAM, M.D.</option>
+                            </select>
+                        </div>
+                        <div>
+                             <label for="new-author-description" class="block text-sm font-medium text-slate-300 mb-1">Description</label>
+                             <textarea id="new-author-description" rows="4" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter author's general description..."></textarea>
+                        </div>
+                        <div id="dynamic-headings-container" class="space-y-3">
+                            <!-- Headings and sections will be added here -->
+                        </div>
+                        <button type="button" id="add-heading-btn" class="w-full flex items-center justify-center gap-2 border-2 border-dashed border-card-border hover:border-primary/50 text-slate-400 hover:text-primary transition-colors py-3 rounded-lg">
+                            <span class="material-symbols-outlined">add</span>
+                            <span>Add Heading</span>
+                        </button>
+                    </div>
+                    
+                    <button type="button" id="save-all-remedies-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors !mt-6">Save Remedy Data</button>
                 </form>
             </div>
+            <!-- ########## END: MODIFIED "ADD REMEDY" PAGE ########## -->
             
             <div id="page-manage-remedies" class="page px-4 py-2">
                 <div id="manage-remedies-list" class="space-y-2">
@@ -695,13 +689,8 @@
                 <!-- Biopath final content will be rendered here -->
             </div>
             <!-- END: NEW BIOPATH PAGES -->
-            
-            <div id="page-materia-medica" class="page px-4 py-6">
-                <div id="materia-medica-grid" class="grid grid-cols-2 gap-4">
-                    <!-- Cards will be injected here by JavaScript -->
-                </div>
-            </div>
 
+            <div id="page-materia-medica" class="page px-4 py-6"><p class="text-slate-300">This is the Materia Medica page.</p></div>
             <div id="page-repertory" class="page px-4 py-6"><p class="text-slate-300">This is the Repertory page.</p></div>
             <div id="page-profile" class="page px-4 py-6"><p class="text-slate-300">This is the Profile page.</p></div>
             
@@ -729,15 +718,13 @@
                     </div>
                     <section class="px-4 mb-8">
                         <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Browse by Kingdom</h2></div>
-                        <!-- MODIFICATION START: Changed flex-col to a horizontal scrolling container and aspect-video to aspect-square -->
-                        <div class="flex gap-4 overflow-x-auto no-scrollbar pb-4">
-                            <div data-kingdom="Plant" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-green-500">eco</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-green-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-green-500"><span class="material-symbols-outlined">eco</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Plant</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Botanic remedies</p></div></div></div>
-                            <div data-kingdom="Mineral" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-amber-500">hexagon</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-amber-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-amber-500"><span class="material-symbols-outlined">hexagon</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Mineral</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elements &amp; Salts</p></div></div></div>
-                            <div data-kingdom="Animal" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-red-400">pets</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-red-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-red-400"><span class="material-symbols-outlined">pets</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Animal</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fauna based</p></div></div></div>
-                            <div data-kingdom="Nosode" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-purple-400">coronavirus</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-purple-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-purple-400"><span class="material-symbols-outlined">coronavirus</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Nosode</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Disease products</p></div></div></div>
-                            <div data-kingdom="Sarcode" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-square w-2/3 flex-shrink-0"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-slate-400">healing</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-slate-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-slate-400"><span class="material-symbols-outlined">healing</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Sarcode</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Healthy specimens</p></div></div></div>
+                        <div class="flex flex-col gap-4">
+                            <div data-kingdom="Plant" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-video"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-green-500">eco</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-green-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-green-500"><span class="material-symbols-outlined">eco</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Plant</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Botanic remedies</p></div></div></div>
+                            <div data-kingdom="Mineral" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-video"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-amber-500">hexagon</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-amber-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-amber-500"><span class="material-symbols-outlined">hexagon</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Mineral</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elements &amp; Salts</p></div></div></div>
+                            <div data-kingdom="Animal" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-video"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-red-400">pets</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-red-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-red-400"><span class="material-symbols-outlined">pets</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Animal</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fauna based</p></div></div></div>
+                            <div data-kingdom="Nosode" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-video"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-purple-400">coronavirus</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-purple-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-purple-400"><span class="material-symbols-outlined">coronavirus</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Nosode</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Disease products</p></div></div></div>
+                            <div data-kingdom="Sarcode" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-video"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-slate-400">healing</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-slate-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-slate-400"><span class="material-symbols-outlined">healing</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Sarcode</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Healthy specimens</p></div></div></div>
                         </div>
-                        <!-- MODIFICATION END -->
                     </section>
                     <section class="mb-8">
                         <div class="px-4 mb-3"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Clinical Systems</h2></div>
@@ -837,7 +824,7 @@
 // Import Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics.js";
-import { getDatabase, ref, get, set, push, remove } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+import { getDatabase, ref, get, set, push, remove, query, limitToFirst, orderByKey, startAfter, update } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -858,10 +845,41 @@ const database = getDatabase(app);
 
 // Global state variables
 let remedyData = []; 
+let allRemediesForDatalist = [];
 let infographicData = []; 
 let contentData = [];
 let biopathData = {};
 let currentSearchTerm = '';
+let lastLoadedRemedyKey = null; 
+let isLoadingMore = false; 
+let allRemediesLoaded = false; 
+const REMEDIES_PER_PAGE = 25; 
+
+// --- DATA MIGRATION AND ADAPTATION LOGIC ---
+function adaptRemedyData(remedyObject, id) {
+    const newRemedy = {
+        id: id,
+        name: remedyObject.name,
+        commonName: remedyObject.commonName,
+        uploadDate: remedyObject.uploadDate || null, 
+        authors: {}
+    };
+
+    if (remedyObject.authors) {
+        newRemedy.authors = remedyObject.authors;
+    } else {
+        // This is for backward compatibility with the old data structure
+        newRemedy.authors.boericke = {
+            description: remedyObject.description || "",
+            sections: remedyObject.sections || {},
+            book: remedyObject.book || "W. Boericke, M.D.", 
+            uploadDate: remedyObject.uploadDate || null
+        };
+    }
+    return newRemedy;
+}
+
+
 const predefinedBiopathGroups = {
     Plant: ['ANACARDIACEAE', 'LOGANIACEAE FAMILY', 'COMPOSITAE FAMILY', 'CUCURBITACEAE FAMILY', 'PAPAVARACEAE FAMILY', 'RANUNCULACEAE', 'SOLANACEAE'],
     Animal: ['OPHIDIA GROUP', 'SPIDER GROUP', 'INSECT GROUP', 'FISH GROUP'],
@@ -869,98 +887,21 @@ const predefinedBiopathGroups = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-    // --- START: NEW INTRO LOGIC ---
-    const initialEnterScreen = document.getElementById('initial-enter-screen');
-    const codingAnimationScreen = document.getElementById('coding-animation-screen');
-    const secondaryEnterScreen = document.getElementById('secondary-enter-screen');
-    const enterBtn = document.getElementById('enter-btn');
-    const secondaryEnterBtn = document.getElementById('secondary-enter-btn');
+    // --- Welcome Screen and App Transition Logic ---
     const welcomeScreen = document.getElementById('welcome-screen-wrapper');
     const appWrapper = document.getElementById('app-wrapper');
-    
-    enterBtn.addEventListener('click', () => {
-        initialEnterScreen.style.opacity = '0';
-        setTimeout(() => {
-            initialEnterScreen.style.display = 'none';
-            codingAnimationScreen.classList.remove('hidden');
-            startCodingAnimation();
-        }, 500);
-
-        setTimeout(() => {
-            codingAnimationScreen.style.opacity = '0';
-            setTimeout(() => {
-                codingAnimationScreen.style.display = 'none';
-                secondaryEnterScreen.classList.remove('hidden');
-                secondaryEnterScreen.style.opacity = '1';
-            }, 1000);
-        }, 15000); // 15 seconds for the animation
-    });
-
-    secondaryEnterBtn.addEventListener('click', () => {
-        secondaryEnterScreen.style.opacity = '0';
-         setTimeout(() => {
-            secondaryEnterScreen.style.display = 'none';
-            welcomeScreen.classList.remove('hidden');
-            welcomeScreen.style.opacity = '1';
-            // Trigger preloader logic for the original welcome screen
-            const preloader = document.getElementById('preloader');
-             if (preloader) {
-                setTimeout(() => {
-                   preloader.style.opacity = '0';
-                   setTimeout(() => {
-                       preloader.style.display = 'none';
-                   }, 1000); 
-                }, 500); 
-            }
-        }, 500);
-    });
-
-    function startCodingAnimation() {
-        const codeOutput = document.getElementById('code-output');
-        const codeLines = [
-            'Initializing REMEDICON v3.14...',
-            'Connecting to Firebase Realtime Database...',
-            'Connection successful. Latency: 42ms.',
-            'Fetching remedy data from collection `remedies`...',
-            'Found 3,127 entries. Parsing data...',
-            'Parsing complete.',
-            'Loading modules: [MateriaMedica, Repertory, Biopath]...',
-            'Modules loaded.',
-            'Initializing UI components...',
-            'Building virtual DOM...',
-            'Rendering page: [page-home]...',
-            'Applying dark theme styles...',
-            'Attaching event listeners...',
-            'System check complete. All systems nominal.',
-            'Welcome, Doctor.',
-            'Launching application...'
-        ];
-        let lineIndex = 0;
-        let charIndex = 0;
-
-        const typingInterval = setInterval(() => {
-            if (lineIndex < codeLines.length) {
-                const currentLine = codeLines[lineIndex];
-                if (charIndex < currentLine.length) {
-                    codeOutput.textContent += currentLine.charAt(charIndex);
-                    charIndex++;
-                } else {
-                    codeOutput.textContent += '\n';
-                    lineIndex++;
-                    charIndex = 0;
-                }
-                codeOutput.parentElement.scrollTop = codeOutput.parentElement.scrollHeight;
-            } else {
-                clearInterval(typingInterval);
-            }
-        }, 50); // Speed of typing
-    }
-    // --- END: NEW INTRO LOGIC ---
-
-
-    // --- Welcome Screen and App Transition Logic ---
     const getStartedBtn = document.getElementById('get-started-btn');
 
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+           preloader.style.opacity = '0';
+           setTimeout(() => {
+               preloader.style.display = 'none';
+           }, 1000); 
+        }, 500); 
+    }
+    
     getStartedBtn.addEventListener('click', () => {
         welcomeScreen.style.opacity = '0';
         appWrapper.style.opacity = '1';
@@ -968,14 +909,10 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             welcomeScreen.style.display = 'none';
         }, 1000); // Match transition duration
-        
-        // FIX: Explicitly set the home page as active to prevent showing the wrong page.
-        showPage('page-home'); 
     });
 
 
     // --- Main App Logic ---
-    // Element references
     const pages = document.querySelectorAll('.page');
     const navButtons = document.querySelectorAll('.nav-btn');
     const moduleButtons = document.querySelectorAll('.module-btn');
@@ -983,8 +920,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const placeholderTitle = document.getElementById('placeholder-title');
     const appContainer = document.getElementById('app-container');
     const settingsButton = document.getElementById('settings-btn');
-    const addRemedyForm = document.getElementById('add-remedy-form');
-    const parseRemedyBtn = document.getElementById('parse-remedy-btn');
     const homeSearchInput = document.getElementById('home-search-input');
     const homeSearchBtn = document.getElementById('home-search-btn');
     const infographicForm = document.getElementById('infographic-form');
@@ -992,9 +927,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const addBiopathForm = document.getElementById('add-biopath-form');
     const pageMenuBtn = document.getElementById('page-menu-btn');
     const pageMenuDropdown = document.getElementById('page-menu-dropdown');
-    const homeMateriaMedicaBtn = document.getElementById('home-materia-medica-btn');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const saveAllRemediesBtn = document.getElementById('save-all-remedies-btn');
+
+    // --- "Add Remedy" Page Elements ---
+    const addRemedyForm = document.getElementById('add-remedy-form');
+    const remedySelectionContainer = document.getElementById('remedy-selection-container');
+    const remedyNameInput = document.getElementById('remedy-name-input');
+    const remedyCommonNameContainer = document.getElementById('remedy-common-name-container');
+    const remedyCommonNameInput = document.getElementById('remedy-common-name-input');
+    const addPageRemediesListContainer = document.getElementById('add-page-remedies-list-container');
+    const existingRemedyDetailsContainer = document.getElementById('existing-remedy-details-container');
+    const existingRemedyIdInput = document.getElementById('existing-remedy-id');
+    const showAddAuthorFormBtn = document.getElementById('show-add-author-form-btn');
+    const newAuthorFormContainer = document.getElementById('new-author-form-container');
+    const remedyAuthorSelect = document.getElementById('remedy-author-select');
+    const addHeadingBtn = document.getElementById('add-heading-btn');
+    const dynamicHeadingsContainer = document.getElementById('dynamic-headings-container');
     
-    // Image Zoom Modal Elements
     const imageModal = document.getElementById('image-viewer-modal');
     const modalImage = document.getElementById('modal-image');
     let transform = { scale: 1, translateX: 0, translateY: 0 };
@@ -1003,16 +953,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     const pageTitles = {
-        'page-remedies': 'Remedies', 'page-remedy-detail': 'Remedy Details', 'page-symptoms': 'Symptoms',
-        'page-symptom-remedies': 'Remedies for Symptom', 'page-saved': 'Saved Remedies', 'page-compare': 'Compare',
+        'page-remedies': 'Remedies', 'page-author-selection': 'Select Author', 'page-author-remedy-detail': 'Remedy Details', 'page-symptoms': 'Symptoms',
+        'page-symptom-remedies': 'Symptom Remedies', 'page-saved': 'Saved Remedies', 'page-compare': 'Compare',
         'page-search-results': 'Search Results', 'page-profile': 'Profile', 'page-add-remedy': 'Add New Remedy',
         'page-manage-remedies': 'Manage Remedies', 'page-biopath': 'Biopath', 'page-infographic': 'Remedygrphy',
         'page-upload-infographic': 'Upload Remedygrphy', 'page-content': 'Content', 'page-upload-content': 'Upload Content',
         'page-upload-biopath': 'Upload Biopath', 'page-biopath-form': 'Add Biopath Entry', 'page-biopath-groups': 'Biopath Groups',
-        'page-biopath-subgroups': 'Biopath Sub-Groups', 'page-biopath-detail': 'Biopath Details', 'page-materia-medica': 'Materia Medica'
+        'page-biopath-subgroups': 'Biopath Sub-Groups', 'page-biopath-detail': 'Biopath Details'
     };
     
-    // Set today's date in add forms automatically
     const getTodayDateString = () => {
         const today = new Date();
         const yyyy = today.getFullYear();
@@ -1021,39 +970,75 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${yyyy}-${mm}-${dd}`;
     }
     
-    document.getElementById('remedy-upload-date').value = getTodayDateString();
     document.getElementById('infographic-upload-date').value = getTodayDateString();
     document.getElementById('content-upload-date').value = getTodayDateString();
 
 
     // --- Firebase Data Handling ---
-    async function initializeAndFetchData() {
+    async function fetchAllRemediesForDatalist() {
         const remediesRef = ref(database, 'remedies');
-        const infographicsRef = ref(database, 'infographics');
-        const contentRef = ref(database, 'content');
-        const biopathRef = ref(database, 'biopath');
+        const snapshot = await get(remediesRef);
+        if (snapshot.exists()) {
+            const allRemedies = [];
+            snapshot.forEach(childSnapshot => {
+                allRemedies.push({ id: childSnapshot.key, ...childSnapshot.val() });
+            });
+            allRemediesForDatalist = allRemedies; // No initial sort, keep as is
+        }
+    }
 
-        // Fetch remedies
-        const remediesSnapshot = await get(remediesRef);
-        remedyData = remediesSnapshot.exists() ? Object.keys(remediesSnapshot.val()).map(key => ({ ...remediesSnapshot.val()[key], id: key })) : [];
+    async function initializeAndFetchData() {
+        try {
+            const infographicsRef = ref(database, 'infographics');
+            const contentRef = ref(database, 'content');
+            const biopathRef = ref(database, 'biopath');
+            
+            const infographicsSnapshot = await get(infographicsRef);
+            infographicData = infographicsSnapshot.exists() ? Object.keys(infographicsSnapshot.val()).map(key => ({ ...infographicsSnapshot.val()[key], id: key })) : [];
+            
+            const contentSnapshot = await get(contentRef);
+            contentData = contentSnapshot.exists() ? Object.keys(contentSnapshot.val()).map(key => ({ ...contentSnapshot.val()[key], id: key })) : [];
+            
+            const biopathSnapshot = await get(biopathRef);
+            biopathData = biopathSnapshot.exists() ? biopathSnapshot.val() : {};
 
-        // Fetch remedygrphies
-        const infographicsSnapshot = await get(infographicsRef);
-        infographicData = infographicsSnapshot.exists() ? Object.keys(infographicsSnapshot.val()).map(key => ({ ...infographicsSnapshot.val()[key], id: key })) : [];
-        
-        // Fetch content
-        const contentSnapshot = await get(contentRef);
-        contentData = contentSnapshot.exists() ? Object.keys(contentSnapshot.val()).map(key => ({ ...contentSnapshot.val()[key], id: key })) : [];
-        
-        // Fetch biopath data
-        const biopathSnapshot = await get(biopathRef);
-        biopathData = biopathSnapshot.exists() ? biopathSnapshot.val() : {};
+            const remediesRef = ref(database, 'remedies');
+            const remediesQuery = query(remediesRef, orderByKey(), limitToFirst(REMEDIES_PER_PAGE));
+            const remediesSnapshot = await get(remediesQuery);
+            
+            remedyData = [];
+            allRemediesLoaded = false;
+            lastLoadedRemedyKey = null;
 
-        renderInitialApp();
+            if (remediesSnapshot.exists()) {
+                const tempRemedies = [];
+                remediesSnapshot.forEach(childSnapshot => {
+                    const adaptedData = adaptRemedyData(childSnapshot.val(), childSnapshot.key);
+                    tempRemedies.push(adaptedData);
+                });
+                remedyData = tempRemedies;
+
+                if (tempRemedies.length > 0) {
+                    lastLoadedRemedyKey = tempRemedies[tempRemedies.length - 1].id;
+                }
+                if (tempRemedies.length < REMEDIES_PER_PAGE) {
+                    allRemediesLoaded = true;
+                }
+            } else {
+                allRemediesLoaded = true;
+            }
+
+            await fetchAllRemediesForDatalist();
+            renderInitialApp();
+        } catch (error) {
+            console.error("Data laane me error aayi:", error);
+            alert("Data load nahi ho saka. कृपया अपना इंटरनेट कनेक्शन जांचें और फिर से प्रयास करें।");
+        }
     }
 
     function renderInitialApp() {
-        renderRemedyList(remedyData.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list');
+        const uniqueRemedies = Array.from(new Map(remedyData.map(item => [item['name'], item])).values());
+        renderRemedyList(uniqueRemedies.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list');
         renderRecentList();
         renderSymptomsList();
         renderInfographics();
@@ -1061,11 +1046,53 @@ document.addEventListener('DOMContentLoaded', function () {
         renderContentList();
         renderManageContentList();
         renderDailyContent();
-        renderMateriaMedicaGrid();
-        showPage('page-home'); 
+        showPage('page-home');
+    }
+
+    async function loadMoreRemedies() {
+        if (isLoadingMore || allRemediesLoaded) return; 
+
+        isLoadingMore = true;
+        loadMoreBtn.textContent = 'Loading...';
+
+        try {
+            const remediesRef = ref(database, 'remedies');
+            const nextRemediesQuery = query(remediesRef, orderByKey(), startAfter(lastLoadedRemedyKey), limitToFirst(REMEDIES_PER_PAGE));
+            
+            const snapshot = await get(nextRemediesQuery);
+
+            if (snapshot.exists()) {
+                const newRemedies = [];
+                snapshot.forEach(childSnapshot => {
+                    const adaptedData = adaptRemedyData(childSnapshot.val(), childSnapshot.key);
+                    newRemedies.push(adaptedData);
+                });
+
+                if (newRemedies.length > 0) {
+                    lastLoadedRemedyKey = newRemedies[newRemedies.length - 1].id;
+                    remedyData = [...remedyData, ...newRemedies]; 
+                    const uniqueNewRemedies = Array.from(new Map(newRemedies.map(item => [item['name'], item])).values());
+                    appendRemediesToList(uniqueNewRemedies.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list', '.remedy-link-btn'); 
+                }
+
+                if (newRemedies.length < REMEDIES_PER_PAGE) {
+                    allRemediesLoaded = true;
+                    document.getElementById('load-more-container').style.display = 'none';
+                }
+
+            } else {
+                allRemediesLoaded = true;
+                document.getElementById('load-more-container').style.display = 'none';
+            }
+
+        } catch (error) {
+            console.error("Aur remedies load karne me error:", error);
+        } finally {
+            isLoadingMore = false;
+            loadMoreBtn.textContent = 'Load More';
+        }
     }
     
-    // --- LocalStorage Helper Functions ---
     const getSavedRemedies = () => JSON.parse(localStorage.getItem('savedRemedies')) || [];
     const isRemedySaved = (remedyName) => getSavedRemedies().includes(remedyName);
     const toggleSaveRemedy = (remedyName) => {
@@ -1086,7 +1113,6 @@ document.addEventListener('DOMContentLoaded', function () {
         renderRecentList();
     };
     
-    // --- Utility Functions ---
     function getYoutubeVideoId(url) {
         let videoId = null;
         const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -1097,7 +1123,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return videoId;
     }
 
-    // --- Page Navigation ---
     function showPage(pageId, pageTitleOverride = null) {
         pages.forEach(page => page.classList.remove('active'));
         const targetPage = document.getElementById(pageId);
@@ -1105,16 +1130,17 @@ document.addEventListener('DOMContentLoaded', function () {
             targetPage.classList.add('active');
             window.scrollTo(0, 0);
 
-            // Update active nav button
             navButtons.forEach(btn => {
-                if (btn.dataset.target === pageId) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+                btn.classList[btn.dataset.target === pageId ? 'add' : 'remove']('active');
             });
+            
+            const loadMoreContainer = document.getElementById('load-more-container');
+            if(pageId === 'page-remedies' && !allRemediesLoaded) {
+                loadMoreContainer.style.display = 'block';
+            } else {
+                loadMoreContainer.style.display = 'none';
+            }
 
-            // Handle header visibility
             const pagesWithoutHeader = ['page-home', 'page-infographic', 'page-content', 'page-biopath'];
             if (pagesWithoutHeader.includes(pageId)) {
                 if (placeholderHeader.parentElement !== appContainer) appContainer.prepend(placeholderHeader);
@@ -1134,26 +1160,86 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+    
+    let pageHistory = [];
 
-    // --- Rendering Functions ---
-    function renderRemedyList(remedies, containerId) {
-        const listContainer = document.getElementById(containerId);
-        if (!listContainer) return;
-        listContainer.innerHTML = remedies && remedies.length > 0 ? remedies.map(remedy => {
-            const isSaved = isRemedySaved(remedy.name);
-            return `<div class="flex items-center w-full p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors group">
-                        <button class="flex-grow text-left remedy-link-btn" data-remedy-name="${remedy.name}">
-                            <h3 class="font-semibold text-white">${remedy.name}</h3>
-                            <p class="text-sm text-slate-400">${remedy.commonName}</p>
-                        </button>
-                        <button class="p-2 -mr-2 text-slate-500 hover:text-primary transition-colors save-btn ${isSaved ? 'saved' : ''}" data-remedy-name="${remedy.name}">
-                            <span class="material-symbols-outlined">${isSaved ? 'bookmark' : 'bookmark_add'}</span>
-                        </button>
-                    </div>`;
-        }).join('') : `<p class="text-slate-400 text-center py-4">No remedies found.</p>`;
+    function navigateToPage(pageId, pageTitleOverride = null) {
+        const currentPage = document.querySelector('.page.active');
+        if (currentPage) {
+            pageHistory.push({id: currentPage.id, title: placeholderTitle.textContent});
+        }
+        if (pageHistory.length > 10) { 
+            pageHistory.shift();
+        }
+        showPage(pageId, pageTitleOverride);
     }
 
-    // FIX: Modified daily content function to include fallbacks, ensuring sections are not empty.
+    function navigateBack() {
+        const lastPage = pageHistory.pop();
+        if (lastPage) {
+            showPage(lastPage.id, lastPage.title);
+        } else {
+            showPage('page-home'); 
+        }
+    }
+
+
+    // --- Rendering Functions ---
+    function renderRemedyList(remedies, containerId, buttonClass = 'remedy-link-btn') {
+        const listContainer = document.getElementById(containerId);
+        if (!listContainer) return;
+        
+        const isAddPage = buttonClass === 'add-page-remedy-item';
+
+        let html = remedies && remedies.length > 0 ? remedies.map(remedy => {
+            const isSaved = isRemedySaved(remedy.name);
+            const dataAttributes = isAddPage ? `data-remedy-id="${remedy.id}"` : '';
+
+            const mainButton = `<button type="button" class="flex-grow text-left ${buttonClass}" data-remedy-name="${remedy.name}" data-common-name="${remedy.commonName || ''}" ${dataAttributes}>
+                            <h3 class="font-semibold text-white">${remedy.name}</h3>
+                            <p class="text-sm text-slate-400">${remedy.commonName}</p>
+                        </button>`;
+
+            const saveButton = buttonClass === 'remedy-link-btn' ? `<button type="button" class="p-2 -mr-2 text-slate-500 hover:text-primary transition-colors save-btn ${isSaved ? 'saved' : ''}" data-remedy-name="${remedy.name}">
+                            <span class="material-symbols-outlined">${isSaved ? 'bookmark' : 'bookmark_add'}</span>
+                        </button>`: '';
+
+            return `<div class="flex items-center w-full p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors group">
+                        ${mainButton}
+                        ${saveButton}
+                    </div>`;
+        }).join('') : `<p class="text-slate-400 text-center py-4">No remedies found.</p>`;
+        listContainer.innerHTML = html;
+    }
+
+
+    function appendRemediesToList(newRemedies, containerId, buttonClass = 'remedy-link-btn') {
+        const listContainer = document.getElementById(containerId);
+        if (!listContainer || !newRemedies || newRemedies.length === 0) return;
+        
+        const isAddPage = buttonClass === 'add-page-remedy-item';
+
+        const remediesHTML = newRemedies.map(remedy => {
+            const isSaved = isRemedySaved(remedy.name);
+            const dataAttributes = isAddPage ? `data-remedy-id="${remedy.id}"` : '';
+            
+             const mainButton = `<button type="button" class="flex-grow text-left ${buttonClass}" data-remedy-name="${remedy.name}" data-common-name="${remedy.commonName || ''}" ${dataAttributes}>
+                            <h3 class="font-semibold text-white">${remedy.name}</h3>
+                            <p class="text-sm text-slate-400">${remedy.commonName}</p>
+                        </button>`;
+            const saveButton = buttonClass === 'remedy-link-btn' ? `<button type="button" class="p-2 -mr-2 text-slate-500 hover:text-primary transition-colors save-btn ${isSaved ? 'saved' : ''}" data-remedy-name="${remedy.name}">
+                            <span class="material-symbols-outlined">${isSaved ? 'bookmark' : 'bookmark_add'}</span>
+                        </button>`: '';
+
+            return `<div class="flex items-center w-full p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors group">
+                        ${mainButton}
+                        ${saveButton}
+                    </div>`;
+        }).join('');
+        
+        listContainer.insertAdjacentHTML('beforeend', remediesHTML);
+    }
+
     function renderDailyContent() {
         const todayStr = getTodayDateString();
         const dateSpan = document.getElementById('daily-insight-date');
@@ -1162,22 +1248,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         dateSpan.textContent = today.toLocaleDateString(undefined, options);
 
-        // --- Daily Insight (Remedies) ---
-        let todaysRemedies = remedyData.filter(item => item.uploadDate === todayStr);
+        const todaysRemedies = remedyData.filter(item => item.uploadDate === todayStr || (item.authors.boericke && item.authors.boericke.uploadDate === todayStr) || (item.authors.allen && item.authors.allen.uploadDate === todayStr));
+        const todaysInfographics = infographicData.filter(item => item.uploadDate === todayStr);
+        const todaysVideos = contentData.filter(item => item.uploadDate === todayStr);
+
         const remedySlider = document.getElementById('daily-remedy-slider');
         const remedySection = document.getElementById('daily-insight-section');
-
-        // Fallback: If no remedies for today, show the most recent 3
-        if (todaysRemedies.length === 0 && remedyData.length > 0) {
-            const sortedByDate = [...remedyData].sort((a, b) => (b.uploadDate || '').localeCompare(a.uploadDate || ''));
-            todaysRemedies = sortedByDate.slice(0, 3);
-        }
-
         if(todaysRemedies.length > 0) {
             remedySection.style.display = 'block';
             remedySlider.innerHTML = todaysRemedies.map(remedy => {
-                const firstSectionKey = remedy.sections ? Object.keys(remedy.sections)[0] : '';
-                const firstSectionValue = firstSectionKey ? remedy.sections[firstSectionKey] : (remedy.description || 'No description available.');
+                const authorData = remedy.authors.boericke || remedy.authors.allen || remedy.authors.kent;
+                if (!authorData) return ''; 
+                const firstSectionKey = authorData.sections ? Object.keys(authorData.sections)[0] : '';
+                const firstSectionValue = firstSectionKey ? authorData.sections[firstSectionKey] : authorData.description;
                 const shortDescription = firstSectionValue.length > 120 ? firstSectionValue.substring(0, 120) + '...' : firstSectionValue;
 
                 return `
@@ -1205,17 +1288,8 @@ document.addEventListener('DOMContentLoaded', function () {
             remedySection.style.display = 'none';
         }
 
-        // --- Today's Remedygrphy (Infographics) ---
-        let todaysInfographics = infographicData.filter(item => item.uploadDate === todayStr);
         const infographicSlider = document.getElementById('daily-infographic-slider');
         const infographicSection = document.getElementById('daily-infographic-section');
-        
-        // Fallback: If no infographics for today, show the most recent 3
-        if (todaysInfographics.length === 0 && infographicData.length > 0) {
-            const sortedByDate = [...infographicData].sort((a, b) => (b.uploadDate || '').localeCompare(a.uploadDate || ''));
-            todaysInfographics = sortedByDate.slice(0, 3);
-        }
-
         if(todaysInfographics.length > 0) {
             infographicSection.style.display = 'block';
             infographicSlider.innerHTML = todaysInfographics.map(info => `
@@ -1234,18 +1308,9 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             infographicSection.style.display = 'none';
         }
-        
-        // --- Today's Videos (Content) ---
-        let todaysVideos = contentData.filter(item => item.uploadDate === todayStr);
+
         const videoSlider = document.getElementById('daily-video-slider');
         const videoSection = document.getElementById('daily-video-section');
-
-        // Fallback: If no videos for today, show the most recent 3
-        if (todaysVideos.length === 0 && contentData.length > 0) {
-            const sortedByDate = [...contentData].sort((a, b) => (b.uploadDate || '').localeCompare(a.uploadDate || ''));
-            todaysVideos = sortedByDate.slice(0, 3);
-        }
-
         if(todaysVideos.length > 0) {
             videoSection.style.display = 'block';
             videoSlider.innerHTML = todaysVideos.map(content => `
@@ -1266,38 +1331,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     
-    // Renders the Materia Medica grid with provided images
-    function renderMateriaMedicaGrid() {
-        const gridContainer = document.getElementById('materia-medica-grid');
-        if (!gridContainer) return;
-
-        const images = [
-            "https://i.ibb.co/Wpvq7zSB/Generated-Image-January-07-2026-9-32-PM.png",
-            "https://i.ibb.co/99p3wBnJ/Generated-Image-January-07-2026-9-38-PM.png",
-            "https://i.ibb.co/tw5TTBys/Generated-Image-January-07-2026-9-48-PM.png",
-            "https://i.ibb.co/B596nZCL/Generated-Image-January-07-2026-9-52-PM.png",
-            "https://i.ibb.co/pjprv8kV/Generated-Image-January-07-2026-9-55-PM.png",
-            "https://i.ibb.co/9kvS478Q/Generated-Image-January-07-2026-10-04-PM.png",
-            "https://i.ibb.co/bMxGWnJX/Generated-Image-January-07-2026-10-10-PM.png",
-            "https://i.ibb.co/dJwgy88P/Generated-Image-January-07-2026-10-13-PM.png",
-            "https://i.ibb.co/Jb2Ntk3/Generated-Image-January-07-2026-10-16-PM.png",
-            "https://i.ibb.co/zWP3xCq9/Generated-Image-January-07-2026-10-19-PM.png",
-            "https://i.ibb.co/Df2vH9Zr/Generated-Image-January-07-2026-10-18-PM.png",
-            "https://i.ibb.co/VY1kBTgv/Generated-Image-January-07-2026-10-47-PM.png",
-            "https://i.ibb.co/0pZJw2ZB/Generated-Image-January-07-2026-10-50-PM.png"
-        ];
-
-        gridContainer.innerHTML = images.map(src => `
-            <div class="aspect-[9/16] bg-card-dark rounded-xl overflow-hidden border border-card-border">
-                <img src="${src}" class="w-full h-full object-cover" alt="Materia Medica Image">
-            </div>
-        `).join('');
-    }
-
     function renderSavedList() {
         const savedNames = getSavedRemedies();
-        const savedRemedies = remedyData.filter(r => savedNames.includes(r.name));
-        renderRemedyList(savedRemedies, 'saved-remedies-list');
+        const savedRemedies = allRemediesForDatalist.filter(r => savedNames.includes(r.name));
+        // Remove duplicates by name before rendering
+        const uniqueSavedRemedies = Array.from(new Map(savedRemedies.map(item => [item['name'], item])).values());
+        renderRemedyList(uniqueSavedRemedies.sort((a,b) => a.name.localeCompare(b.name)), 'saved-remedies-list');
     }
     function renderRecentList() {
         const container = document.getElementById('recent-remedies-container');
@@ -1307,7 +1346,7 @@ document.addEventListener('DOMContentLoaded', function () {
             container.innerHTML = `<p class="text-slate-500 text-sm w-full text-center">No recent remedies viewed.</p>`;
             return;
         }
-        const recentRemedies = recentNames.map(name => remedyData.find(r => r.name === name)).filter(Boolean);
+        const recentRemedies = recentNames.map(name => allRemediesForDatalist.find(r => r.name === name)).filter(Boolean);
         container.innerHTML = recentRemedies.map(remedy => `
             <div class="remedy-link-btn snap-start shrink-0 w-[200px] bg-card-dark rounded-xl border border-card-border p-4 relative group hover:border-slate-600 transition-colors cursor-pointer" data-remedy-name="${remedy.name}">
                 <div class="absolute top-3 right-3 text-slate-500"><span class="material-symbols-outlined text-[18px]">history</span></div>
@@ -1321,12 +1360,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const container = document.getElementById('symptoms-list');
         if (!container) return;
         const allSymptoms = new Set();
-        remedyData.forEach(remedy => {
-            if (remedy.sections) {
-                 Object.keys(remedy.sections).forEach(symptom => {
-                    allSymptoms.add(symptom);
+        allRemediesForDatalist.forEach(remedy => { // Use all data for complete list
+            Object.values(remedy.authors || {}).forEach(authorData => {
+                 Object.keys(authorData.sections || {}).forEach(symptom => {
+                    if (!['Dose', 'Relationship', 'Modalities', 'Uses', 'Compare'].includes(symptom)) {
+                         allSymptoms.add(symptom);
+                    }
                 });
-            }
+            });
         });
         const sortedSymptoms = Array.from(allSymptoms).sort();
         container.innerHTML = sortedSymptoms.map(symptom => `
@@ -1338,8 +1379,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderManageRemediesList() {
         const listContainer = document.getElementById('manage-remedies-list');
         if (!listContainer) return;
-        const sortedRemedies = [...remedyData].sort((a, b) => a.name.localeCompare(b.name));
-        listContainer.innerHTML = sortedRemedies.length > 0 ? sortedRemedies.map(remedy => `
+        const uniqueRemedies = Array.from(new Map(allRemediesForDatalist.map(item => [item['name'], item])).values());
+        listContainer.innerHTML = uniqueRemedies.length > 0 ? uniqueRemedies.sort((a,b) => a.name.localeCompare(b.name)).map(remedy => `
             <div class="flex items-center justify-between w-full p-4 bg-card-dark border border-card-border rounded-lg group">
                 <div>
                     <h3 class="font-semibold text-white">${remedy.name}</h3>
@@ -1407,12 +1448,80 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     // --- Logic Functions ---
-    function showRemedyDetail(remedyName) {
-        const remedy = remedyData.find(r => r.name === remedyName);
-        if (!remedy) return;
+    function findAndMergeRemedy(remedyName) {
+        const matchingRemedies = allRemediesForDatalist.filter(r => r.name.toUpperCase() === remedyName.toUpperCase());
+        if (matchingRemedies.length === 0) {
+            return null; // No remedy found
+        }
+        if (matchingRemedies.length === 1) {
+            return adaptRemedyData(matchingRemedies[0], matchingRemedies[0].id);
+        }
+        const masterRemedy = {
+            id: matchingRemedies[0].id,
+            name: matchingRemedies[0].name,
+            commonName: matchingRemedies[0].commonName || '',
+            authors: {}
+        };
+        for (const duplicate of matchingRemedies) {
+            const adaptedDuplicate = adaptRemedyData(duplicate, duplicate.id);
+            Object.assign(masterRemedy.authors, adaptedDuplicate.authors);
+        }
+        return masterRemedy;
+    }
+
+    function showAuthorSelection(remedyName) {
+        const mergedRemedy = findAndMergeRemedy(remedyName);
+        if (!mergedRemedy) { 
+            alert("Remedy not found."); 
+            return; 
+        }
+        const container = document.getElementById('author-selection-container');
+        let html = '';
+        const authorDetails = {
+            boericke: { name: 'William Boericke', img: 'https://i.ibb.co/0RLp1zK8/IMG-20260113-181113.png' },
+            allen: { name: 'H.C. Allen', img: 'https://i.ibb.co/ymdbBhDf/Generated-Image-January-13-2026-6-19-PM.png' },
+            kent: { name: 'J.T. Kent', img: 'https://i.ibb.co/dsGdBJss/IMG-20260113-222809.png' },
+            farrington: { name: 'E.A. Farrington', img: 'https://via.placeholder.com/300' },
+            vithoulkas: { name: 'George Vithoulkas', img: 'https://via.placeholder.com/300' },
+            choudhuri: { name: 'CHOUDHURI N. M.', img: 'https://via.placeholder.com/300' },
+            coulter: { name: 'CATHERINE R. COULTER', img: 'https://via.placeholder.com/300' },
+            hering: { name: 'CONSTANTINE HERING', img: 'https://via.placeholder.com/300' },
+            lilienthal: { name: 'S. LILIENTHAL, M.D.', img: 'https://via.placeholder.com/300' },
+            lippe: { name: 'AD. LIPPE, M.D.', img: 'https://via.placeholder.com/300' },
+            murphy: { name: 'MURPHY Robin', img: 'https://via.placeholder.com/300' },
+            dubey: { name: 'Dr. S.K. Dubey', img: 'https://via.placeholder.com/300' },
+            dunham: { name: 'CARROLL DUNHAM, M.D.', img: 'https://via.placeholder.com/300' }
+        };
+        for(const authorKey in mergedRemedy.authors) {
+             const details = authorDetails[authorKey];
+             if(details) {
+                html += `<div class="author-card-btn" data-remedy-name="${mergedRemedy.name}" data-author="${authorKey}">
+                    <div class="aspect-square w-full rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 transition-transform duration-200">
+                        <img src="${details.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+                    </div>
+                    <p class="text-center text-white font-semibold mt-2">${details.name}</p>
+                </div>`;
+            }
+        }
+        container.innerHTML = html;
+        navigateToPage('page-author-selection', mergedRemedy.name);
+    }
+
+
+    function showAuthorRemedyDetail(remedyName, author) {
+        const mergedRemedy = findAndMergeRemedy(remedyName);
+        if (!mergedRemedy) {
+            alert("Remedy data could not be found.");
+            return;
+        }
+        const authorData = mergedRemedy.authors[author];
+        if (!authorData) {
+            alert("Author data for this remedy could not be found.");
+            return;
+        }
         addRemedyToRecents(remedyName);
-        const isSaved = isRemedySaved(remedy.name);
-        const detailContainer = document.getElementById('page-remedy-detail');
+        const isSaved = isRemedySaved(remedyName);
+        const detailContainer = document.getElementById('page-author-remedy-detail');
         const highlight = (text) => {
             if (!currentSearchTerm || typeof text !== 'string' || !text) return text;
             const escapedTerm = currentSearchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -1422,49 +1531,55 @@ document.addEventListener('DOMContentLoaded', function () {
         let contentHTML = `
             <div class="flex justify-between items-start mb-4">
                 <div>
-                    <h2 class="text-2xl font-bold text-white mb-1">${highlight(remedy.name)}</h2>
-                    <p class="text-md text-slate-400 font-light">${highlight(remedy.commonName)}</p>
+                    <h2 class="text-2xl font-bold text-white mb-1">${highlight(mergedRemedy.name)}</h2>
+                    <p class="text-md text-slate-400 font-light">${highlight(mergedRemedy.commonName)}</p>
                 </div>
-                <button class="save-btn text-slate-300 hover:text-primary transition-colors flex items-center gap-2 bg-card-dark border border-card-border rounded-lg px-3 py-2 ${isSaved ? 'saved' : ''}" data-remedy-name="${remedy.name}">
+                <button class="save-btn text-slate-300 hover:text-primary transition-colors flex items-center gap-2 bg-card-dark border border-card-border rounded-lg px-3 py-2 ${isSaved ? 'saved' : ''}" data-remedy-name="${mergedRemedy.name}">
                     <span class="material-symbols-outlined text-lg">${isSaved ? 'bookmark' : 'bookmark_add'}</span>
                     <span class="text-sm">${isSaved ? 'Saved' : 'Save'}</span>
                 </button>
             </div>
-            <p class="mb-6">${highlight(remedy.description)}</p>
+            <p class="mb-6">${highlight(authorData.description)}</p>
             <div class="space-y-4">
         `;
-        if (remedy.sections) {
-            for (const section in remedy.sections) {
-                contentHTML += `<div><h4 class="font-bold text-primary text-md">${highlight(section)}</h4><p>${highlight(remedy.sections[section])}</p></div>`;
+        if (authorData.sections) {
+            for (const section in authorData.sections) {
+                contentHTML += `<div><h4 class="font-bold text-primary text-md">${highlight(section)}</h4><p>${highlight(authorData.sections[section])}</p></div>`;
             }
         }
         contentHTML += `</div>`;
         detailContainer.innerHTML = contentHTML;
-        showPage('page-remedy-detail', remedy.name);
+        navigateToPage('page-author-remedy-detail', mergedRemedy.name);
     }
-
+    
     function showRemediesForSymptom(symptomName) {
-        if (!symptomName) return;
-        
-        const filteredRemedies = remedyData.filter(remedy => {
-            return remedy.sections && Object.keys(remedy.sections).some(key => key.toLowerCase() === symptomName.toLowerCase());
+        const matchingRemedies = allRemediesForDatalist.filter(remedy => {
+            const adapted = adaptRemedyData(remedy, remedy.id);
+            return Object.values(adapted.authors).some(authorData => authorData.sections && (symptomName in authorData.sections));
         });
-
-        renderRemedyList(filteredRemedies, 'symptom-remedies-list');
-        showPage('page-symptom-remedies', symptomName);
+        const uniqueMatchingRemedies = Array.from(new Map(matchingRemedies.map(item => [item['name'], item])).values());
+        renderRemedyList(uniqueMatchingRemedies.sort((a,b) => a.name.localeCompare(b.name)), 'symptom-remedies-list');
+        navigateToPage('page-symptom-remedies', symptomName);
     }
+
 
     function performSearch() {
         const query = homeSearchInput.value.trim();
         if (!query) return;
         currentSearchTerm = query;
-        const results = remedyData.filter(remedy => {
-            let searchableText = `${remedy.name} ${remedy.commonName} ${remedy.description} ${Object.values(remedy.sections || {}).join(' ')} ${Object.keys(remedy.sections || {}).join(' ')}`;
+        const results = allRemediesForDatalist.filter(remedy => {
+            const adapted = adaptRemedyData(remedy, remedy.id);
+            let searchableText = `${adapted.name} ${adapted.commonName} `;
+            Object.values(adapted.authors).forEach(authorData => {
+                 searchableText += `${authorData.description} ${Object.values(authorData.sections || {}).join(' ')} ${Object.keys(authorData.sections || {}).join(' ')} `;
+            });
             return searchableText.toLowerCase().includes(query.toLowerCase());
         });
-        renderRemedyList(results, 'search-results-list');
-        showPage('page-search-results');
+        const uniqueResults = Array.from(new Map(results.map(item => [item['name'], item])).values());
+        renderRemedyList(uniqueResults.sort((a,b) => a.name.localeCompare(b.name)), 'search-results-list');
+        navigateToPage('page-search-results');
     }
+
     function handleCompare() {
         const symptom = document.getElementById('compare-symptom').value.trim();
         const remedy1Name = document.getElementById('compare-remedy1').value.trim().toUpperCase();
@@ -1473,14 +1588,26 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!symptom || !remedy1Name || !remedy2Name) {
             resultsContainer.innerHTML = `<p class="text-red-400 text-center">Please fill all three fields.</p>`; return;
         }
-        const remedy1 = remedyData.find(r => r.name.toUpperCase() === remedy1Name);
-        const remedy2 = remedyData.find(r => r.name.toUpperCase() === remedy2Name);
+        const remedy1 = findAndMergeRemedy(remedy1Name);
+        const remedy2 = findAndMergeRemedy(remedy2Name);
         if (!remedy1 || !remedy2) {
             resultsContainer.innerHTML = `<p class="text-red-400 text-center">One or both remedies not found.</p>`; return;
         }
         const capitalizedSymptom = symptom.charAt(0).toUpperCase() + symptom.slice(1);
-        const text1 = (remedy1.sections && remedy1.sections[capitalizedSymptom]) || 'Not specified.';
-        const text2 = (remedy2.sections && remedy2.sections[capitalizedSymptom]) || 'Not specified.';
+        let text1 = 'Not specified.';
+        for(const authorKey in remedy1.authors) {
+            if(remedy1.authors[authorKey]?.sections?.[capitalizedSymptom]){
+                text1 = remedy1.authors[authorKey].sections[capitalizedSymptom];
+                break;
+            }
+        }
+        let text2 = 'Not specified.';
+        for(const authorKey in remedy2.authors) {
+            if(remedy2.authors[authorKey]?.sections?.[capitalizedSymptom]){
+                text2 = remedy2.authors[authorKey].sections[capitalizedSymptom];
+                break;
+            }
+        }
         resultsContainer.innerHTML = `
             <div class="border-t border-card-border pt-4">
                 <h3 class="text-lg font-semibold text-white text-center mb-4">Comparison for: <span class="text-primary">${capitalizedSymptom}</span></h3>
@@ -1490,53 +1617,115 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </div>`;
     }
-    function parseAndPopulateRemedy() {
-        let rawText = document.getElementById('raw-remedy-text').value.trim();
-        const sectionsContainer = document.getElementById('dynamic-sections-container');
-        addRemedyForm.reset();
-        document.getElementById('remedy-book').value = "W. Boericke, M.D.";
-        sectionsContainer.innerHTML = '';
-        if (!rawText) return alert('Please paste the remedy text first.');
 
-        const remedyNameMatch = rawText.match(/^([A-Z][A-Z\s\.]+)/);
-        if (!remedyNameMatch) return alert('Could not identify the Remedy Name.');
-
-        const remedyName = remedyNameMatch[0].trim();
-        document.getElementById('remedy-name').value = remedyName;
-        rawText = rawText.substring(remedyName.length).trim();
-        const sectionRegex = /([A-Za-z\s]+)\.––/g;
-        const sectionMatches = [...rawText.matchAll(sectionRegex)];
-        let headerBlock = sectionMatches.length > 0 ? rawText.substring(0, sectionMatches[0].index).trim() : rawText;
-        const descriptionStartMatch = headerBlock.match(/[A-Z][a-z]{2,}/);
-        if (descriptionStartMatch) {
-            document.getElementById('remedy-common-name').value = headerBlock.substring(0, descriptionStartMatch.index).trim().replace(/\s+/g, ' ');
-            document.getElementById('remedy-description').value = headerBlock.substring(descriptionStartMatch.index).trim();
-        } else {
-            document.getElementById('remedy-description').value = headerBlock;
+    async function saveNewRemedyData() {
+        saveAllRemediesBtn.disabled = true;
+        saveAllRemediesBtn.textContent = 'Saving...';
+        
+        const remedyIdToUpdate = existingRemedyIdInput.value;
+        const remedyName = remedyNameInput.value.trim().toUpperCase();
+        const commonName = remedyCommonNameInput.value.trim();
+        const selectedAuthor = remedyAuthorSelect.value;
+        const authorBookName = remedyAuthorSelect.options[remedyAuthorSelect.selectedIndex].text;
+        
+        if (!remedyName) {
+            alert('Please select or enter a remedy name.');
+            saveAllRemediesBtn.disabled = false; saveAllRemediesBtn.textContent = 'Save Remedy Data'; return;
         }
-        sectionMatches.forEach((match, index) => {
-            const title = match[1].trim();
-            const contentStart = match.index + match[0].length;
-            const nextMatch = sectionMatches[index + 1];
-            const contentEnd = nextMatch ? nextMatch.index : rawText.length;
-            const content = rawText.substring(contentStart, contentEnd).trim();
-            if (title && content) {
-                const sectionDiv = document.createElement('div');
-                sectionDiv.className = 'p-3 border border-card-border rounded-lg space-y-2 dynamic-section';
-                sectionDiv.innerHTML = `
-                    <input type="text" class="section-title w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-3 py-2" value="${title}"/>
-                    <textarea rows="3" class="section-content w-full bg-card-dark/50 border border-card-border rounded-lg text-white px-3 py-2">${content}</textarea>`;
-                sectionsContainer.appendChild(sectionDiv);
+
+        // Check if we are adding new author data, and if so, validate it
+        if (!newAuthorFormContainer.classList.contains('hidden')) {
+            if (!selectedAuthor) {
+                alert('Please select an author to add data for.');
+                saveAllRemediesBtn.disabled = false; saveAllRemediesBtn.textContent = 'Save Remedy Data'; return;
             }
-        });
-        document.getElementById('remedy-upload-date').value = getTodayDateString();
+
+            const authorData = {
+                book: authorBookName,
+                description: document.getElementById('new-author-description').value.trim(),
+                uploadDate: getTodayDateString(),
+                sections: {}
+            };
+
+            document.querySelectorAll('.dynamic-heading-group').forEach(group => {
+                const title = group.querySelector('.heading-title-input').value.trim();
+                const content = group.querySelector('.heading-content-textarea').value.trim();
+                if (title && content) {
+                    authorData.sections[title] = content;
+                }
+            });
+
+            if (remedyIdToUpdate) {
+                // UPDATE: Add or overwrite data for a specific author in an existing remedy
+                const authorDataRef = ref(database, `remedies/${remedyIdToUpdate}/authors/${selectedAuthor}`);
+                const remedyRootRef = ref(database, `remedies/${remedyIdToUpdate}`);
+                try {
+                    await set(authorDataRef, authorData);
+                    // Also update common name if it was changed
+                    await update(remedyRootRef, { commonName: commonName, name: remedyName });
+                    alert('Remedy data updated successfully!');
+                    await postSaveCleanup();
+                } catch(err) {
+                    alert('An error occurred during update.'); console.error(err);
+                }
+            } else {
+                // CREATE new remedy with this author's data
+                const newRemedyData = {
+                    name: remedyName,
+                    commonName: commonName,
+                    uploadDate: getTodayDateString(),
+                    authors: {
+                        [selectedAuthor]: authorData
+                    }
+                };
+                try {
+                    await push(ref(database, 'remedies'), newRemedyData);
+                    alert('New remedy saved successfully!');
+                    await postSaveCleanup();
+                } catch(err) {
+                    alert('An error occurred while saving new remedy.'); console.error(err);
+                }
+            }
+        } else if (remedyIdToUpdate) {
+            // This case handles if the user only changes the common name of an existing remedy without adding new author data
+             const remedyRootRef = ref(database, `remedies/${remedyIdToUpdate}`);
+             try {
+                await update(remedyRootRef, { commonName: commonName, name: remedyName });
+                alert('Remedy updated successfully!');
+                await postSaveCleanup();
+             } catch(err) {
+                alert('An error occurred during update.'); console.error(err);
+             }
+        } else {
+             alert('Nothing to save. Please add a new remedy or add new author data to an existing one.');
+        }
+
+        saveAllRemediesBtn.disabled = false;
+        saveAllRemediesBtn.textContent = 'Save Remedy Data';
     }
     
-    // START: BIOPATH LOGIC
+    async function postSaveCleanup() {
+        addRemedyForm.reset();
+        resetAddRemedyPage();
+        await initializeAndFetchData();
+        navigateToPage('page-remedies');
+    }
+
+    function resetAddRemedyPage() {
+        addRemedyForm.reset();
+        existingRemedyIdInput.value = '';
+        existingRemedyDetailsContainer.innerHTML = '';
+        existingRemedyDetailsContainer.classList.add('hidden');
+        newAuthorFormContainer.classList.add('hidden');
+        showAddAuthorFormBtn.classList.add('hidden');
+        remedyCommonNameContainer.classList.add('hidden');
+        dynamicHeadingsContainer.innerHTML = '';
+        addPageRemediesListContainer.innerHTML = '';
+    }
+
     function showBiopathForm(kingdom) {
         document.getElementById('biopath-kingdom').value = kingdom;
         const formInputsContainer = document.getElementById('biopath-form-inputs');
-        
         let inputsHTML = '';
         if (kingdom === 'Other') {
             inputsHTML = `
@@ -1582,16 +1771,11 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
         }
         formInputsContainer.innerHTML = inputsHTML;
-        showPage('page-biopath-form', `Add to ${kingdom}`);
+        navigateToPage('page-biopath-form', `Add to ${kingdom}`);
     }
-
     function renderBiopathGroups(kingdom) {
         const listContainer = document.getElementById('biopath-groups-list');
-        const existingGroups = biopathData[kingdom] ? Object.keys(biopathData[kingdom]) : [];
-        const predefined = predefinedBiopathGroups[kingdom] || [];
-        const combinedSet = new Set([...existingGroups, ...predefined]);
-        const groups = Array.from(combinedSet).sort();
-        
+        const groups = biopathData[kingdom] ? Object.keys(biopathData[kingdom]).sort() : [];
         if (groups.length > 0) {
             listContainer.innerHTML = groups.map(group => `
                 <button class="biopath-group-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="${kingdom}" data-group="${group}">
@@ -1602,13 +1786,11 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             listContainer.innerHTML = `<p class="text-slate-400 text-center py-4">No data found for ${kingdom}.</p>`;
         }
-        showPage('page-biopath-groups', `${kingdom} Kingdom`);
+        navigateToPage('page-biopath-groups', `${kingdom} Kingdom`);
     }
-
     function renderBiopathSubGroups(kingdom, group) {
         const listContainer = document.getElementById('biopath-subgroups-list');
         const subGroups = (biopathData[kingdom] && biopathData[kingdom][group]) ? Object.keys(biopathData[kingdom][group]).sort() : [];
-
         if (subGroups.length > 0) {
             listContainer.innerHTML = subGroups.map(subgroup => `
                  <button class="biopath-subgroup-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="${kingdom}" data-group="${group}" data-subgroup="${subgroup}">
@@ -1619,13 +1801,11 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             listContainer.innerHTML = `<p class="text-slate-400 text-center py-4">No sub-groups found.</p>`;
         }
-        showPage('page-biopath-subgroups', group);
+        navigateToPage('page-biopath-subgroups', group);
     }
-    
     function renderBiopathDetail(kingdom, group, subgroup) {
         const detailContainer = document.getElementById('page-biopath-detail');
         const item = biopathData?.[kingdom]?.[group]?.[subgroup];
-        
         if (item && item.content) {
              detailContainer.innerHTML = `
                 <h2 class="text-2xl font-bold text-white mb-2">${subgroup}</h2>
@@ -1635,39 +1815,24 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
              detailContainer.innerHTML = `<p class="text-slate-400 text-center py-4">Content not found.</p>`;
         }
-        showPage('page-biopath-detail', subgroup);
+        navigateToPage('page-biopath-detail', subgroup);
     }
-    // END: BIOPATH LOGIC
 
     // --- Event Listeners ---
     appContainer.addEventListener('click', async function(e) {
         const target = e.target;
         const backBtn = target.closest('.back-btn');
-        if (backBtn) {
-            const currentPageId = backBtn.closest('.page').id;
-            // Enhanced back button logic
-            if (['page-biopath-groups', 'page-materia-medica', 'page-remedies', 'page-symptoms', 'page-saved', 'page-compare', 'page-search-results', 'page-add-remedy'].includes(currentPageId)) {
-                 showPage('page-home');
-            } else if (currentPageId === 'page-symptom-remedies') {
-                showPage('page-symptoms'); 
-            } else if (currentPageId === 'page-biopath-subgroups') {
-                const kingdom = document.querySelector('#biopath-subgroups-list .biopath-subgroup-btn')?.dataset.kingdom;
-                if(kingdom) renderBiopathGroups(kingdom);
-                else showPage('page-biopath');
-            } else if (currentPageId === 'page-biopath-detail') {
-                 const groupBtn = document.querySelector('#biopath-subgroups-list .biopath-subgroup-btn');
-                 if(groupBtn) renderBiopathSubGroups(groupBtn.dataset.kingdom, groupBtn.dataset.group);
-                 else showPage('page-biopath');
-            } else {
-                showPage('page-home'); // Default back action
-            }
-        }
+        if (backBtn) { navigateBack(); return; }
+
         if (target.closest('.delete-remedy-btn')) {
             const btn = target.closest('.delete-remedy-btn');
-            if (confirm(`Delete "${btn.dataset.name}"?`)) {
-                await remove(ref(database, 'remedies/' + btn.dataset.id));
+            if (confirm(`Delete ALL records for "${btn.dataset.name}"? This is irreversible.`)) {
+                const matchingRemedies = allRemediesForDatalist.filter(r => r.name.toUpperCase() === btn.dataset.name.toUpperCase());
+                const deletePromises = matchingRemedies.map(remedy => remove(ref(database, 'remedies/' + remedy.id)));
+                await Promise.all(deletePromises);
                 alert("Deleted.");
                 await initializeAndFetchData();
+                renderManageRemediesList(); // Re-render the list
             }
         }
         if (target.closest('.delete-infographic-btn')) {
@@ -1694,7 +1859,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('infographic-name').value = infoToEdit.name;
                 document.getElementById('infographic-embed-code').value = infoToEdit.imageUrl;
                 document.getElementById('infographic-upload-date').value = infoToEdit.uploadDate || getTodayDateString();
-                showPage('page-upload-infographic');
+                navigateToPage('page-upload-infographic');
                 window.scrollTo(0, 0);
             }
         }
@@ -1706,44 +1871,42 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('content-name').value = contentToEdit.name;
                 document.getElementById('content-youtube-link').value = `https://www.youtube.com/watch?v=${contentToEdit.videoId}`;
                 document.getElementById('content-upload-date').value = contentToEdit.uploadDate || getTodayDateString();
-                showPage('page-upload-content');
+                navigateToPage('page-upload-content');
                 window.scrollTo(0, 0);
             }
         }
-        if (target.closest('.open-infographic-btn')) {
-            const imageUrl = target.closest('.open-infographic-btn').dataset.url;
-            openZoomableImage(imageUrl);
-        }
+        if (target.closest('.open-infographic-btn')) { openZoomableImage(target.closest('.open-infographic-btn').dataset.url); }
         if (target.closest('.open-video-btn')) {
             const videoId = target.closest('.open-video-btn').dataset.videoId;
             const embedContainer = document.getElementById('video-embed-container');
-            embedContainer.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            embedContainer.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             document.getElementById('video-viewer-modal').classList.remove('hidden');
         }
-        if (target.closest('.remedy-link-btn')) { showRemedyDetail(target.closest('.remedy-link-btn').dataset.remedyName); }
+        if (target.closest('.remedy-link-btn')) { showAuthorSelection(target.closest('.remedy-link-btn').dataset.remedyName); }
+        if (target.closest('.author-card-btn')) { 
+            const card = target.closest('.author-card-btn');
+            showAuthorRemedyDetail(card.dataset.remedyName, card.dataset.author); 
+        }
         if (target.closest('.save-btn')) {
             const btn = target.closest('.save-btn');
             toggleSaveRemedy(btn.dataset.remedyName);
             const activePageId = document.querySelector('.page.active').id;
-            if (activePageId === 'page-remedy-detail') showRemedyDetail(btn.dataset.remedyName);
+            if (activePageId === 'page-author-remedy-detail') {
+                 btn.classList.toggle('saved');
+                 btn.querySelector('.material-symbols-outlined').textContent = btn.classList.contains('saved') ? 'bookmark' : 'bookmark_add';
+                 btn.querySelector('.text-sm').textContent = btn.classList.contains('saved') ? 'Saved' : 'Save';
+            }
             else if (activePageId === 'page-saved') renderSavedList();
             else if (['page-remedies', 'page-symptom-remedies', 'page-search-results'].includes(activePageId)) {
                 btn.classList.toggle('saved');
-                const icon = btn.querySelector('.material-symbols-outlined');
-                icon.textContent = btn.classList.contains('saved') ? 'bookmark' : 'bookmark_add';
+                btn.querySelector('.material-symbols-outlined').textContent = btn.classList.contains('saved') ? 'bookmark' : 'bookmark_add';
             } else if (activePageId === 'page-home') {
                 renderDailyContent();
             }
         }
         if (target.closest('.symptom-link-btn')) { showRemediesForSymptom(target.closest('.symptom-link-btn').dataset.symptomName); }
-
-        // Biopath navigation clicks
-        if (target.closest('.biopath-kingdom-btn')) {
-            renderBiopathGroups(target.closest('.biopath-kingdom-btn').dataset.kingdom);
-        }
-        if (target.closest('.biopath-upload-category-btn')) {
-            showBiopathForm(target.closest('.biopath-upload-category-btn').dataset.kingdom);
-        }
+        if (target.closest('.biopath-kingdom-btn')) { renderBiopathGroups(target.closest('.biopath-kingdom-btn').dataset.kingdom); }
+        if (target.closest('.biopath-upload-category-btn')) { showBiopathForm(target.closest('.biopath-upload-category-btn').dataset.kingdom); }
         if (target.closest('.biopath-group-btn')) {
             const btn = target.closest('.biopath-group-btn');
             renderBiopathSubGroups(btn.dataset.kingdom, btn.dataset.group);
@@ -1752,18 +1915,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const btn = target.closest('.biopath-subgroup-btn');
             renderBiopathDetail(btn.dataset.kingdom, btn.dataset.group, btn.dataset.subgroup);
         }
-        
-        // Biopath Form Dropdown buttons
         if (target.closest('#select-group-btn')) {
             const kingdom = document.getElementById('biopath-kingdom').value;
             const suggestionsContainer = document.getElementById('group-suggestions');
-            
             const existingGroups = Object.keys(biopathData[kingdom] || {});
             const predefined = predefinedBiopathGroups[kingdom] || [];
-            
             const combinedSet = new Set([...predefined, ...existingGroups]);
             const groups = Array.from(combinedSet).sort();
-
             if (suggestionsContainer.classList.contains('hidden')) {
                 if (groups.length > 0) {
                     suggestionsContainer.innerHTML = groups.map(g => `<button type="button" class="group-suggestion-item w-full text-left p-2 rounded-md hover:bg-white/10">${g}</button>`).join('');
@@ -1776,16 +1934,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             document.getElementById('subgroup-suggestions')?.classList.add('hidden');
         }
-
         if (target.closest('#select-subgroup-btn')) {
             const kingdom = document.getElementById('biopath-kingdom').value;
             const group = document.getElementById('biopath-group').value.trim();
             const suggestionsContainer = document.getElementById('subgroup-suggestions');
-
-            if (!group) {
-                alert('Please enter or select a group first.');
-                return;
-            }
+            if (!group) { alert('Please enter or select a group first.'); return; }
             const subGroups = Object.keys(biopathData[kingdom]?.[group] || {}).sort();
              if (suggestionsContainer.classList.contains('hidden')) {
                 if (subGroups.length > 0) {
@@ -1799,80 +1952,163 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             document.getElementById('group-suggestions')?.classList.add('hidden');
         }
-
         if (target.closest('.group-suggestion-item')) {
             const groupInput = document.getElementById('biopath-group');
             const subGroupInput = document.getElementById('biopath-subgroup');
             groupInput.value = target.closest('.group-suggestion-item').textContent;
-            if(subGroupInput) subGroupInput.value = ''; // Clear sub-group as group has changed
+            if(subGroupInput) subGroupInput.value = '';
             document.getElementById('group-suggestions').classList.add('hidden');
             document.getElementById('subgroup-suggestions')?.classList.add('hidden');
         }
-
         if (target.closest('.subgroup-suggestion-item')) {
             const subGroupInput = document.getElementById('biopath-subgroup');
             subGroupInput.value = target.closest('.subgroup-suggestion-item').textContent;
             document.getElementById('subgroup-suggestions').classList.add('hidden');
         }
-    });
+        if(target.closest('.add-page-remedy-item')) {
+            const btn = target.closest('.add-page-remedy-item');
+            const remedyId = btn.dataset.remedyId;
+            const remedyName = btn.dataset.remedyName;
+            const commonName = btn.dataset.commonName;
 
-    homeMateriaMedicaBtn.addEventListener('click', () => {
-        showPage('page-materia-medica');
+            remedyNameInput.value = remedyName;
+            remedyCommonNameInput.value = commonName;
+            remedyCommonNameContainer.classList.remove('hidden');
+            existingRemedyIdInput.value = remedyId;
+            
+            const mergedRemedy = findAndMergeRemedy(remedyName);
+            if (mergedRemedy && mergedRemedy.authors && Object.keys(mergedRemedy.authors).length > 0) {
+                let detailsHTML = '<h3 class="text-lg font-semibold text-white border-b border-card-border pb-2 mb-3">Existing Content</h3>';
+                for (const authorKey in mergedRemedy.authors) {
+                    const authorData = mergedRemedy.authors[authorKey];
+                    detailsHTML += `
+                        <div class="bg-card-dark/50 border border-card-border rounded-lg p-4 mb-3">
+                            <p class="text-md font-bold text-primary">${authorData.book || 'Unknown Author'}</p>
+                            <div class="mt-2 text-slate-300 space-y-3">
+                                ${authorData.description ? `<p class="text-sm"><b>Description:</b> ${authorData.description.substring(0,150)}...</p>` : ''}
+                                ${authorData.sections && Object.keys(authorData.sections).length > 0 ?
+                                    `<p class="text-xs text-slate-400 mt-2"><b>Sections:</b> ${Object.keys(authorData.sections).join(', ')}</p>`
+                                : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+                existingRemedyDetailsContainer.innerHTML = detailsHTML;
+                existingRemedyDetailsContainer.classList.remove('hidden');
+            }
+            addPageRemediesListContainer.innerHTML = ''; // Hide the list after selection
+            showAddAuthorFormBtn.classList.remove('hidden');
+        }
     });
     
     moduleButtons.forEach(button => button.addEventListener('click', () => {
         currentSearchTerm = '';
+        pageHistory = []; 
         const targetPage = button.dataset.target;
         if (targetPage === 'page-saved') renderSavedList();
-        if (targetPage === 'page-remedies') renderRemedyList(remedyData.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list');
+        if (targetPage === 'page-remedies') {
+            const uniqueRemedies = Array.from(new Map(remedyData.map(item => [item['name'], item])).values());
+            renderRemedyList(uniqueRemedies.sort((a,b) => a.name.localeCompare(b.name)), 'remedies-list');
+        }
         showPage(targetPage);
     }));
+
     navButtons.forEach(button => button.addEventListener('click', () => {
         const targetPage = button.dataset.target;
         if (targetPage === 'page-home') { currentSearchTerm = ''; homeSearchInput.value = ''; }
         if (targetPage === 'page-infographic') { renderInfographics(); }
         if (targetPage === 'page-content') { renderContentList(); }
+        pageHistory = [];
         showPage(targetPage);
     }));
 
     homeSearchBtn.addEventListener('click', performSearch);
     homeSearchInput.addEventListener('keypress', (e) => e.key === 'Enter' && performSearch());
-    settingsButton.addEventListener('click', () => showPage('page-add-remedy'));
+    
+    settingsButton.addEventListener('click', () => {
+        resetAddRemedyPage();
+        
+        // Populate the remedies list for selection
+        const uniqueRemedies = Array.from(new Map(allRemediesForDatalist.map(item => [item['name'], item])).values());
+        const sortedRemedies = uniqueRemedies.sort((a, b) => a.name.localeCompare(b.name));
+        renderRemedyList(sortedRemedies, 'add-page-remedies-list-container', 'add-page-remedy-item');
+
+        navigateToPage('page-add-remedy');
+    });
+
     pageMenuBtn.addEventListener('click', () => pageMenuDropdown.style.display = (pageMenuDropdown.style.display === 'block') ? 'none' : 'block');
     document.querySelectorAll('.menu-item-btn').forEach(button => button.addEventListener('click', (e) => {
         const targetPage = e.target.dataset.target;
         if (targetPage === 'page-manage-remedies') renderManageRemediesList();
         if (targetPage === 'page-upload-infographic') { infographicForm.reset(); document.getElementById('infographic-id').value = ''; document.getElementById('infographic-upload-date').value = getTodayDateString(); }
         if (targetPage === 'page-upload-content') { contentForm.reset(); document.getElementById('content-id').value = ''; document.getElementById('content-upload-date').value = getTodayDateString(); }
-        if (targetPage === 'page-upload-biopath') { /* No specific action needed */ }
-        showPage(targetPage);
+        if (targetPage === 'page-upload-biopath') { /* No action */ }
+        navigateToPage(targetPage);
         pageMenuDropdown.style.display = 'none';
     }));
 
-    parseRemedyBtn.addEventListener('click', parseAndPopulateRemedy);
+    // --- "Add Remedy" Page Specific Logic ---
+    saveAllRemediesBtn.addEventListener('click', saveNewRemedyData);
 
-    addRemedyForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const saveButton = document.getElementById('save-remedy-btn');
-        saveButton.disabled = true; saveButton.textContent = 'Saving...';
-        const newRemedy = {
-            book: document.getElementById('remedy-book').value, name: document.getElementById('remedy-name').value.toUpperCase(),
-            commonName: document.getElementById('remedy-common-name').value, description: document.getElementById('remedy-description').value,
-            uploadDate: document.getElementById('remedy-upload-date').value, sections: {}
-        };
-        document.querySelectorAll('.dynamic-section').forEach(sec => {
-            const title = sec.querySelector('.section-title').value.trim();
-            const content = sec.querySelector('.section-content').value.trim();
-            if (title && content) newRemedy.sections[title] = content;
-        });
-        if (!newRemedy.name || !newRemedy.uploadDate) {
-            alert('Remedy Name and Upload Date are required.'); saveButton.disabled = false; saveButton.textContent = 'Save Remedy'; return;
-        }
-        push(ref(database, 'remedies'), newRemedy).then(() => {
-            alert('Remedy saved!'); addRemedyForm.reset(); document.getElementById('dynamic-sections-container').innerHTML = ''; document.getElementById('remedy-upload-date').value = getTodayDateString();
-            initializeAndFetchData().then(() => showPage('page-remedies'));
-        }).catch(err => alert('An error occurred.')).finally(() => { saveButton.disabled = false; saveButton.textContent = 'Save Remedy'; });
+    showAddAuthorFormBtn.addEventListener('click', () => {
+        newAuthorFormContainer.classList.remove('hidden');
+        showAddAuthorFormBtn.classList.add('hidden');
     });
+
+    addHeadingBtn.addEventListener('click', () => {
+        const headingId = `heading-${Date.now()}`;
+        const newHeadingHTML = `
+            <div class="dynamic-heading-group bg-card-dark/50 border border-card-border rounded-lg p-3 space-y-2 relative">
+                <button type="button" class="remove-heading-btn absolute top-2 right-2 p-1 text-slate-500 hover:text-red-400">
+                    <span class="material-symbols-outlined text-lg">close</span>
+                </button>
+                <input type="text" class="heading-title-input w-full bg-card-dark border border-card-border rounded-lg text-white px-3 py-2 placeholder:text-slate-500" placeholder="Heading (e.g., Mind, Skin)">
+                <textarea class="heading-content-textarea w-full bg-card-dark border border-card-border rounded-lg text-white px-3 py-2 placeholder:text-slate-500" rows="3" placeholder="Content for this heading..."></textarea>
+            </div>`;
+        dynamicHeadingsContainer.insertAdjacentHTML('beforeend', newHeadingHTML);
+    });
+
+    dynamicHeadingsContainer.addEventListener('click', (e) => {
+        if (e.target.closest('.remove-heading-btn')) {
+            e.target.closest('.dynamic-heading-group').remove();
+        }
+    });
+
+    remedyNameInput.addEventListener('input', () => {
+        const filterText = remedyNameInput.value.trim().toLowerCase();
+        
+        // If user clears input, reset the view
+        if (!filterText) {
+            resetAddRemedyPage();
+            const uniqueRemedies = Array.from(new Map(allRemediesForDatalist.map(item => [item['name'], item])).values());
+            renderRemedyList(uniqueRemedies.sort((a,b)=>a.name.localeCompare(b.name)), 'add-page-remedies-list-container', 'add-page-remedy-item');
+            return;
+        }
+
+        const items = addPageRemediesListContainer.querySelectorAll('.group');
+        let matchFound = false;
+        
+        items.forEach(item => {
+            const remedyName = item.querySelector('h3').textContent.toLowerCase();
+            if (remedyName.includes(filterText)) {
+                item.style.display = 'flex';
+                if(remedyName.toUpperCase() === remedyNameInput.value.trim().toUpperCase()) matchFound = true;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        if (!matchFound) {
+            existingRemedyIdInput.value = ''; // This is a new remedy
+            remedyCommonNameContainer.classList.remove('hidden');
+            existingRemedyDetailsContainer.classList.add('hidden');
+            showAddAuthorFormBtn.classList.remove('hidden'); // Allow adding data for new remedy
+        } else {
+            remedyCommonNameContainer.classList.add('hidden');
+            remedyCommonNameInput.value = '';
+        }
+    });
+
     
     infographicForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -1880,33 +2116,24 @@ document.addEventListener('DOMContentLoaded', function () {
         const name = document.getElementById('infographic-name').value.trim();
         const infoId = document.getElementById('infographic-id').value;
         const uploadDate = document.getElementById('infographic-upload-date').value;
-        
         const userInput = document.getElementById('infographic-embed-code').value.trim();
         let imageUrl = '';
-
         if (userInput.match(/\.(jpeg|jpg|gif|png|webp)$/) != null) {
             imageUrl = userInput;
         } else {
             const srcRegex = /<img[^>]+src="([^">]+)"/;
             const match = userInput.match(srcRegex);
-            if (match && match[1]) {
-                imageUrl = match[1];
-            }
+            if (match && match[1]) { imageUrl = match[1]; }
         }
-
-        if (!imageUrl) {
-            return alert("Invalid image URL or embed code. Please provide a direct link (ending in .png, .jpg, etc.) or a valid embed code.");
-        }
+        if (!imageUrl) { return alert("Invalid image URL or embed code."); }
         if (!uploadDate) return alert("Please select an upload date.");
-
         saveButton.disabled = true; saveButton.textContent = 'Saving...';
         const newInfo = { name, imageUrl, uploadDate };
-        
         try {
             if (infoId) { await set(ref(database, `infographics/${infoId}`), newInfo); alert('Updated!'); } 
             else { await push(ref(database, 'infographics'), newInfo); alert('Saved!'); }
             infographicForm.reset(); document.getElementById('infographic-id').value = ''; document.getElementById('infographic-upload-date').value = getTodayDateString();
-            await initializeAndFetchData(); showPage('page-infographic');
+            await initializeAndFetchData(); navigateToPage('page-infographic');
         } catch (error) { alert('An error occurred.'); } 
         finally { saveButton.disabled = false; saveButton.textContent = 'Save Remedygrphy'; }
     });
@@ -1919,19 +2146,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const uploadDate = document.getElementById('content-upload-date').value;
         const videoId = getYoutubeVideoId(youtubeLink);
         const contentId = document.getElementById('content-id').value;
-
         if (!name || !youtubeLink || !uploadDate) return alert("Please fill all fields.");
-        if (!videoId) return alert("Invalid YouTube link. Please use a valid video URL.");
-
+        if (!videoId) return alert("Invalid YouTube link.");
         saveButton.disabled = true; saveButton.textContent = 'Saving...';
         const newContent = { name, videoId, uploadDate };
-
         try {
             if(contentId) { await set(ref(database, `content/${contentId}`), newContent); alert('Updated!'); }
             else { await push(ref(database, 'content'), newContent); alert('Content saved successfully!'); }
             contentForm.reset(); document.getElementById('content-id').value = ''; document.getElementById('content-upload-date').value = getTodayDateString();
             await initializeAndFetchData();
-            showPage('page-content');
+            navigateToPage('page-content');
         } catch (error) { alert('An error occurred.'); }
         finally { saveButton.disabled = false; saveButton.textContent = 'Save Content'; }
     });
@@ -1941,34 +2165,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const saveButton = document.getElementById('save-biopath-btn');
         const kingdom = document.getElementById('biopath-kingdom').value;
         if (!kingdom) return alert('Error: Kingdom not specified.');
-
-        let group, subGroup, content;
-        
+        let group, subGroup, content, dbPath;
         if (kingdom === 'Other') {
             const cat1 = document.getElementById('biopath-cat1').value.trim();
             const cat2 = document.getElementById('biopath-cat2').value.trim();
             const cat3 = document.getElementById('biopath-cat3').value.trim();
             if (!cat1 || !cat2 || !cat3) return alert('Please fill all three categories.');
-            group = cat1;
-            subGroup = cat2;
-            content = cat3;
+            group = cat1; subGroup = cat2; content = cat3;
         } else {
             group = document.getElementById('biopath-group').value.trim();
             subGroup = document.getElementById('biopath-subgroup').value.trim();
             content = document.getElementById('biopath-content').value.trim();
             if (!group || !subGroup || !content) return alert('Please fill all fields.');
         }
-
-        const dbPath = `biopath/${kingdom}/${group}/${subGroup}`;
+        dbPath = `biopath/${kingdom}/${group}/${subGroup}`;
         const dataToSave = { content: content };
-        
         saveButton.disabled = true; saveButton.textContent = 'Saving...';
         try {
             await set(ref(database, dbPath), dataToSave);
             alert('Biopath data saved successfully!');
             addBiopathForm.reset();
             await initializeAndFetchData();
-            showPage('page-biopath');
+            navigateToPage('page-biopath');
         } catch (error) {
             console.error(error);
             alert('An error occurred while saving.');
@@ -1981,11 +2199,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function applyTransform() {
         modalImage.style.transform = `scale(${transform.scale}) translate(${transform.translateX}px, ${transform.translateY}px)`;
     }
-
     function getDistance(touches) {
         return Math.sqrt(Math.pow(touches[0].pageX - touches[1].pageX, 2) + Math.pow(touches[0].pageY - touches[1].pageY, 2));
     }
-
     function onTouchStart(event) {
         if (event.touches.length === 2) {
             initialPinchDistance = getDistance(event.touches);
@@ -1993,7 +2209,6 @@ document.addEventListener('DOMContentLoaded', function () {
             lastTouch = { x: event.touches[0].pageX, y: event.touches[0].pageY };
         }
     }
-
     function onTouchMove(event) {
         event.preventDefault();
         if (event.touches.length === 2 && initialPinchDistance) {
@@ -2012,11 +2227,9 @@ document.addEventListener('DOMContentLoaded', function () {
             applyTransform();
         }
     }
-
     function onTouchEnd(event) {
         if (event.touches.length < 2) initialPinchDistance = null;
         if (event.touches.length < 1) lastTouch = null;
-        
         if (transform.scale <= 1) {
             transform.scale = 1;
             transform.translateX = 0;
@@ -2024,15 +2237,13 @@ document.addEventListener('DOMContentLoaded', function () {
             applyTransform();
         }
     }
-
     function openZoomableImage(url) {
         modalImage.src = url;
         imageModal.classList.remove('hidden');
-        imageModal.addEventListener('touchstart', onTouchStart, { passive: false });
-        imageModal.addEventListener('touchmove', onTouchMove, { passive: false });
-        imageModal.addEventListener('touchend', onTouchEnd, { passive: false });
+        imageModal.addEventListener('touchstart', onTouchStart);
+        imageModal.addEventListener('touchmove', onTouchMove);
+        imageModal.addEventListener('touchend', onTouchEnd);
     }
-    
     function closeZoomableImage() {
         imageModal.classList.add('hidden');
         modalImage.src = '';
@@ -2044,15 +2255,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('close-image-modal-btn').addEventListener('click', closeZoomableImage);
-    
     document.getElementById('close-video-modal-btn').addEventListener('click', () => {
          document.getElementById('video-viewer-modal').classList.add('hidden');
          document.getElementById('video-embed-container').innerHTML = '';
     });
-
     document.getElementById('compare-btn').addEventListener('click', handleCompare);
+    
+    loadMoreBtn.addEventListener('click', loadMoreRemedies);
 
-    // Initial data fetch
     initializeAndFetchData();
 });
 </script>
