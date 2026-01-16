@@ -917,6 +917,17 @@
         </div>
     </div>
 
+    <!-- Waiting Screen Overlay -->
+    <div id="waiting-overlay" class="hidden fixed inset-0 z-[99] bg-background-dark flex flex-col items-center justify-center text-center p-4 transition-opacity duration-500 ease-in-out">
+        <div class="relative w-32 h-32 mb-8">
+            <div class="absolute inset-0 rounded-full border-4 border-primary/30 animate-pulse-glow"></div>
+            <div class="absolute inset-0 rounded-full border-t-4 border-primary animate-spin"></div>
+        </div>
+        <h2 class="text-2xl font-bold text-white mb-2">Loading Remedies...</h2>
+        <p class="text-slate-400 mb-6">Please wait while we prepare your guide.</p>
+        <p class="text-6xl font-bold text-primary" id="countdown-timer">10</p>
+    </div>
+
 
 <script type="module">
 // Import Firebase functions
@@ -1001,12 +1012,36 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     getStartedBtn.addEventListener('click', () => {
-        welcomeScreen.style.opacity = '0';
-        appWrapper.style.opacity = '1';
+        const waitingOverlay = document.getElementById('waiting-overlay');
+        const countdownTimer = document.getElementById('countdown-timer');
+        let countdown = 10;
 
+        // 1. Fade out the welcome screen
+        welcomeScreen.style.opacity = '0';
         setTimeout(() => {
             welcomeScreen.style.display = 'none';
-        }, 1000); // Match transition duration
+        }, 1000);
+
+        // 2. Show the waiting overlay
+        waitingOverlay.classList.remove('hidden');
+        
+        // 3. Start the countdown
+        countdownTimer.textContent = countdown;
+        const interval = setInterval(() => {
+            countdown--;
+            countdownTimer.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(interval);
+                
+                // 4. When countdown finishes, fade out waiting overlay and fade in app
+                waitingOverlay.style.opacity = '0';
+                appWrapper.style.opacity = '1';
+
+                setTimeout(() => {
+                    waitingOverlay.style.display = 'none';
+                }, 500); // Match transition duration
+            }
+        }, 1000);
     });
 
 
