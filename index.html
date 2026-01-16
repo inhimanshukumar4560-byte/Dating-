@@ -204,21 +204,13 @@
             mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
             -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
         }
-        
-        .author-card-hover {
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-        }
-        .author-card-hover:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(37, 175, 244, 0.2);
-        }
 
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-white overflow-x-hidden">
 
     <!-- Welcome Screen Container -->
-    <div id="welcome-screen-wrapper" class="fixed inset-0 z- transition-opacity duration-1000 ease-in-out">
+    <div id="welcome-screen-wrapper" class="fixed inset-0 z-[100] transition-opacity duration-1000 ease-in-out">
         <!-- Preloader Element -->
         <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-navy-deep transition-opacity duration-1000 ease-out">
             <div class="relative w-24 h-24">
@@ -698,89 +690,7 @@
             </div>
             <!-- END: NEW BIOPATH PAGES -->
 
-            <div id="page-materia-medica" class="page px-4 py-6">
-                <div class="grid grid-cols-2 gap-x-4 gap-y-6">
-                    <!-- Author Cards will be injected here -->
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/0RLp1zK8/IMG-20260113-181113.png" alt="William Boericke" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">William Boericke</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/ymdbBhDf/Generated-Image-January-13-2026-6-19-PM.png" alt="H.C. Allen" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">H.C. Allen</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/dsGdBJss/IMG-20260113-222809.png" alt="J.T. Kent" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">J.T. Kent</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/mrYBHNDb/IMG-20260115-172139.png" alt="E.A. Farrington" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">E.A. Farrington</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/jZD9nP7P/Generated-Image-January-15-2026-5-03-PM.png" alt="George Vithoulkas" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">George Vithoulkas</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/kV3GnhWP/Generated-Image-January-15-2026-4-56-PM.png" alt="CHOUDHURI N. M." class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">CHOUDHURI N. M.</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/KHmL1hy/IMG-20260115-171802.png" alt="CATHERINE R. COULTER" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">C. R. COULTER</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/0kHmxQ9/IMG-20260115-172927.png" alt="CONSTANTINE HERING" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">C. HERING</p>
-                    </div>
-                     <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/wZnCw3Pj/IMG-20260115-173724.png" alt="S. LILIENTHAL, M.D." class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">S. LILIENTHAL</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/RqpNBkZ/IMG-20260115-173107.png" alt="AD. LIPPE, M.D." class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">AD. LIPPE</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/RkWBLQr8/IMG-20260115-173524.png" alt="MURPHY Robin" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">MURPHY Robin</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/nspBCJCz/IMG-20260115-173836.png" alt="Dr. S.K. Dubey" class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">Dr. S.K. Dubey</p>
-                    </div>
-                     <div class="flex flex-col items-center">
-                        <div class="author-card-hover w-full aspect-square rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 duration-200">
-                            <img src="https://i.ibb.co/1GXrwphB/Generated-Image-January-15-2026-5-32-PM.png" alt="CARROLL DUNHAM, M.D." class="w-full h-full object-cover"/>
-                        </div>
-                        <p class="text-center text-white font-semibold mt-2 text-sm">C. DUNHAM</p>
-                    </div>
-                </div>
-            </div>
+            <div id="page-materia-medica" class="page px-4 py-6"><p class="text-slate-300">This is the Materia Medica page.</p></div>
             <div id="page-repertory" class="page px-4 py-6"><p class="text-slate-300">This is the Repertory page.</p></div>
             <div id="page-profile" class="page px-4 py-6"><p class="text-slate-300">This is the Profile page.</p></div>
             
@@ -1049,7 +959,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'page-manage-remedies': 'Manage Remedies', 'page-biopath': 'Biopath', 'page-infographic': 'Remedygrphy',
         'page-upload-infographic': 'Upload Remedygrphy', 'page-content': 'Content', 'page-upload-content': 'Upload Content',
         'page-upload-biopath': 'Upload Biopath', 'page-biopath-form': 'Add Biopath Entry', 'page-biopath-groups': 'Biopath Groups',
-        'page-biopath-subgroups': 'Biopath Sub-Groups', 'page-biopath-detail': 'Biopath Details', 'page-materia-medica': 'Materia Medica'
+        'page-biopath-subgroups': 'Biopath Sub-Groups', 'page-biopath-detail': 'Biopath Details'
     };
     
     const getTodayDateString = () => {
@@ -1093,13 +1003,12 @@ document.addEventListener('DOMContentLoaded', function () {
             biopathData = biopathSnapshot.exists() ? biopathSnapshot.val() : {};
 
             const remediesRef = ref(database, 'remedies');
-            // Fetch all remedies at once by removing the limitToFirst() constraint.
-            // This ensures the main "Remedies" list is complete and matches search capabilities, addressing the user's issue.
-            const remediesQuery = query(remediesRef, orderByKey());
+            const remediesQuery = query(remediesRef, orderByKey(), limitToFirst(REMEDIES_PER_PAGE));
             const remediesSnapshot = await get(remediesQuery);
             
             remedyData = [];
-            lastLoadedRemedyKey = null; // Pagination is no longer used.
+            allRemediesLoaded = false;
+            lastLoadedRemedyKey = null;
 
             if (remediesSnapshot.exists()) {
                 const tempRemedies = [];
@@ -1108,11 +1017,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     tempRemedies.push(adaptedData);
                 });
                 remedyData = tempRemedies;
+
+                if (tempRemedies.length > 0) {
+                    lastLoadedRemedyKey = tempRemedies[tempRemedies.length - 1].id;
+                }
+                if (tempRemedies.length < REMEDIES_PER_PAGE) {
+                    allRemediesLoaded = true;
+                }
+            } else {
+                allRemediesLoaded = true;
             }
-            
-            // Since all remedies are now loaded initially, we mark the loading as complete.
-            // This will hide the "Load More" button and prevent related functions from running.
-            allRemediesLoaded = true;
 
             await fetchAllRemediesForDatalist();
             renderInitialApp();
@@ -1204,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
         const match = url.match(regex);
         if (match) {
-            videoId = match;
+            videoId = match[1];
         }
         return videoId;
     }
@@ -1345,7 +1259,7 @@ document.addEventListener('DOMContentLoaded', function () {
             remedySlider.innerHTML = todaysRemedies.map(remedy => {
                 const authorData = remedy.authors.boericke || remedy.authors.allen || remedy.authors.kent;
                 if (!authorData) return ''; 
-                const firstSectionKey = authorData.sections ? Object.keys(authorData.sections) : '';
+                const firstSectionKey = authorData.sections ? Object.keys(authorData.sections)[0] : '';
                 const firstSectionValue = firstSectionKey ? authorData.sections[firstSectionKey] : authorData.description;
                 const shortDescription = firstSectionValue.length > 120 ? firstSectionValue.substring(0, 120) + '...' : firstSectionValue;
 
@@ -1540,12 +1454,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return null; // No remedy found
         }
         if (matchingRemedies.length === 1) {
-            return adaptRemedyData(matchingRemedies, matchingRemedies.id);
+            return adaptRemedyData(matchingRemedies[0], matchingRemedies[0].id);
         }
         const masterRemedy = {
-            id: matchingRemedies.id,
-            name: matchingRemedies.name,
-            commonName: matchingRemedies.commonName || '',
+            id: matchingRemedies[0].id,
+            name: matchingRemedies[0].name,
+            commonName: matchingRemedies[0].commonName || '',
             authors: {}
         };
         for (const duplicate of matchingRemedies) {
@@ -2209,7 +2123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             const srcRegex = /<img[^>]+src="([^">]+)"/;
             const match = userInput.match(srcRegex);
-            if (match && match) { imageUrl = match; }
+            if (match && match[1]) { imageUrl = match[1]; }
         }
         if (!imageUrl) { return alert("Invalid image URL or embed code."); }
         if (!uploadDate) return alert("Please select an upload date.");
@@ -2286,13 +2200,13 @@ document.addEventListener('DOMContentLoaded', function () {
         modalImage.style.transform = `scale(${transform.scale}) translate(${transform.translateX}px, ${transform.translateY}px)`;
     }
     function getDistance(touches) {
-        return Math.sqrt(Math.pow(touches.pageX - touches.pageX, 2) + Math.pow(touches.pageY - touches.pageY, 2));
+        return Math.sqrt(Math.pow(touches[0].pageX - touches[1].pageX, 2) + Math.pow(touches[0].pageY - touches[1].pageY, 2));
     }
     function onTouchStart(event) {
         if (event.touches.length === 2) {
             initialPinchDistance = getDistance(event.touches);
         } else if (event.touches.length === 1 && transform.scale > 1) {
-            lastTouch = { x: event.touches.pageX, y: event.touches.pageY };
+            lastTouch = { x: event.touches[0].pageX, y: event.touches[0].pageY };
         }
     }
     function onTouchMove(event) {
@@ -2305,11 +2219,11 @@ document.addEventListener('DOMContentLoaded', function () {
             applyTransform();
             initialPinchDistance = newDistance; 
         } else if (event.touches.length === 1 && lastTouch && transform.scale > 1) {
-            const dx = (event.touches.pageX - lastTouch.x) / transform.scale;
-            const dy = (event.touches.pageY - lastTouch.y) / transform.scale;
+            const dx = (event.touches[0].pageX - lastTouch.x) / transform.scale;
+            const dy = (event.touches[0].pageY - lastTouch.y) / transform.scale;
             transform.translateX += dx;
             transform.translateY += dy;
-            lastTouch = { x: event.touches.pageX, y: event.touches.pageY };
+            lastTouch = { x: event.touches[0].pageX, y: event.touches[0].pageY };
             applyTransform();
         }
     }
