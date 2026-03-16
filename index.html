@@ -113,7 +113,8 @@
             -webkit-backdrop-filter: blur(12px);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-        body { min-height: max(884px, 100dvh); }
+        /* Changed to make it responsive on landscape laptops/smartboards */
+        body { min-height: 100vh; min-height: 100dvh; }
         .page { display: none; }
         .page.active { display: block; }
 
@@ -191,14 +192,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        body::-webkit-scrollbar {
-            display: none;
-        }
-
-        body {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        /* Body scrollbar removed to allow smartboard/laptop users to scroll naturally */
 
         .remedy-container {
             mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
@@ -219,8 +213,8 @@
             </div>
         </div>
 
-        <!-- Main Container -->
-        <div class="relative flex h-screen w-full flex-col justify-between items-center overflow-hidden bg-background-dark">
+        <!-- Main Container: Changed from h-screen/overflow-hidden to min-h-screen/overflow-y-auto to fix smartboard/laptop scrolling -->
+        <div class="relative flex min-h-screen w-full flex-col justify-between items-center overflow-y-auto overflow-x-hidden bg-background-dark">
             <!-- Background Effects Layer -->
             <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <div class="absolute inset-0 bg-gradient-to-b from-[#03080c] via-[#0a141a] to-[#064e6b] opacity-90"></div>
@@ -329,7 +323,7 @@
 
     <!-- Main App Container -->
     <div id="app-wrapper" class="opacity-0 transition-opacity duration-1000 ease-in-out">
-        <div id="app-container" class="pb-24">
+        <div id="app-container" class="pb-24 max-w-5xl mx-auto"> <!-- Added max-w-5xl mx-auto for desktop container sizing -->
 
             <!-- Page: Home -->
             <div id="page-home" class="page active">
@@ -371,7 +365,7 @@
                 </div>
                 <section class="mt-8 px-4">
                     <div class="flex items-center justify-between mb-4"><h3 class="text-white text-lg font-semibold tracking-tight">Modules</h3></div>
-                    <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
                         <button data-target="page-remedies" class="module-btn aspect-square relative flex flex-col justify-end rounded-xl border border-card-border active:scale-[0.98] transition-all group overflow-hidden text-left">
                             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('https://i.ibb.co/Ndnyw6Vk/b3u-Gi6h3-S02aplk-Jb-Iwa-Yw.webp');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
@@ -404,13 +398,13 @@
                                 <p class="text-xs text-slate-300 mt-0.5">Rubrics</p>
                             </div>
                         </button>
-                        <button data-target="page-compare" class="module-btn flex flex-col gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-start hover:bg-white/5 active:scale-[0.98] transition-all group">
-                            <div class="p-2 rounded-lg bg-pink-500/10 text-pink-400 group-hover:bg-pink-500/20 transition-colors"><span class="material-symbols-outlined">compare_arrows</span></div>
-                            <div class="text-left"><h2 class="text-white text-base font-semibold">Compare</h2><p class="text-xs text-slate-400 mt-0.5">Remedy Diff</p></div>
+                        <button data-target="page-compare" class="module-btn flex flex-col justify-center gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-center hover:bg-white/5 active:scale-[0.98] transition-all group">
+                            <div class="p-2 rounded-lg bg-pink-500/10 text-pink-400 group-hover:bg-pink-500/20 transition-colors"><span class="material-symbols-outlined text-3xl">compare_arrows</span></div>
+                            <div class="text-center"><h2 class="text-white text-base font-semibold">Compare</h2><p class="text-xs text-slate-400 mt-0.5">Remedy Diff</p></div>
                         </button>
-                        <button data-target="page-saved" class="module-btn flex flex-col gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-start hover:bg-white/5 active:scale-[0.98] transition-all group">
-                            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors"><span class="material-symbols-outlined">bookmark</span></div>
-                            <div class="text-left"><h2 class="text-white text-base font-semibold">Saved</h2><p class="text-xs text-slate-400 mt-0.5">Your Notes</p></div>
+                        <button data-target="page-saved" class="module-btn flex flex-col justify-center gap-3 rounded-xl border border-card-border bg-card-dark p-4 items-center hover:bg-white/5 active:scale-[0.98] transition-all group">
+                            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors"><span class="material-symbols-outlined text-3xl">bookmark</span></div>
+                            <div class="text-center"><h2 class="text-white text-base font-semibold">Saved</h2><p class="text-xs text-slate-400 mt-0.5">Your Notes</p></div>
                         </button>
                     </div>
                 </section>
@@ -479,7 +473,7 @@
             </header>
             
             <div id="page-remedies" class="page px-4 py-2">
-                <div id="remedies-list" class="space-y-2"></div>
+                <div id="remedies-list" class="space-y-2 grid md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
                 <!-- Load More Button Container -->
                 <div id="load-more-container" class="py-6 text-center" style="display: none;">
                     <button id="load-more-btn" class="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-lg transition-colors">
@@ -490,39 +484,41 @@
 
             <!-- NEW PAGE: Author Selection -->
             <div id="page-author-selection" class="page px-4 py-6">
-                <div id="author-selection-container" class="grid grid-cols-2 gap-4">
+                <div id="author-selection-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     <!-- Author cards will be injected here -->
                 </div>
             </div>
 
             <!-- MODIFIED PAGE: Renamed from page-remedy-detail -->
-            <div id="page-author-remedy-detail" class="page px-4 py-6 text-slate-300 leading-relaxed"></div>
+            <div id="page-author-remedy-detail" class="page px-4 py-6 text-slate-300 leading-relaxed max-w-4xl mx-auto"></div>
             
             <div id="page-symptoms" class="page px-4 py-2">
-                <div id="symptoms-list" class="space-y-2"></div>
+                <div id="symptoms-list" class="space-y-2 grid md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
             </div>
             
             <div id="page-symptom-remedies" class="page px-4 py-2">
-                <div id="symptom-remedies-list" class="space-y-2"></div>
+                <div id="symptom-remedies-list" class="space-y-2 grid md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
             </div>
 
             <div id="page-saved" class="page px-4 py-2">
-                <div id="saved-remedies-list" class="space-y-2"></div>
+                <div id="saved-remedies-list" class="space-y-2 grid md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
             </div>
             
-            <div id="page-compare" class="page px-4 py-6">
+            <div id="page-compare" class="page px-4 py-6 max-w-3xl mx-auto">
                 <p class="text-slate-300 mb-4 text-center">Compare remedies based on a specific symptom or body part.</p>
                 <div class="space-y-4">
                     <input id="compare-symptom" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter Body Part (e.g., Stomach)"/>
-                    <input id="compare-remedy1" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter first remedy name..."/>
-                    <input id="compare-remedy2" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter second remedy name..."/>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input id="compare-remedy1" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter first remedy name..."/>
+                        <input id="compare-remedy2" class="w-full bg-card-dark border border-card-border rounded-lg text-white px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter second remedy name..."/>
+                    </div>
                     <button id="compare-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors">Compare</button>
                 </div>
                 <div id="comparison-results" class="mt-6"></div>
             </div>
 
             <!-- ########## START: MODIFIED "ADD REMEDY" PAGE ########## -->
-            <div id="page-add-remedy" class="page px-4 py-6">
+            <div id="page-add-remedy" class="page px-4 py-6 max-w-3xl mx-auto">
                 <form id="add-remedy-form" class="space-y-4">
                     <input type="hidden" id="existing-remedy-id" value="">
 
@@ -590,15 +586,15 @@
             <!-- ########## END: MODIFIED "ADD REMEDY" PAGE ########## -->
             
             <div id="page-manage-remedies" class="page px-4 py-2">
-                <div id="manage-remedies-list" class="space-y-2">
+                <div id="manage-remedies-list" class="space-y-2 grid md:grid-cols-2 lg:grid-cols-3 gap-2">
                 </div>
             </div>
 
             <div id="page-search-results" class="page px-4 py-2">
-                <div id="search-results-list" class="space-y-2"></div>
+                <div id="search-results-list" class="space-y-2 grid md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
             </div>
 
-            <div id="page-upload-infographic" class="page px-4 py-6">
+            <div id="page-upload-infographic" class="page px-4 py-6 max-w-3xl mx-auto">
                 <form id="infographic-form" class="space-y-4">
                     <input type="hidden" id="infographic-id" value="">
                     <div>
@@ -618,12 +614,12 @@
                 </form>
                  <div class="border-t border-card-border mt-8 pt-4">
                     <h3 class="text-lg font-semibold text-white mb-3">Uploaded Remedygrphies</h3>
-                    <div id="manage-infographics-list" class="space-y-2"></div>
+                    <div id="manage-infographics-list" class="space-y-2 grid md:grid-cols-2 gap-2"></div>
                 </div>
             </div>
             
             <!-- NEW PAGE: Upload Content -->
-            <div id="page-upload-content" class="page px-4 py-6">
+            <div id="page-upload-content" class="page px-4 py-6 max-w-3xl mx-auto">
                 <form id="content-form" class="space-y-4">
                     <input type="hidden" id="content-id" value="">
                     <div>
@@ -642,12 +638,12 @@
                 </form>
                  <div class="border-t border-card-border mt-8 pt-4">
                     <h3 class="text-lg font-semibold text-white mb-3">Uploaded Content</h3>
-                    <div id="manage-content-list" class="space-y-2"></div>
+                    <div id="manage-content-list" class="space-y-2 grid md:grid-cols-2 gap-2"></div>
                 </div>
             </div>
 
             <!-- START: NEW BIOPATH PAGES -->
-            <div id="page-upload-biopath" class="page px-4 py-6">
+            <div id="page-upload-biopath" class="page px-4 py-6 max-w-2xl mx-auto">
                 <div class="space-y-3">
                     <button class="biopath-upload-category-btn w-full text-left p-4 bg-card-dark border border-card-border rounded-lg hover:bg-white/5 transition-colors flex justify-between items-center" data-kingdom="Plant">
                         <span class="font-medium text-white">Plant</span><span class="material-symbols-outlined text-slate-500">chevron_right</span>
@@ -667,7 +663,7 @@
                 </div>
             </div>
 
-            <div id="page-biopath-form" class="page px-4 py-6">
+            <div id="page-biopath-form" class="page px-4 py-6 max-w-3xl mx-auto">
                 <form id="add-biopath-form" class="space-y-4">
                     <input type="hidden" id="biopath-kingdom" value="">
                     <div id="biopath-form-inputs" class="space-y-4">
@@ -678,20 +674,20 @@
             </div>
 
             <div id="page-biopath-groups" class="page px-4 py-2">
-                <div id="biopath-groups-list" class="space-y-2"></div>
+                <div id="biopath-groups-list" class="space-y-2 grid md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
             </div>
             
             <div id="page-biopath-subgroups" class="page px-4 py-2">
-                <div id="biopath-subgroups-list" class="space-y-2"></div>
+                <div id="biopath-subgroups-list" class="space-y-2 grid md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
             </div>
 
-            <div id="page-biopath-detail" class="page px-4 py-6 text-slate-300 leading-relaxed">
+            <div id="page-biopath-detail" class="page px-4 py-6 text-slate-300 leading-relaxed max-w-4xl mx-auto">
                 <!-- Biopath final content will be rendered here -->
             </div>
             <!-- END: NEW BIOPATH PAGES -->
 
             <div id="page-materia-medica" class="page px-4 py-6">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     <!-- Card for William Boericke -->
                     <div>
                         <div class="aspect-square w-full rounded-xl bg-card-dark border border-card-border overflow-hidden group cursor-pointer active:scale-95 transition-transform duration-200">
@@ -816,7 +812,7 @@
                     </div>
                     <section class="px-4 mb-8">
                         <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold text-slate-900 dark:text-white">Browse by Kingdom</h2></div>
-                        <div class="flex flex-col gap-4">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                             <div data-kingdom="Plant" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-video"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-green-500">eco</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-green-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-green-500"><span class="material-symbols-outlined">eco</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Plant</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Botanic remedies</p></div></div></div>
                             <div data-kingdom="Mineral" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-video"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-amber-500">hexagon</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-amber-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-amber-500"><span class="material-symbols-outlined">hexagon</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Mineral</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elements &amp; Salts</p></div></div></div>
                             <div data-kingdom="Animal" class="biopath-kingdom-btn group relative overflow-hidden rounded-xl bg-white dark:bg-card-dark p-4 border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 active:scale-[0.98] aspect-video"><div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[64px] text-red-400">pets</span></div><div class="flex flex-col h-full justify-end z-10 relative"><div class="bg-red-400/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-red-400"><span class="material-symbols-outlined">pets</span></div><div><h3 class="font-bold text-slate-900 dark:text-white">Animal</h3><p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fauna based</p></div></div></div>
@@ -837,7 +833,7 @@
                     </section>
                     <section class="px-4">
                         <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Popular Remedies</h2>
-                        <div class="flex flex-col gap-3">
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                             <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4 text-green-400"><span class="material-symbols-outlined">eco</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Arnica Montana</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Trauma, Bruising, Shock, Soreness</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
                             <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-yellow-900/30 flex items-center justify-center mr-4 text-amber-400"><span class="material-symbols-outlined">hexagon</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Arsenicum Album</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Anxiety, Restlessness, Burning pains</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
                             <div class="flex items-center p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/40 transition-colors shadow-sm cursor-pointer group"><div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4 text-blue-400"><span class="material-symbols-outlined">water_drop</span></div><div class="flex-1"><div class="flex justify-between items-start"><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Natrum Muriaticum</h3><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-card-dark text-slate-500 uppercase tracking-wider">Poly</span></div><p class="text-sm text-primary/80 italic mt-0.5">Grief, Introversion, Headaches</p></div><div class="text-slate-600 ml-2"><span class="material-symbols-outlined text-lg">chevron_right</span></div></div>
@@ -849,13 +845,13 @@
             
             <!-- IMPROVED PAGE: Remedygrphy -->
             <div id="page-infographic" class="page px-4 py-6">
-                <div id="infographic-list-container" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div id="infographic-list-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 </div>
             </div>
             
             <!-- NEW PAGE: Content (Videos) -->
             <div id="page-content" class="page px-4 py-6">
-                <div id="content-list-container" class="space-y-6">
+                <div id="content-list-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 </div>
             </div>
         </div>
@@ -1341,7 +1337,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         ${mainButton}
                         ${saveButton}
                     </div>`;
-        }).join('') : `<p class="text-slate-400 text-center py-4">No remedies found.</p>`;
+        }).join('') : `<p class="text-slate-400 text-center py-4 col-span-full">No remedies found.</p>`;
         listContainer.innerHTML = html;
     }
 
@@ -1522,7 +1518,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button class="p-2 -mr-2 text-slate-500 hover:text-red-400 transition-colors delete-remedy-btn" data-id="${remedy.id}" data-name="${remedy.name}">
                     <span class="material-symbols-outlined">delete</span>
                 </button>
-            </div>`).join('') : `<p class="text-slate-400 text-center py-4">No remedies in the database.</p>`;
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4 col-span-full">No remedies in the database.</p>`;
     }
     function renderInfographics() {
         const container = document.getElementById('infographic-list-container');
@@ -1548,12 +1544,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     <button class="edit-infographic-btn p-2 text-slate-400 hover:text-white" data-id="${info.id}"><span class="material-symbols-outlined text-lg">edit</span></button>
                     <button class="delete-infographic-btn p-2 text-slate-400 hover:text-red-400" data-id="${info.id}" data-name="${info.name}"><span class="material-symbols-outlined text-lg">delete</span></button>
                 </div>
-            </div>`).join('') : `<p class="text-slate-400 text-center py-4">No remedygrphies to manage.</p>`;
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4 col-span-full">No remedygrphies to manage.</p>`;
     }
     function renderContentList() {
         const container = document.getElementById('content-list-container');
         if (!container) return;
-        container.className = 'space-y-6';
+        // Container class is set in HTML
         container.innerHTML = contentData.length > 0 ? contentData.map(content => `
             <div class="open-video-btn group cursor-pointer" data-video-id="${content.videoId}">
                 <div class="aspect-video w-full bg-black rounded-xl overflow-hidden relative border border-card-border shadow-lg">
@@ -1565,7 +1561,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="mt-3 px-1">
                     <h3 class="font-semibold text-white text-lg">${content.name}</h3>
                 </div>
-            </div>`).join('') : `<p class="text-slate-400 text-center py-4">No content uploaded yet.</p>`;
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4 col-span-full">No content uploaded yet.</p>`;
     }
     function renderManageContentList() {
         const listContainer = document.getElementById('manage-content-list');
@@ -1577,7 +1573,7 @@ document.addEventListener('DOMContentLoaded', function () {
                      <button class="edit-content-btn p-2 text-slate-400 hover:text-white" data-id="${content.id}"><span class="material-symbols-outlined text-lg">edit</span></button>
                     <button class="delete-content-btn p-2 text-slate-400 hover:text-red-400" data-id="${content.id}" data-name="${content.name}"><span class="material-symbols-outlined text-lg">delete</span></button>
                 </div>
-            </div>`).join('') : `<p class="text-slate-400 text-center py-4">No content to manage.</p>`;
+            </div>`).join('') : `<p class="text-slate-400 text-center py-4 col-span-full">No content to manage.</p>`;
     }
     
     // --- Logic Functions ---
@@ -1917,7 +1913,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </button>
             `).join('');
         } else {
-            listContainer.innerHTML = `<p class="text-slate-400 text-center py-4">No data found for ${kingdom}.</p>`;
+            listContainer.innerHTML = `<p class="text-slate-400 text-center py-4 col-span-full">No data found for ${kingdom}.</p>`;
         }
         navigateToPage('page-biopath-groups', `${kingdom} Kingdom`);
     }
@@ -1932,7 +1928,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </button>
             `).join('');
         } else {
-            listContainer.innerHTML = `<p class="text-slate-400 text-center py-4">No sub-groups found.</p>`;
+            listContainer.innerHTML = `<p class="text-slate-400 text-center py-4 col-span-full">No sub-groups found.</p>`;
         }
         navigateToPage('page-biopath-subgroups', group);
     }
